@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
     skip_before_action :authenticate_user!, only: [:new, :create]
-    # before_action :set_car, only: [:show, :edit, :update, :destroy]
+    before_action :set_car, only: [:show, :edit, :update, :destroy]
 
     # def index
     #     @restaurants = Restaurant.all
@@ -8,12 +8,12 @@ class RestaurantsController < ApplicationController
     
     def new
         @restaurant = Restaurant.new
-        authorize(@restaurant)
+        # authorize(@restaurant)
     end
     
     def create
     @restaurant = Restaurant.new(restaurant_params)
-    authorize(@restaurant)
+    # authorize(@restaurant)
     @restaurant.user = current_user
     @restaurant.save
     redirect_to user_restaurants_path(current_user)
