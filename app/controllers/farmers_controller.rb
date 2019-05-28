@@ -2,10 +2,6 @@ class FarmersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :new, :create]
   before_action :set_farmer, only: [:show, :edit, :update]
 
-  def show 
-    # authorize(@farmer)
-  end
-
   def new
     @farmer = Farmer.new
     # authorize(@farmer)
@@ -17,6 +13,10 @@ class FarmersController < ApplicationController
     @farmer.user = current_user
     @farmer.save
     redirect_to farmer_path(@farmer)
+  end
+
+  def show
+    # authorize(@farmer)
   end
 
   def edit
@@ -32,7 +32,7 @@ class FarmersController < ApplicationController
   private
 
   def set_params
-    params.require('farmer').permit(:name, :address, :description )
+    params.require('farmer').permit(:name, :address, :description)
   end
 
   def set_farmer
