@@ -1,10 +1,11 @@
 class RestaurantsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:new, :create]
-    # before_action :set_car, only: [:show, :edit, :update, :destroy]
 
-    # def index
-    #     @restaurants = Restaurant.all
-    # end
+  skip_before_action :authenticate_user!, only: [:new, :create]
+  # before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+
+  # def index
+  #     @restaurants = Restaurant.all
+  # end
 
   def new
     @restaurant = Restaurant.new
@@ -37,9 +38,9 @@ class RestaurantsController < ApplicationController
 
   private
 
-  # def set_restaurant
-  #     @restaurant = Restaurant.find(params[:id])
-  # end
+  def set_restaurant
+      @restaurant = Restaurant.find(params[:id])
+  end
 
   def restaurant_params
       params.require('restaurant').permit(:name, :address, :avatar, :lat, :long)
