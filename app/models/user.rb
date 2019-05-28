@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one :restaurant
+  has_one :farmer
+
   # validates :first_name, presence: true
   # validates :last_name, presence: true
   # validates :avatar, presence: true

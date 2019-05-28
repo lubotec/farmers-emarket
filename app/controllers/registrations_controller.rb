@@ -3,9 +3,9 @@ class RegistrationsController < Devise::RegistrationsController
 
   def after_sign_up_path_for(resource)
     if resource.role == "Farmer"
-      '/farmer/new'
+      new_farmer_path
     else
-      '/restaurant/new'
+      new_restaurant_path
     end
   end
 end
