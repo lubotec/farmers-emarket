@@ -4,28 +4,28 @@ class FarmersController < ApplicationController
 
   def new
     @farmer = Farmer.new
-    # authorize(@farmer)
+    authorize(@farmer)
   end
 
   def create
     @farmer = Farmer.new(set_params)
-    # authorize(@farmer)
+    authorize(@farmer)
     @farmer.user = current_user
     @farmer.save
     redirect_to farmer_path(@farmer)
   end
 
   def show
-    # authorize(@farmer)
+    authorize(@farmer)
   end
 
   def edit
-    # authorize(@farmer)
+    authorize(@farmer)
   end
 
   def update
     @farmer.update(set_params)
-    # authorize(@farmers)
+    authorize(@farmers)
     redirect_to farmer_path(@farmer)
   end
 

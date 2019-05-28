@@ -1,13 +1,14 @@
 <div class="container">
- <h2 style="text-align:center">New Restaurant</h2>
+  <h2 style="text-align:center">New Restaurant</h2>
 
-  <%= simple_form_for(@restaurant) do |f| %>
-    <div class="form-inputs mt-4">
-      <%= f.input :name, label: "Restaurant name" %>
-      <%= f.input :address, label: "Address" %>
-    </div>
-    <div class="form-actions mt-4 mb-4">
-      <%= f.button :submit, class: "btn btn-success" %>
-    </div>
-  <% end %>
-</div>
+    <%= simple_form_for(@restaurant) do |f| %>
+      <div class="form-inputs mt-4">
+       <%= f.input :name, label: "Restaurant name" %>
+       <%= f.input :address, label: "Address" %>
+     </div>
+      <div class="form-actions mt-4 mb-4">
+       <%= f.button :submit, class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+
