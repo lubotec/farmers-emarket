@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(set_params)
+    @product = Product.new(product_params)
     @product.farmer = current_user
     @product.save
     # redirect_to 
