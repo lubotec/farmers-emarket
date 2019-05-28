@@ -29,7 +29,6 @@ class FarmersController < ApplicationController
     redirect_to farmer_path(@farmer)
   end
 
-
   private
 
   def set_params
