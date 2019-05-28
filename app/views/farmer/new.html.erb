@@ -1,0 +1,14 @@
+
+<div class="container">
+ <h2 style="text-align:center">Create a Farmer Profile</h2>
+
+  <%= simple_form_for(@farmer) do |f| %>
+    <div class="form-inputs mt-4">
+      <%= f.input :address, label: "What's your address?" %>
+      <%= f.input :description, label: "Add a description to your farm" %>
+    </div>
+    <div class="form-actions mt-4 mb-4">
+      <%= f.button :submit, class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>
