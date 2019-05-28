@@ -1,0 +1,2 @@
+class FarmerPhotosController < ApplicationController
+end
