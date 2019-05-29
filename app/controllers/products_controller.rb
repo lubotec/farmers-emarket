@@ -22,6 +22,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+<<<<<<< HEAD
     respond_to do |format|
       if @product.save
         params[:product_photos]['data'].each do |a|
@@ -31,6 +32,14 @@ class ProductsController < ApplicationController
       else
         format.html { render action: 'new' }
       end
+=======
+    @product.farmer = current_user.farmer
+    if @product.save
+      flash[:success] = "Product was successfully updated"
+      redirect_to products_path
+    else
+      render 'new'
+>>>>>>> acc7f78d0da4c68dd34ea833d307aa95a3a2cb44
     end
   end
 
@@ -50,13 +59,13 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     redirect_to farmer_products_path(current_user)
-    # redirect_to
   end
 
   private
 
   def product_params
-    params.require('product').permit(:name, :category, :sku, :unit_of_measurement, :inventory, :price, product_photos_attributes:[:id, :product_id, :data])
+    params.require('product').permit(:farmer, :name, :category, :sku, :unit_of_measurement, :inventory, :price)
+
   end
 
   def find_id
