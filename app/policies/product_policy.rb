@@ -13,7 +13,7 @@ class ProductPolicy < ApplicationPolicy
     user.role == 'Farmer'
   end
 
-  def myproducts?
+  def my_products?
     record.farmer_id == user.farmer.id
   end
 
@@ -30,8 +30,7 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.user = user
+    record.farmer_id == user.farmer.id
   end
-
 
 end
