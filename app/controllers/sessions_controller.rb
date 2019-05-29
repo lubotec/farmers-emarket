@@ -7,6 +7,6 @@ class SessionsController < Devise::SessionsController
     respond_with resource, location: after_sign_in_path_for(resource)
     @restaurant = current_user.restaurant
     raise
-    @order = Order.create(status: "open", restaurant: @restaurant) if @restaurant.orders.where(status: "open").empty?
+    @restaurant.active_order
   end
 end

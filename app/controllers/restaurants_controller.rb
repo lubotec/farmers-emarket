@@ -1,5 +1,4 @@
 class RestaurantsController < ApplicationController
-
   skip_before_action :authenticate_user!, only: [:new, :create]
   # before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
@@ -21,7 +20,7 @@ class RestaurantsController < ApplicationController
     else
       render 'new'
     end
-    @order = Order.create(status: "open", restaurant: @restaurant) if @restaurant.orders.where(status: "open").empty?
+    @order = Order.create(status: "open", restaurant: @restaurant)
   end
 
   # def edit
