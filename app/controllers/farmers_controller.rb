@@ -19,15 +19,15 @@ class FarmersController < ApplicationController
     authorize(@farmer)
   end
 
-  def edit
-    authorize(@farmer)
-  end
+  # def edit
+  #   authorize(@farmer)
+  # end
 
-  def update
-    @farmer.update(set_params)
-    authorize(@farmers)
-    redirect_to farmer_path(@farmer)
-  end
+  # def update
+  #   @farmer.update(set_params)
+  #   authorize(@farmers)
+  #   redirect_to farmer_path(@farmer)
+  # end
 
   private
 
@@ -38,5 +38,5 @@ class FarmersController < ApplicationController
   def set_farmer
     @farmer = Farmer.find(params[:id])
   end
-  
+
 end
