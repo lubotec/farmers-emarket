@@ -1,0 +1,40 @@
+.btn-f{
+  width: 150px;
+  height:50px;
+  text-decoration: none;
+  font-size: 24;
+  border: 1px solid #384d48;
+  color: #384d48;
+  border-radius: 8px;
+  transition: 0.3s
+}
+
+.btn-f:hover{
+  color: white;
+  background-color: #384d48;
+  
+}
+
+.btn-f-d{
+  width: 150px;
+  height:50px;
+  color: white;
+  background-color: #384d48;
+  font-size: 24;
+  border: 1px solid #384d48;
+  border-radius: 5px;
+  transition: 0.3s
+}
+
+.btn-f-d:hover{
+  color: #384d48;
+  border-radius: 5px;
+  transition: 0.3s;
+  background: white;
+}
+.btn-m {
+  width: 200px;
+}
+.btn-l {
+  width: 300px;
+}

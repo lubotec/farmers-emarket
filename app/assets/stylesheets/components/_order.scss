@@ -1,0 +1,37 @@
+/*order components*/
+.order-image {
+  padding: 15px 20px;
+}
+
+.order-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 24px;
+}
+.order-price-status{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px 24px;       
+}
+
+.order-to {
+  width: 258px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.order-date {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 24px;
+}
+.order {
+  display:flex;
+  justify-content: space-between;
+  width: 704px;
+  padding-left: 120px;
+}
