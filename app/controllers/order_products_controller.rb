@@ -1,13 +1,4 @@
 class OrderProductsController < ApplicationController
-  def index
-  end
-
-  def show
-  end
-
-  def new
-  end
-
   def create
     @product = Product.find(params[:product_id])
     @order_product = OrderProduct.new(
@@ -21,14 +12,9 @@ class OrderProductsController < ApplicationController
     @order_product.save
   end
 
-  def edit
-  end
-
-  def update
-  end
-
   def destroy
+    @order_product = OrderProduct.find(params[:id])
+    @order_product.destroy
+    redirect_to order_path(current_user.restaurant.active_order)
   end
-
-  private
 end
