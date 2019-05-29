@@ -9,9 +9,10 @@ Rails.application.routes.draw do
 
   resources :farmers, only: [:new, :create, :show ]
 
-  resources :products
+  resources :products do
+    resources :order_products, only: [:create]
+  end
 
-  resources :order_products
 
 
 

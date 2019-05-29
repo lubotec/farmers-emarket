@@ -7,6 +7,10 @@
 <hr>
 
 <% @products.each do |product| %>
-<%= product.name %>
-<%= link_to "Add to cart", new_product_path  %>
+  <%= product.name %>
+  <% if current_user.role = "Restaurant" %>
+    <%#= link_to "Add to cart", order_products_path(:product => product.name), method: :post%>
+    <%= link_to "Add to cart", product_order_products_path(product), method: :post%>
+
+  <% end %>
 <% end %>
