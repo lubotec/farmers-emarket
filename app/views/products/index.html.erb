@@ -1,3 +1,5 @@
+<%= link_to 'Go to cart', order_path(current_user.restaurant.active_order) %>
+
 <div class='page-container'>
     <div class='side-nav'>
         <h4>Fruits</h4><br>
@@ -10,7 +12,7 @@
         <% @products.each do |product| %>
         <div class=product-card>
             <div class='add-to-cart'>
-                <%= link_to "", edit_product_path(product), class: "fas fa-plus-circle add-b" , style: 'font-size: 25px; color: black'%>
+                <%= link_to "", product_order_products_path(product), method: :post, class: "fas fa-plus-circle add-b" , style: 'font-size: 25px; color: black'%>
             </div>
             <div class='card-img'>
                 <img src='https://static6.depositphotos.com/1001503/609/i/950/depositphotos_6092650-stock-photo-healthy-food-background-orange.jpg'>

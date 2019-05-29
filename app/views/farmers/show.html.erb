@@ -1,3 +1,16 @@
 <%=@farmer.name  %>
 <%=@farmer.address  %>
 <%=@farmer.description  %>
+<%= link_to "Add new product", new_product_path  %>
+
+<br>
+<hr>
+
+<% @products.each do |product| %>
+  <%= product.name %>
+  <% if current_user.role = "Restaurant" %>
+    <%#= link_to "Add to cart", order_products_path(:product => product.name), method: :post%>
+    <%= link_to "Add to cart", product_order_products_path(product), method: :post%>
+
+  <% end %>
+<% end %>

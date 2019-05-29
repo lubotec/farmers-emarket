@@ -1,0 +1,6 @@
+<%= @order %>
+<% @order.order_products.each do |order_product| %>
+  <%= order_product %>
+  <%= link_to "Remove", order_product_path(order_product), method: :delete %>
+<% end %>
+

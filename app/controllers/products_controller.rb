@@ -21,8 +21,8 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.farmer = current_user.farmer
     if @product.save
-      flash[:success] = "Product was successfully updated"
-      redirect_to products_path
+      redirect_to farmer_path(current_user.farmer)
+      flash[:success] = "Product was successfully added"
     else
       render 'new'
     end
