@@ -11,13 +11,10 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @product_photo = @product.product_photos.all
   end
 
   def new
     @product = Product.new
-    @product_photos = @product.product_photos.build
-
   end
 
   def create
@@ -52,7 +49,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require('product').permit(:farmer, :name, :category, :sku, :unit_of_measurement, :inventory, :price)
+    params.require('product').permit(:farmer, :name, :category, :sku, :unit_of_measurement, :inventory, :price, :data)
   end
 
   def find_id

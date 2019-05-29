@@ -15,7 +15,7 @@
                 <%= link_to "", edit_product_path(product), class: "fas fa-cog edit-b" , style: 'font-size: 25px; color: black'%>
             </div>
             <div class='card-img'>
-                <img src='https://static6.depositphotos.com/1001503/609/i/950/depositphotos_6092650-stock-photo-healthy-food-background-orange.jpg'>
+                <%= cl_image_tag product.product_photo, height: 160, width: 335, crop: :fill %>
             </div>
             <div class='card-details'>
                 <div class='rows'>
