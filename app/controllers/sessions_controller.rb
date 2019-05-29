@@ -5,7 +5,9 @@ class SessionsController < Devise::SessionsController
     sign_in(resource_name, resource)
     yield resource if block_given?
     respond_with resource, location: after_sign_in_path_for(resource)
-    @restaurant = current_user.restaurant
-    @restaurant.active_order
+    if current_user.role == "Restaurant"
+      @restaurant = current_user.restaurant
+      @restaurant.check_open_order
+    end
   end
 end

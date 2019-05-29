@@ -16,7 +16,7 @@ class RestaurantsController < ApplicationController
     # authorize(@restaurant)
     @restaurant.user = current_user
     if @restaurant.save
-      @restaurant.active_order
+      @restaurant.check_open_order
       redirect_to root_path
     else
       render 'new'

@@ -5,9 +5,9 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
-  def my_products
-    @products = current_user.products
-  end
+  # def my_products
+  #   @products = current_user.farmer.products
+  # end
 
   def show
     @product = Product.find(params[:id])
@@ -21,8 +21,9 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.farmer = current_user.farmer
     if @product.save
-      redirect_to product_path(@product)
+      redirect_to farmer_path(current_user.farmer)
     else
+      raise
       render 'new'
     end
   end

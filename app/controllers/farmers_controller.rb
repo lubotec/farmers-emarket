@@ -19,6 +19,7 @@ class FarmersController < ApplicationController
   end
 
   def show
+    @products = @farmer.products
     # authorize(@farmer)
   end
 
