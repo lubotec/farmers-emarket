@@ -15,7 +15,7 @@
                 <%= link_to "", edit_product_path(product), class: "fas fa-cog edit-b" , style: 'font-size: 25px; color: black'%>
             </div>
             <div class='card-img'>
-                <%= cl_image_tag product.product_photo, height: 160, width: 335, crop: :fill %>
+                <%= cl_image_tag product.data, height: 160, width: 335, crop: :fill %>
             </div>
             <div class='card-details'>
                 <div class='rows'>
