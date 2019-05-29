@@ -19,9 +19,13 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.farmer = current_user
-    @product.save
-    # redirect_to 
+    @product.farmer = current_user.farmer
+    if @product.save
+      flash[:success] = "Product was successfully updated"
+      # redirect_to
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -40,13 +44,13 @@ class ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     @product.delete
-    # redirect_to
+    redirect_to products_path
   end
 
   private
 
   def product_params
-    params.require('product').permit(:name, :category, :sku, :unit_of_measurement, :inventory, :price)
+    params.require('product').permit(:farmer, :name, :category, :sku, :unit_of_measurement, :inventory, :price)
   end
 
   def find_id
