@@ -10,18 +10,28 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product_photos = ProductPhoto.where(product: @product)
     @product = Product.find(params[:id])
+    @product_photos = @product.product_photos.all
   end
 
   def new
     @product = Product.new
+    @product_photo = @product.product_photos.build
   end
 
   def create
     @product = Product.new(product_params)
-    @product.farmer = current_user.farmer
-    @product.save
-    redirect_to products_path
+    respond_to do |format|
+      if @product.save
+        params[:product_photos]['data'].each do |a|
+           @product_photo = @product.product_photos.create!(:data => a, :product_id => @product.id)
+        end
+        format.html { redirect_to @product, notice: 'Post was successfully created.' }
+      else
+        format.html { render action: 'new' }
+      end
+    end
   end
 
   def edit
@@ -46,7 +56,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require('product').permit(:name, :category, :sku, :unit_of_measurement, :inventory, :price)
+    params.require('product').permit(:name, :category, :sku, :unit_of_measurement, :inventory, :price, product_photos_attributes:[:id, :product_id, :data])
   end
 
   def find_id

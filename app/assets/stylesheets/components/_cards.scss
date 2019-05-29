@@ -5,12 +5,6 @@
     margin-top: 50px;
 }
 
-.card-img img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-}
-
 .card-details {
     background-color: #ffffff;
     border-top: 1px solid #A9A9A9;
@@ -41,12 +35,6 @@
 
 .action-buttons {
     position: absolute;
-    top: 120px;
-    margin-left: 15px;
-}
-  
-.edit-b {
-    margin-left: 250px;
 }
 
 // END of Card for products in products page
@@ -54,11 +42,5 @@
 // Additions to product show page
 .add-to-cart {
     position: absolute;
-    top: 80px;
-    margin-left: 15px;
-}
-
-.add-b {
-    margin-left: 265px;
 }
 // End of additions to product show page

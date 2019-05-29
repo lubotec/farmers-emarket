@@ -11,4 +11,5 @@ class User < ApplicationRecord
   # validates :last_name, presence: true
   # validates :avatar, presence: true
   validates :role, presence: true
+  mount_uploader :photo, PhotoUploader
 end
