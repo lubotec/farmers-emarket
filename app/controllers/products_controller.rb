@@ -19,16 +19,19 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.farmer = current_user
-    @product.save
-    # redirect_to 
+    @product.farmer = current_user.farmer
+    if @product.save
+      redirect_to product_path(@product)
+    else
+      render 'new'
+    end
   end
 
   def edit
     @product = Product.find(params[:id])
   end
 
-  def update    
+  def update
     if @product.update(product_params)
       flash[:success] = "Product was successfully updated"
       # redirect_to

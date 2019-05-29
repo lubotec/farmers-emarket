@@ -16,8 +16,12 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
     # authorize(@restaurant)
     @restaurant.user = current_user
-    @restaurant.save
-    redirect_to root_path
+    if @product.save
+      redirect_to root_path
+    else
+      render 'new'
+    end
+    @order = Order.create(status: "open", restaurant: @restaurant) if @restaurant.orders.where(status: "open").empty?
   end
 
   # def edit
