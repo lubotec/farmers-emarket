@@ -3,6 +3,7 @@
 
   <%= simple_form_for(@farmer) do |f| %>
     <div class="form-inputs mt-4">
+      <%= f.input :name, label: "What's the name of your company?" %>
       <%= f.input :address, label: "What's your address?" %>
       <%= f.input :description, label: "Add a description to your farm" %>
     </div>

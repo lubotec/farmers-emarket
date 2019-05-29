@@ -38,4 +38,5 @@ class FarmersController < ApplicationController
   def set_farmer
     @farmer = Farmer.find(params[:id])
   end
+  
 end
