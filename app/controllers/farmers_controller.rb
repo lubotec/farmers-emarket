@@ -11,7 +11,7 @@ class FarmersController < ApplicationController
     @farmer = Farmer.new(set_params)
     # authorize(@farmer)
     @farmer.user = current_user
-    if @product.save
+    if @farmer.save
       redirect_to redirect_to farmer_path(@farmer)
     else
       render 'new'

@@ -6,7 +6,6 @@ class SessionsController < Devise::SessionsController
     yield resource if block_given?
     respond_with resource, location: after_sign_in_path_for(resource)
     @restaurant = current_user.restaurant
-    raise
     @restaurant.active_order
   end
 end

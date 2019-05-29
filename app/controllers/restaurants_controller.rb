@@ -15,20 +15,20 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
     # authorize(@restaurant)
     @restaurant.user = current_user
-    if @product.save
+    if @restaurant.save
+      @restaurant.active_order
       redirect_to root_path
     else
       render 'new'
     end
-    @order = Order.create(status: "open", restaurant: @restaurant)
   end
 
   # def edit
-  # authorize(@car)
+  # authorize(@restaurant)
   # end
 
   # def update
-  # @restaurant.update(car_params)
+  # @restaurant.update(restaurant_params)
   # authorize(restaurant)
   # redirect_to user_restaurants_path
   # end
@@ -42,10 +42,10 @@ class RestaurantsController < ApplicationController
   private
 
   def set_restaurant
-      @restaurant = Restaurant.find(params[:id])
+    @restaurant = Restaurant.find(params[:id])
   end
 
   def restaurant_params
-      params.require('restaurant').permit(:name, :address, :avatar, :lat, :long)
+    params.require('restaurant').permit(:name, :address, :avatar, :lat, :long)
   end
 end

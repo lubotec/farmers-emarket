@@ -1,11 +1,6 @@
 class OrdersController < ApplicationController
-  def create
-    @restaurant = current_user.restaurant
-    @order = Order.new(status: "open", restaurant: @restaurant)
-  end
-
   def show
-
+    @order = Order.find(params[:id])
   end
 
   def my_orders
