@@ -9,6 +9,8 @@
       <%= f.input :unit_of_measurement, label: "Unit of measurement", as: :select, collection: ['kg', 'grams', 'lbs', 'ounces', 'liter', 'gallons']  %>
       <%= f.input :inventory, label: "Inventory" %>
       <%= f.input :price, label: "Price per unit"%>
+      <%= f.input :data %>
+      <%= f.input :data_cache, as: :hidden %>
     </div>
     <div class="form-actions mt-4 mb-4">
       <%= f.button :submit, class: "btn btn-success" %>
