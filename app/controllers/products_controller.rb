@@ -11,10 +11,13 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @product_photo = @product.product_photos.all
   end
 
   def new
     @product = Product.new
+    @product_photos = @product.product_photos.build
+
   end
 
   def create
