@@ -1,0 +1,64 @@
+// Card for products in products page
+.product-card {
+    width: 335px;
+    box-shadow: 0px 4px 24px rgba($color: #000000, $alpha: 0.3);
+    margin-top: 50px;
+}
+
+.card-img img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.card-details {
+    background-color: #ffffff;
+    border-top: 1px solid #A9A9A9;
+    height: 78px;
+    padding: 4px 10px;
+    h4 {
+        margin: 0;    
+    }
+    
+    p {
+        margin: 0;
+    }
+}
+
+.rows {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 10px;
+    align-items: center;
+}
+
+.photo-card {
+    position: absolute;
+    margin-left: 246px;
+    margin-top: -25px;
+    
+  }
+
+.action-buttons {
+    position: absolute;
+    top: 120px;
+    margin-left: 15px;
+}
+  
+.edit-b {
+    margin-left: 250px;
+}
+
+// END of Card for products in products page
+
+// Additions to product show page
+.add-to-cart {
+    position: absolute;
+    top: 80px;
+    margin-left: 15px;
+}
+
+.add-b {
+    margin-left: 265px;
+}
+// End of additions to product show page

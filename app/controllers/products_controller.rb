@@ -1,12 +1,12 @@
 class ProductsController < ApplicationController
-  before_action :find_id, only: [:show, :edit, :update]
+  before_action :find_id, only: [:show, :edit, :update, :destroy]
 
   def index
     @products = Product.all
   end
 
   def my_products
-    @products = current_user.products
+    @products = current_user.farmer.products
   end
 
   def show
@@ -22,29 +22,28 @@ class ProductsController < ApplicationController
     @product.farmer = current_user.farmer
     if @product.save
       flash[:success] = "Product was successfully updated"
-      # redirect_to
+      redirect_to products_path
     else
       render 'new'
     end
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
-  def update    
+  def update
     if @product.update(product_params)
       flash[:success] = "Product was successfully updated"
       # redirect_to
     else
       render 'edit'
     end
+    redirect_to farmer_products_path
   end
 
   def destroy
-    @product = Product.find(params[:id])
-    @product.delete
-    redirect_to products_path
+    @product.destroy
+    redirect_to farmer_products_path(current_user)
   end
 
   private
