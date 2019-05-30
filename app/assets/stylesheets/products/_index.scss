@@ -1,0 +1,19 @@
+.page-container {
+    display: flex;
+    // flex-wrap: wrap;
+    justify-content: space-around;
+    width: 1320px;
+    margin: 0 auto;
+}
+
+.side-nav {
+    width: 200px;
+    margin-top: 50px;
+}
+
+.cards-container {
+    display: flex;
+    width: 1120px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
