@@ -43,12 +43,12 @@ class ProductsController < ApplicationController
     else
       render 'edit'
     end
-    redirect_to farmer_products_path
+    redirect_to farmer_path(current_user.farmer)
   end
 
   def destroy
     @product.destroy
-    redirect_to farmer_products_path(current_user)
+    redirect_to farmer_path(current_user.farmer)
   end
 
   private
