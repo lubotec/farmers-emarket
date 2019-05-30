@@ -12,7 +12,7 @@ class FarmersController < ApplicationController
     # authorize(@farmer)
     @farmer.user = current_user
     if @farmer.save
-      redirect_to redirect_to farmer_path(@farmer)
+      redirect_to farmer_path(@farmer)
     else
       render 'new'
     end
