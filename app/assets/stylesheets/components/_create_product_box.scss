@@ -14,15 +14,18 @@
 }
 
 .custom-file-upload {
-  background: #ffffff;
+  background-image: url(camera_final.png);
+  background-position: center;
+  background-size: cover;
   position: absolute;
   right: 50px;
   bottom: 10px;
   border-radius: 4px;
-  display: inline-block;
-  padding: 12px 18px;
+  padding: 14px 20px;
   cursor: pointer;
 }
+
+
 
   input[type="file"] {
   display: none;
@@ -83,4 +86,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.form-control {
+  border-radius: 4px;
 }
