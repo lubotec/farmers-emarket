@@ -1,0 +1,7 @@
+<h1>Your cart</h1>
+<% @order.order_products.each do |order_product| %>
+  <%= order_product %>
+  <%= link_to "Remove", order_product_path(order_product), method: :delete %>
+<% end %>
+
+<%= link_to "Checkout", order_path(order) %>

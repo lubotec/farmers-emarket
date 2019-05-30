@@ -1,0 +1,5 @@
+<% @orders.each do |order| %>
+<%= order  %>
+<%= link_to "View order details", order_path(order) %>
+<% end %>
+
