@@ -1,0 +1,6 @@
+<% @products.each do |product| %>
+  <p><%= product.name %> <%= link_to "Add Product", product_order_products_path(product), method: :post  %></p>
+<% end %>
+
+<%= link_to "See my items", order_path(current_user.restaurant.active_order) %>
+<%= link_to "See all my order", order_path(current_user.restaurant.active_order) %>
