@@ -10,7 +10,8 @@ class OrdersController < ApplicationController
 
   def checkout_order
     if @order.update(status: "paid")
-      @order.order_products.each { |product| product.update(status: "paid") }
+      @order.order_products.each { |order_product| order_product.update(status: "paid") }
+      @order.order_products.each { |order_product| order_product.update(total_price: order_product.product.price * order_product.quantity) }
       current_user.restaurant.check_open_order
       redirect_to restaurant_orders_path(current_user.restaurant)
     else

@@ -4,6 +4,8 @@
 <% if @order.order_products %>
   <% @order.order_products.each do |order_product| %>
     <%= order_product %>
+    <p>Quantity: <%= order_product.quantity %></p>
+    <p>Total: <%= order_product.quantity * order_product.product.price %></p>
     <%= link_to "Remove", order_product_path(order_product), method: :delete %>
   <% end %>
 <% end %>

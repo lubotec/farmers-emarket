@@ -1,15 +1,13 @@
 class OrderProductsController < ApplicationController
   def create
     @product = Product.find(params[:product_id])
-    @order_product = OrderProduct.new(
+    @order_product = OrderProduct.create_or_increment(
       product: @product,
       order: current_user.restaurant.active_order,
       quantity: 1,
       status: "open",
-      total_price: @product.price,
       product_sku: @product.sku
     )
-    @order_product.save
   end
 
   def destroy
