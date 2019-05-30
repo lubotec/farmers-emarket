@@ -9,13 +9,13 @@
 
     <div class='cards-container'>
         <% @products.each do |product| %>
-        <div class=product-card>
-            <div class='action-buttons'>
+        <div class="product-card">
+            <%# <div class='action-buttons'>
+                
+            </div> %>
+            <div class='card-img' style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.1)), url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
                 <%= link_to "", product_path(product), class: "fas fa-minus-circle delete-b", style: 'font-size: 25px; color: black', method: :delete%>
                 <%= link_to "", edit_product_path(product), class: "fas fa-cog edit-b" , style: 'font-size: 25px; color: black'%>
-            </div>
-            <div class='card-img'>
-                <img src='https://static6.depositphotos.com/1001503/609/i/950/depositphotos_6092650-stock-photo-healthy-food-background-orange.jpg'>
             </div>
             <div class='card-details'>
                 <div class='rows'>
