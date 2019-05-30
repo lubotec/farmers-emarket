@@ -11,13 +11,13 @@
     <div class='cards-container'>
         <% @products.each do |product| %>
         <div class=product-card>
-            <div class='card-img' style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://static6.depositphotos.com/1001503/609/i/950/depositphotos_6092650-stock-photo-healthy-food-background-orange.jpg)">
+            <div class='card-img' style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.1)), url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
                 <%= link_to "", product_order_products_path(product), method: :post, class: "fas fa-plus-circle add-b" , style: 'font-size: 25px; color: black'%>
             </div>
             <div class='card-details'>
                 <div class='rows'>
                     <h4><%= product.name %></h4>
-                    <%= cl_image_path product.farmer_photos.avatar, height: 50, width: 50, crop: :fill %>
+                    <%= cl_image_tag product.farmer.user.avatar, class: 'photo-card avatar', crop: :fill %>
                 </div>
                 <div class='rows'>
                     <p>⭐️️️️️️️⭐️⭐️⭐️<%=product.rating%></p>
