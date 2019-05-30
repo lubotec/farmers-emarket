@@ -1,11 +1,8 @@
-<% @products.each do |product| %>
-  <p><%= product.name %> <%= link_to "Add Product", product_order_products_path(product), method: :post  %></p>
+<% if current_user.role == "Restaurant" %>
+    <%= link_to 'Go to cart', order_path(current_user.restaurant.active_order) %>
 <% end %>
 
-<%= link_to "See my items", order_path(current_user.restaurant.active_order) %>
-<%= link_to "See all my order", order_path(current_user.restaurant.active_order) %>
 
-<%= link_to 'Go to cart', order_path(current_user.restaurant.active_order) %>
 
 <div class='page-container'>
     <div class='side-nav'>
@@ -17,25 +14,35 @@
 
     <div class='cards-container'>
         <% @products.each do |product| %>
-        <div class=product-card>
-            <div class='add-to-cart'>
-                <%= link_to "", product_order_products_path(product), method: :post, class: "fas fa-plus-circle add-b" , style: 'font-size: 25px; color: black'%>
-            </div>
-            <div class='card-img'>
-                <img src='https://static6.depositphotos.com/1001503/609/i/950/depositphotos_6092650-stock-photo-healthy-food-background-orange.jpg'>
-            </div>
-            <div class='card-details'>
-                <div class='rows'>
-                    <h4><%= product.name %></h4>
-                    <img class='avatar photo-card' src='https://kitt.lewagon.com/placeholder/users/krokrob'>
+            <div class=product-card>
+                
+                <div class='add-to-cart'>            
+                    <% if current_user.role == "Farmer" %>
+                        <%= link_to product_order_products_path(product), class: "nav-icon", method: :post do %>
+                            <ion-icon name="add-circle-outline"></ion-icon>
+                        <% end %>                
+                    <% end %>            
                 </div>
-                <div class='rows'>
-                    <p>⭐️️️️️️️⭐️⭐️⭐️<%=product.rating%></p>
-                    <p>$<%=product.price%> / <small><%=product.unit_of_measurement%></small></p>
+                <div class='card-img'>
+                    <img src="https://static6.depositphotos.com/1001503/609/i/950/depositphotos_6092650-stock-photo-healthy-food-background-orange.jpg">
                 </div>
+
+                <div class='card-details'>
+                    <div class='rows'>
+                        <h4><%= product.name.capitalize %></h4>
+                        <%= link_to farmer_path(product.farmer) do %>
+                            <img class='avatar photo-card' src='https://kitt.lewagon.com/placeholder/users/krokrob'>
+                        <% end %>                        
+                    </div>
+                    
+                    <div class='rows'>
+                        <p>⭐️️️️️️️⭐️⭐️⭐️<%=product.rating%></p>
+                        <p>$<%=product.price%> / <small><%=product.unit_of_measurement%></small></p>
+                    </div>
+                </div>
+
             </div>
-        </div>
         <% end %>
-        </div>
+    </div>
 </div>
->>>>>>> 4a4e7893aa76db2c4987625d44fab31bf8bf025d
+

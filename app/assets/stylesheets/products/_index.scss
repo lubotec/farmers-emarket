@@ -1,6 +1,5 @@
 .page-container {
     display: flex;
-    // flex-wrap: wrap;
     justify-content: space-around;
     width: 1320px;
     margin: 0 auto;
@@ -16,4 +15,16 @@
     width: 1120px;
     justify-content: space-around;
     flex-wrap: wrap;
+}
+
+.nav-icon {
+    font-size: 25px; 
+    color: black;
+    transform: scale(1.05);
+    transition: 0.5s
+}
+
+.nav-icon:hover{
+    font-size: 30px; 
+    color: black;
 }
