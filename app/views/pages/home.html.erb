@@ -3,12 +3,14 @@
 
 <% if user_signed_in? %>
 <%= link_to "Logout", destroy_user_session_path(current_user), method: :delete %>
+  <% if current_user.role == "Restaurant" %>
+  <%= link_to "Link to market", products_path %>
+  <%= link_to "Go to cart", restaurant_cart_path(current_user.restaurant) %>
+  <%= link_to "My orders", restaurant_orders_path(current_user.restaurant) %>
+  <% end %>
 <% else %>
 <%= link_to "Sign Up", new_user_registration_path %>
 <%= link_to "Sign In", new_user_session_path %>
 <% end %>
 
-<% if current_user.role == "Restaurant" %>
-<%= link_to "Go to cart", restaurant_cart_path(current_user.restaurant) %>
-<%= link_to "My orders", restaurant_orders_path(current_user.restaurant) %>
-<% end %>
+

@@ -11,7 +11,7 @@ class Restaurant < ApplicationRecord
   end
 
   def paid_orders
-    orders.find_by(status: "paid")
+    orders.where(status: "paid")
   end
 
   def check_open_order

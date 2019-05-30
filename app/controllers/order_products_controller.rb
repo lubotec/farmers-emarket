@@ -15,6 +15,6 @@ class OrderProductsController < ApplicationController
   def destroy
     @order_product = OrderProduct.find(params[:id])
     @order_product.destroy
-    redirect_to order_path(current_user.restaurant.active_order)
+    redirect_to restaurant_cart_path(current_user.restaurant)
   end
 end

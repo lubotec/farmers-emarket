@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :checkout]
+  before_action :set_order, only: [:show, :checkout_order]
 
   def show
   end
@@ -10,9 +10,8 @@ class OrdersController < ApplicationController
 
   def checkout_order
     if @order.update(status: "paid")
-      @order.order_products.each do |order_product|
-        order_product.update(status: "paid")
-      end
+      @order.order_products.each { |product| product.update(status: "paid") }
+      current_user.restaurant.check_open_order
       redirect_to restaurant_orders_path(current_user.restaurant)
     else
       render 'my_active_order'
@@ -21,7 +20,7 @@ class OrdersController < ApplicationController
   end
 
   def my_orders
-    @orders = current_user.restaurant.orders
+    @paid_orders = current_user.restaurant.paid_orders
   end
 
   private
