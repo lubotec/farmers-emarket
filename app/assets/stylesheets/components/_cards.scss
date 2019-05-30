@@ -3,13 +3,17 @@
     width: 335px;
     box-shadow: 0px 4px 24px rgba($color: #000000, $alpha: 0.3);
     margin-top: 50px;
+    position: relative;
 }
 
-.card-img img {
+.card-img {
     width: 100%;
     height: 160px;
     object-fit: cover;
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://picsum.photos/400/335);
 }
+
+
 
 .card-details {
     background-color: #ffffff;
@@ -34,31 +38,16 @@
 
 .photo-card {
     position: absolute;
-    margin-left: 246px;
-    margin-top: -25px;
-    
+    margin-top: -50px;
+    margin-left: -50px
   }
 
-.action-buttons {
-    position: absolute;
-    top: 120px;
-    margin-left: 15px;
-}
-  
-.edit-b {
-    margin-left: 250px;
-}
+
 
 // END of Card for products in products page
 
 // Additions to product show page
-.add-to-cart {
-    position: absolute;
-    top: 80px;
-    margin-left: 15px;
-}
-
-.add-b {
-    margin-left: 265px;
-}
+// .add-to-cart {
+//     position: absolute;
+// }
 // End of additions to product show page
