@@ -5,7 +5,7 @@
     <div class="form-inputs mt-4">
       <%= f.input :name, label: "Name" %>
       <%= f.input :category, label: "Category", as: :select, collection: ['Fruits', 'Vegetables', 'Meat', 'Dairy' ] %>
-      <%= f.input :sku, label: "SKU", input_html: { value: Array.new(10){ [*'0'..'9',*'A'..'Z'].sample }.join }, disabled:true %>
+      <%= f.input :sku, label: "SKU", input_html: { value: Array.new(10){ [*'0'..'9',*'A'..'Z'].sample }.join } %>
       <%= f.input :unit_of_measurement, label: "Unit of measurement", as: :select, collection: ['kg', 'grams', 'lbs', 'ounces', 'liter', 'gallons']  %>
       <%= f.input :inventory, label: "Inventory" %>
       <%= f.input :price, label: "Price per unit"%>

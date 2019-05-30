@@ -1,5 +1,4 @@
 class RestaurantsController < ApplicationController
-
   skip_before_action :authenticate_user!, only: [:new, :create]
   # before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
@@ -16,16 +15,20 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
     # authorize(@restaurant)
     @restaurant.user = current_user
-    @restaurant.save
-    redirect_to root_path
+    if @restaurant.save
+      @restaurant.check_open_order
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
 
   # def edit
-  # authorize(@car)
+  # authorize(@restaurant)
   # end
 
   # def update
-  # @restaurant.update(car_params)
+  # @restaurant.update(restaurant_params)
   # authorize(restaurant)
   # redirect_to user_restaurants_path
   # end
@@ -39,10 +42,10 @@ class RestaurantsController < ApplicationController
   private
 
   def set_restaurant
-      @restaurant = Restaurant.find(params[:id])
+    @restaurant = Restaurant.find(params[:id])
   end
 
   def restaurant_params
-      params.require('restaurant').permit(:name, :address, :avatar, :lat, :long)
+    params.require('restaurant').permit(:name, :address, :avatar, :lat, :long)
   end
 end

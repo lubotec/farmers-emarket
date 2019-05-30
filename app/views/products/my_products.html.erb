@@ -1,5 +1,4 @@
-<%= link_to 'Go to cart', order_path(current_user.restaurant.active_order) %>
-
+<%= link_to "Add a product", new_product_path, class: "btn btn-primary" %>
 <div class='page-container'>
     <div class='side-nav'>
         <h4>Fruits</h4><br>
@@ -11,8 +10,9 @@
     <div class='cards-container'>
         <% @products.each do |product| %>
         <div class=product-card>
-            <div class='add-to-cart'>
-                <%= link_to "", product_order_products_path(product), method: :post, class: "fas fa-plus-circle add-b" , style: 'font-size: 25px; color: black'%>
+            <div class='action-buttons'>
+                <%= link_to "", product_path(product), class: "fas fa-minus-circle delete-b", style: 'font-size: 25px; color: black', method: :delete%>
+                <%= link_to "", edit_product_path(product), class: "fas fa-cog edit-b" , style: 'font-size: 25px; color: black'%>
             </div>
             <div class='card-img'>
                 <img src='https://static6.depositphotos.com/1001503/609/i/950/depositphotos_6092650-stock-photo-healthy-food-background-orange.jpg'>
@@ -20,7 +20,7 @@
             <div class='card-details'>
                 <div class='rows'>
                     <h4><%= product.name %></h4>
-                    <img class='avatar photo-card' src='https://kitt.lewagon.com/placeholder/users/krokrob'>
+                    <p><%=number_with_delimiter(product.inventory, :delimiter => ',')%> <small><%=product.unit_of_measurement%></small></p>
                 </div>
                 <div class='rows'>
                     <p>⭐️️️️️️️⭐️⭐️⭐️<%=product.rating%></p>
