@@ -6,7 +6,7 @@
     position: relative;
 }
 
-.card-img img {
+.card-img {
     width: 100%;
     height: 160px;
     object-fit: cover;
@@ -41,14 +41,12 @@
     
   }
 
-.action-buttons {
-    position: absolute;
-}
+
 
 // END of Card for products in products page
 
 // Additions to product show page
-.add-to-cart {
-    position: absolute;
-}
+// .add-to-cart {
+//     position: absolute;
+// }
 // End of additions to product show page
