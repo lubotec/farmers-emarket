@@ -5,7 +5,7 @@
     <div class="form-inputs mt-4">
       <%= f.input :name, label: "Name" %>
       <%= f.input :category, label: "Category", as: :select, collection: ['Fruits', 'Vegetables', 'Meat', 'Dairy' ] %>
-      <%= f.input :sku, label: "SKU", input_html: { value: Array.new(10){ [*'0'..'9',*'A'..'Z'].sample }.join } %>
+      <%= f.input :sku, label: "SKU", input_html: { value: Array.new(10){ [*'0'..'9',*'A'..'Z'].sample }.join }, disabled:true %>
       <%= f.input :unit_of_measurement, label: "Unit of measurement", as: :select, collection: ['kg', 'grams', 'lbs', 'ounces', 'liter', 'gallons']  %>
       <%= f.input :inventory, label: "Inventory" %>
       <%= f.input :price, label: "Price per unit"%>
@@ -18,4 +18,89 @@
       <%= f.button :submit, class: "btn btn-success" %>
     </div>
   <% end %>
+
+  <div class="create-product-container">
+            <%= simple_form_for(@product) do |f| %>
+                <div class="background-img" style="background-image: url(https://images.unsplash.com/photo-1482012792084-a0c3725f289f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80)">
+                    <label class="custom-file-upload" >
+                        <%= f.fields_for :product_photos do |p| %>
+                        <%= p.file_field :data, :multiple => true, name: "product_photos[data][]" %>
+                        <% end %>
+                    </label>
+                </div>
+            
+                <div class="product-info">
+                    <div class="name-tag-inputs">
+                        <%= f.input :name, label: "Name", id:"product-name" %>
+                        <%= f.input :category, label: "Category", id:"product-tag" %>
+                    </div>
+            
+                    <%= f.input :description, id:"product-description" %>
+                    <div class="price-kg">
+                        <%= f.input :price, label: "Price", id:"product-price" %>
+                        <%= f.input :unit_of_measurement, label: "Unit of Measurement", id:"product-uom" %>
+                    </div>
+                    <div class="sku-inventory">
+                        <%= f.input :sku, label: "SKU", id:"product-sku" %>
+                        <%= f.input :inventory, label: "Inventory", id:"product-inventory" %>
+                    </div>
+
+                    <div class="add-product">
+                        <%= f.button :submit, class: "btn-f btn-m", label:"Add Product" %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Add Product
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    
+      
+
+    <div class="create-product-container">
+            <%= simple_form_for(@product) do |f| %>
+                <div class="background-img" style="background-image: url(https://images.unsplash.com/photo-1482012792084-a0c3725f289f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80)">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                     </button>
+                    <label class="custom-file-upload" >
+                        <%= f.fields_for :product_photos do |p| %>
+                        <%= p.file_field :data, :multiple => true, name: "product_photos[data][]" %>
+                        <% end %>
+                    </label>
+                </div>
+            
+                <div class="product-info">
+                    <div class="name-tag-inputs">
+                        <%= f.input :name, label: "Name", id:"product-name" %>
+                        <%= f.input :category, label: "Category", id:"product-tag" %>
+                    </div>
+            
+                    <%= f.input :description, id:"product-description" %>
+                    <div class="price-kg">
+                        <%= f.input :price, label: "Price", id:"product-price" %>
+                        <%= f.input :unit_of_measurement, label: "Unit of Measurement", id:"product-uom" %>
+                    </div>
+                    <div class="sku-inventory">
+                        <%= f.input :sku, label: "SKU", id:"product-sku" %>
+                        <%= f.input :inventory, label: "Inventory", id:"product-inventory" %>
+                    </div>
+
+                    <div class="add-product">
+                        <%= f.button :submit, class: "btn-f btn-m", label:"Add Product" %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+</div>
+
+
+  </div>
 </div>
