@@ -21,15 +21,15 @@
             <div class='card-details'>
                 <div class='rows'>
                     <h4><%= product.name %></h4>
-                    <%= cl_image_tag product.farmer.user.avatar, class: 'photo-card avatar', crop: :fill %>
+                    <%= link_to cl_image_tag(product.farmer.user.avatar, class: 'photo-card avatar', crop: :fill, height: 50), farmer_path(product.farmer)%>
                 </div>
                 <div class='rows'>
                     <p>⭐️️️️️️️⭐️⭐️⭐️<%=product.rating%> </p>
                     <p>$<%=product.price%> / <small><%=product.unit_of_measurement%></small></p>
                 </div>
-
             </div>
-        <% end %>
         </div>
+        <% end %>
+    </div>
 </div>
 
