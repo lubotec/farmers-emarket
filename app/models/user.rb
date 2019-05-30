@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_one :restaurant
   has_one :farmer
-
+  mount_uploader :avatar, PhotoUploader
   # validates :first_name, presence: true
   # validates :last_name, presence: true
   # validates :avatar, presence: true

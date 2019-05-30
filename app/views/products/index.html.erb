@@ -1,4 +1,4 @@
-<%= link_to 'Go to cart', order_path(current_user.restaurant.active_order) %>
+
 
 <div class='page-container'>
     <div class='side-nav'>
@@ -11,11 +11,8 @@
     <div class='cards-container'>
         <% @products.each do |product| %>
         <div class=product-card>
-            <div class='add-to-cart'>
+            <div class='card-img' style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://static6.depositphotos.com/1001503/609/i/950/depositphotos_6092650-stock-photo-healthy-food-background-orange.jpg)">
                 <%= link_to "", product_order_products_path(product), method: :post, class: "fas fa-plus-circle add-b" , style: 'font-size: 25px; color: black'%>
-            </div>
-            <div class='card-img'>
-                <img src='https://static6.depositphotos.com/1001503/609/i/950/depositphotos_6092650-stock-photo-healthy-food-background-orange.jpg'>
             </div>
             <div class='card-details'>
                 <div class='rows'>
@@ -29,5 +26,5 @@
             </div>
         </div>
         <% end %>
-        </div>
+    </div>
 </div>

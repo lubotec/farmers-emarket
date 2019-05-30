@@ -1,10 +1,5 @@
 class ProductPhotosController < ApplicationController
     before_action :set_product, only: [:index, :create]
-    
-    def index
-        @product_photo = ProductPhoto.new
-        @product_photos = ProductPhoto.where(product: @product)
-    end
 
     def create
         @product_photo = ProductPhoto.new(product_photo_params)
@@ -19,10 +14,10 @@ class ProductPhotosController < ApplicationController
     private
 
     def product_photo_params
-        params.require(:product_photo).permit(:data)
+        params.require('product_photo').permit(:data)
     end
 
     def set_product
-        @product = Product.find(params[:product_id])
+        @product = Product.find(params[:id])
     end
 end

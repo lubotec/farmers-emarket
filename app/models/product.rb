@@ -3,7 +3,8 @@ class Product < ApplicationRecord
   has_many :order_products
   has_many :reviews, through: :order_products
   has_many :product_photos
-  mount_uploader :data, PhotoUploader
+  accepts_nested_attributes_for :product_photos
+  # mount_uploader :data, PhotoUploader
   # validates :name, presence: true
   # validates :category, presence: true
   # validates :sku, presence: true
