@@ -14,7 +14,7 @@
 
     <div class='cards-container'>
         <% @products.each do |product| %>
-        <div class=product-card>
+        <div class='product-card' style="margin-right: 5%">
             <div class='card-img' style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.1)), url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
                 <%= link_to "", product_order_products_path(product), method: :post, class: "fas fa-plus-circle add-b" , style: 'font-size: 25px; color: black'%>
             </div>
