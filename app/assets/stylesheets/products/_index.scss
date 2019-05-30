@@ -19,12 +19,13 @@
 
 .nav-icon {
     font-size: 25px; 
-    color: black;
+    color: white;
     transform: scale(1.05);
-    transition: 0.5s
+    transition: 0.5s;
+    transform: rotate(120deg);
 }
 
 .nav-icon:hover{
     font-size: 30px; 
-    color: black;
+    color: white;
 }

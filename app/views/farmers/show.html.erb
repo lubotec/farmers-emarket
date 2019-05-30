@@ -1,7 +1,7 @@
 <p><%=@farmer.name  %></p>
 <p><%=@farmer.address  %></p>
 <p><%=@farmer.description  %></p>
-
+<%= link_to "Add Product", new_product_path%>
 
 <br>
 <hr>
@@ -9,24 +9,22 @@
 <div class='cards-container'>
   <% @products.each do |product| %>
     <div class=product-card>                
-      <div class='add-to-cart'>            
-          <% if current_user.role == "Restaurant" %>
-              <%= link_to product_order_products_path(product), class: "nav-icon", method: :post do %>
-                  <ion-icon name="add-circle-outline"></ion-icon>
-              <% end %>                
-          <% end %>            
+      <div class='card-img' style="background-image: url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
+          <div class='add-to-cart'>            
+              <% if current_user.role == "Restaurant" %>
+                  <%= link_to product_order_products_path(product), class: "nav-icon", method: :post do %>
+                      <ion-icon name="add-circle-outline"></ion-icon>
+                  <% end %>                
+              <% end %>            
+          </div>
       </div>
-      <div class='card-img'>
-        <%= link_to product_path(product) do %>
-          <img src="https://static6.depositphotos.com/1001503/609/i/950/depositphotos_6092650-stock-photo-healthy-food-background-orange.jpg">
-        <% end %>       
-      </div>
-
+     
       <div class='card-details'>
           <div class='rows'>
               <h4><%= link_to product.name.capitalize, product_path(product) %></h4>
+              
               <%= link_to farmer_path(product.farmer) do %>
-                  <img class='avatar photo-card' src='https://kitt.lewagon.com/placeholder/users/krokrob'>
+                  <%= cl_image_tag product.farmer.user.avatar, class: 'photo-card avatar', crop: :fill %>
               <% end %>                        
           </div>
           
