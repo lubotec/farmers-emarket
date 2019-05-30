@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :order_products, only: [:destroy]
 
-  get 'my_products', to: 'products#my_products', as: 'farmer_products'
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
