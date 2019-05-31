@@ -1,21 +1,20 @@
 <% if user_signed_in? %>
 
 <div class='farmer-nav'>
-        <div class='list-container'>
-            <ul>
+        <div class='list-container-f'>
+            <ul style="margin-bottom: 0px;">
                 <li> <%= link_to "Farmers' eMarket", root_path, style: 'font-size: 24px; color: white; text-decoration: none'%></li>
                 <div class='float-list'>
-
-                <li> <%= link_to "Market", products_path, style:'color:white; text-decoration: none'%></li>
-                <% if current_user.role == "Restaurant" %>
-                    <li> <%= link_to "My Orders", restaurant_orders_path, style:'color:white; text-decoration: none'%></li>           
-                    <li> <%= link_to "Cart", restaurant_cart_path, style:'color:white; text-decoration: none'%></li>
-                <% end %>
-                <% if current_user.role == "Farmer" %>
-                    <li> <%= link_to "My Profile", farmer_path(current_user.farmer), style:'color:white; text-decoration: none'%></li>           
-                    <li> <%= link_to "Add a Product", new_product_path, style:'color:white; text-decoration: none'%></li>
-                <% end %>
-                <li> <%= link_to "Logout", destroy_user_session_path, style:'color:white; text-decoration: none'%></li>
+                    <li> <%= link_to "Market", products_path, style:'color:white; text-decoration: none'%></li>
+                    <% if current_user.role == "Restaurant" %>
+                        <li> <%= link_to "My Orders", restaurant_orders_path, style:'color:white; text-decoration: none'%></li>           
+                        <li> <%= link_to "Cart", restaurant_cart_path, style:'color:white; text-decoration: none'%></li>
+                    <% end %>
+                    <% if current_user.role == "Farmer" %>
+                        <li> <%= link_to "My profile", farmers_path(@farmer), style:'color:white; text-decoration: none'%></li>           
+                        <li> <%= link_to "Add a product", new_product_path, style:'color:white; text-decoration: none'%></li>
+                    <% end %>
+                    <li> <%= link_to "Logout", destroy_user_session_path, style:'color:white; text-decoration: none'%></li>
                 </div>
             </ul>
         </div>
