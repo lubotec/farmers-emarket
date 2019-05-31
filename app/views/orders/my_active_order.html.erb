@@ -1,15 +1,20 @@
-<h1>Your cart</h1>
-
-
-<% if @order.order_products %>
-  <% @order.order_products.each do |order_product| %>
-    <%= order_product %>
-    <p>Quantity: <%= order_product.quantity %></p>
-    <p>Total: <%= order_product.quantity * order_product.product.price %></p>
-    <%= link_to "Remove", order_product_path(order_product), method: :delete %>
+<div class="container-f">
+  <h1>Your cart</h1>
+  <% if @order.order_products %>
+    <% @order.order_products.each do |order_product| %>
+      <div class="order-detail-f">
+        <div class="order-detail-photo">
+          <%= cl_image_tag order_product.product.product_photos.first.data, height: 100, width: 100, style: 'object-fit: cover' %>
+        </div>
+        <div class="order-info-f">
+          <%= order_product.product.name %>
+          <p>Quantity: <%= order_product.quantity %></p>
+          <p>Total: <%= order_product.quantity * order_product.product.price %></p>
+        </div>
+        <%= link_to "Remove", order_product_path(order_product), method: :delete %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
 
-<br>
-
-<%= link_to "Checkout",checkout_path(@order), method: :patch %>
+  <%= link_to "Checkout",checkout_path(@order), method: :patch %>
+</div>
