@@ -1,0 +1,42 @@
+.product-box {
+  width: 560px;
+  height: 960px;
+  background: #ffffff;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.profile-avatar {
+  position: absolute;
+  left: 400px;
+  top: 331px;
+}
+
+.basic-infos {
+  padding: 50px;
+}
+
+.title-rating {
+  margin-bottom: 30px;
+}
+
+.price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.description {
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+.add-to-cart {
+  position: relative;
+  padding: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+

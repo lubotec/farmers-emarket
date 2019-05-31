@@ -1,3 +1,53 @@
 .form-group-f {
   position: relative;
 }
+
+.searhf-f{
+  position: absolute !important;
+  top: 18px;
+  left: 370px
+}
+#searhf-f {
+  position: absolute !important;
+  top: 18px;
+  left: 370px;
+}
+
+.search-form-control {
+  position: relative;
+  width: 50%;
+
+}
+
+.search-form-control .btn {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  right: 8px;
+}
+
+.search-form-control .form-control {
+  height: 3.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border: 1px solid #ffffff80;
+  background-color: #ffffff80;
+  border-radius: 4px;
+}
+
+.search-form-control .form-control:focus {
+  outline: none !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.btn-flat {
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #384d48;
+  transition: background 0.3s ease;
+  color: #ffffff90;
+}
+
+.btn-flat:hover {
+  background: #384d48;
+  color: white;
+}

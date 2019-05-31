@@ -11,11 +11,10 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import "components/cards";
-
-// 
 @import "products/index";
 @import "farmers/show";
+@import "products/my_products";
+@import "products/show";
 
 .container-f {
     width: 1320px;

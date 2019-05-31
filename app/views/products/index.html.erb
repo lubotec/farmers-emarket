@@ -1,8 +1,6 @@
 <% if current_user.role == "Restaurant" %>
-    <%= link_to 'Go to cart', order_path(current_user.restaurant.active_order) %>
+    <%= link_to 'Go to cart', restaurant_cart_path %>
 <% end %>
-
-
 
 <div class='page-container'>
     <div class='side-nav'>

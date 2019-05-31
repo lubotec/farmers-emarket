@@ -1,18 +1,24 @@
 <div class="container">
- <h2 style="text-align:center">Create a Farmer Profile</h2>
+  <div class="row justify-content-center ">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-6">
+      <div class="form-login">
+        <h2 style="text-align:center">Your farm</h2>
 
-  <%= simple_form_for(@farmer, :html => { :multipart => true }) do |f| %>
-    <div class="form-inputs mt-4">
-      <%= f.input :name, label: "What's the name of your company?" %>
-      <%= f.input :address, label: "What's your address?" %>
-      <%= f.input :description, label: "Add a description to your farm" %>
-      <%= f.fields_for :farmer_photos do |p| %>
-       <%= p.label :data %><br>
-       <%= p.file_field :data, :multiple => true, name: "farmer_photos[data][]" %>
-   <% end %>
+     <%= simple_form_for(@farmer, :html => { :multipart => true }) do |f| %>
+          <div class="form-inputs mt-4">
+            <%= f.input :name, label: "What is the name of your company" %>
+            <%= f.input :address, label: "Where is your farm located" %>
+            <%= f.input :description, label: "What restaurants should know about your farm" %>
+            <%= f.fields_for :farmer_photos do |p| %>
+            <%= p.label :data %><br>
+            <%= p.file_field :data, :multiple => true, name: "farmer_photos[data][]" %>
+            <% end %>
+          </div>
+          <div class="form-actions d-flex justify-content-center mt-4 mb-4">
+            <%= f.button :submit, "Create farm", class: "btn-f-d btn-l" %>
+          </div>
+        <% end %>
+      </div>
     </div>
-    <div class="form-actions mt-4 mb-4">
-      <%= f.button :submit, class: "btn btn-success" %>
-    </div>
-  <% end %>
+  </div>
 </div>
