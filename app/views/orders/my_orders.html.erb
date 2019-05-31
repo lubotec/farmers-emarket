@@ -1,0 +1,6 @@
+<% @paid_orders.each do |order| %>
+<%= order  %>
+<%= order.status %>
+<%= link_to "View order details", order_path(order) %>
+<% end %>
+

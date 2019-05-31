@@ -4,6 +4,7 @@ class FarmersController < ApplicationController
 
   def new
     @farmer = Farmer.new
+    @farmer_photo = @farmer.farmer_photos.build
     # authorize(@farmer)
   end
 
@@ -11,11 +12,16 @@ class FarmersController < ApplicationController
     @farmer = Farmer.new(set_params)
     # authorize(@farmer)
     @farmer.user = current_user
-    if @farmer.save
-      redirect_to farmer_path(@farmer)
+    respond_to do |format|
+      if @farmer.save
+        params[:farmer_photos]['data'].each do |a|
+           @farmer_photo = @farmer.farmer_photos.create!(:data => a)
+        end
+        format.html { redirect_to farmer_path(@farmer), notice: 'Farmer was successfully created.' }
     else
-      render 'new'
+      format.html { render action: 'new' }
     end
+  end
   end
 
   def show
@@ -36,7 +42,7 @@ class FarmersController < ApplicationController
   private
 
   def set_params
-    params.require('farmer').permit(:name, :address, :description)
+    params.require('farmer').permit(:name, :address, :description, farmer_photos_attributes: [:farmer_id, :data])
   end
 
   def set_farmer
