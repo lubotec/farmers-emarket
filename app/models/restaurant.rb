@@ -8,15 +8,14 @@ class Restaurant < ApplicationRecord
 
   def active_order
     orders.find_by(status: "open")
-    # if open_order
-    #   open_order
-    # else
-    #   Order.create(status: "open", restaurant: self)
-    # end
-    # orders.find_by(status: "open") || Order.create(status: "open", restaurant: self)
+  end
+
+  def paid_orders
+    orders.where(status: "paid")
   end
 
   def check_open_order
     Order.create(status: "open", restaurant: self) if orders.find_by(status: "open").nil?
+    # Order.create(status: "open", restaurant: self) || orders.find_by(status: "open")
   end
 end
