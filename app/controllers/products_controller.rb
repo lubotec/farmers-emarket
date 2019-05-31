@@ -8,6 +8,8 @@ class ProductsController < ApplicationController
     # else
     #   @products = @farmer.products
     # end
+    @products = Product.all
+    
   end
 
   def my_products

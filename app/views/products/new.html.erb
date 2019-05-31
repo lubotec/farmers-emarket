@@ -10,8 +10,8 @@
       <%= f.input :inventory, label: "Inventory" %>
       <%= f.input :price, label: "Price per unit"%>
       <%= f.fields_for :product_photos do |p| %>
-       <%= p.label :data %><br>
-       <%= p.file_field :data, :multiple => true, name: "product_photos[data][]" %>
+      <%= p.label :data %><br>
+      <%= p.file_field :data, :multiple => true, name: "product_photos[data][]" %>
    <% end %>
     </div>
     <div class="form-actions mt-4 mb-4">
