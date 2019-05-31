@@ -1,12 +1,23 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+.farmer-nav li {
+  display: inline-block;
+  text-align: center;
+  padding: 0px 15px;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.list-container {
+  width: 1320px;
+  padding: 18.75px 0px;
+  margin: 0 auto;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.farmer-nav {
+  background-color: black;
+  height: 75px;
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
 }
+
+
+
+
