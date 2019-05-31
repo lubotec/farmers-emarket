@@ -1,7 +1,3 @@
-<% if current_user.role == "Restaurant" %>
-    <%= link_to 'Go to cart', restaurant_cart_path %>
-<% end %>
-
 <div class="container-f product-show">
     <div class='category'>
         <% if current_user.role == "Farmer" %>
