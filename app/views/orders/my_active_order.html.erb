@@ -4,7 +4,7 @@
     <% @order.order_products.each do |order_product| %>
       <div class="order-detail-f">
         <div class="order-detail-photo">
-          <%= cl_image_tag order_product.product.product_photos.first.data, height: 100, width: 100, style: 'object-fit: cover' %>
+          <%= cl_image_tag order_product.product.product_photos.first.data, height: 180, style: 'object-fit: cover' %>
         </div>
         <div class="order-info-f">
           <%= order_product.product.name %>
