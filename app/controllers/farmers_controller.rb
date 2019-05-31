@@ -12,8 +12,12 @@ class FarmersController < ApplicationController
     @farmer = Farmer.new(set_params)
     # authorize(@farmer)
     @farmer.user = current_user
-    if @farmer.save
-      redirect_to farmer_path(@farmer)
+    respond_to do |format|
+      if @farmer.save
+        params[:farmer_photos]['data'].each do |a|
+           @farmer_photo = @farmer.farmer_photos.create!(:data => a)
+        end
+        format.html { redirect_to farmer_path(@farmer), notice: 'Farmer was successfully created.' }
     else
       format.html { render action: 'new' }
     end
