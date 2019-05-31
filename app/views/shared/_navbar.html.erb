@@ -1,0 +1,13 @@
+<div class='farmer-nav'>
+        <div class='list-container'>
+            <ul>
+                <li> <%= link_to "Farmers' eMarket", root_path, style: 'font-size: 24px; color: white'%></li>
+                <div class='float-list'>
+                <li> <%= link_to "Market", products_path, style:'color:white'%></li>
+                <li> <%= link_to "My Orders", order_path, style:'color:white'%></li>
+                <li> <%= link_to "Cart", restaurant_cart_path, style:'color:white'%></li>
+                <li> <%= link_to "Logout", destroy_user_session_path(current_user), style:'color:white'%></li>
+                </div>
+            </ul>
+        </div>
+</div>
