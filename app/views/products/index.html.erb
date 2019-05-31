@@ -1,16 +1,5 @@
-<% if current_user.role == "Restaurant" %>
-    <%= link_to 'Go to cart', restaurant_cart_path %>
-<% end %>
-
 <div class="container-f product-show">
-    <div class='category'>
-        <% if current_user.role == "Farmer" %>
-            <%= link_to new_product_path do %>
-                <ion-icon name="add-circle-outline"
-                        class="icon-position">
-                </ion-icon>
-            <% end %>
-        <% end %>
+    <div class='category', style="margin-top: 100px">
         <h3>Fruits</h3>
         <h3>Veggies</h3>
         <h3>Meat</h3>
