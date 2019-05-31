@@ -2,32 +2,63 @@
     <%= link_to 'Go to cart', restaurant_cart_path %>
 <% end %>
 
-<div class='page-container'>
-    <div class='side-nav'>
-        <h4>Fruits</h4><br>
-        <h4>Vegetables</h4><br>
-        <h4>Meats</h4><br>
-        <h4>Dairy</h4>
-    </div>
-
-    <div class='cards-container'>
-        <% @products.each do |product| %>
-        <div class='product-card' style="margin-right: 5%">
-            <div class='card-img' style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.1)), url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
-                <%= link_to "", product_order_products_path(product), method: :post, class: "fas fa-plus-circle add-b" , style: 'font-size: 25px; color: black'%>
-            </div>
-            <div class='card-details'>
-                <div class='rows'>
-                    <h4><%= product.name %></h4>
-                    <%= link_to cl_image_tag(product.farmer.user.avatar, class: 'photo-card avatar', crop: :fill, height: 50), farmer_path(product.farmer)%>
-                </div>
-                <div class='rows'>
-                    <p>⭐️️️️️️️⭐️⭐️⭐️<%=product.rating%> </p>
-                    <p>$<%=product.price%> / <small><%=product.unit_of_measurement%></small></p>
-                </div>
-            </div>
-        </div>
+<div class="container-f product-show">
+    <div class='category'>
+        <% if current_user.role == "Farmer" %>
+            <%= link_to new_product_path do %>
+                <ion-icon name="add-circle-outline"
+                        class="icon-position">
+                </ion-icon>
+            <% end %>
         <% end %>
+        <h3>Fruits</h3>
+        <h3>Veggies</h3>
+        <h3>Meat</h3>
+        <h3>Dairy</h3>
+    </div>
+    <div>
+        <div class="form-group-f">
+            <%= form_tag products_path, method: :get, class:'form-group-f' do %>
+                <%= text_field_tag :query,
+                    params[:query],
+                    class: "input-f input-search",
+                    placeholder: "Search for product name or category"
+                %>
+                <i class="fas fa-search searchf-f"
+                style="position: absolute;
+                        top: 63px;
+                        left: 1040px;
+                        font-size: 40px;">
+                </i>
+            <% end %>
+        </div>
+        <div class='cards-container row'>
+        <% @products.each do |product| %>
+                <div class="col-lg-4">
+                <div class='product-card'>
+                    <div class='card-img' style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.1)), url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
+                        <% if current_user.role == "Restaurant" %>
+                            <%= link_to product_order_products_path(product), method: :post, class: "add-b" , style: 'font-size: 30px; color: white;' do %>
+                                <ion-icon name="add-circle-outline"></ion-icon>
+                            <% end %>
+                        <% end %>
+                    </div>
+                    <div class='card-details'>
+                        <div class='rows'>
+                            <h4><%= product.name %></h4>
+                            <%= link_to cl_image_tag(product.farmer.user.avatar, class: 'photo-card avatar', crop: :fill, height: 50), farmer_path(product.farmer)%>
+                        </div>
+                        <div class='rows'>
+                            <p>⭐️️️️️️️⭐️⭐️⭐️<%=product.rating%> </p>
+                            <p>$<%=product.price%> / <small><%=product.unit_of_measurement%></small></p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+            <% end %>
+        </div>
     </div>
 </div>
+
 
