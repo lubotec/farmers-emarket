@@ -11,4 +11,13 @@ class Product < ApplicationRecord
   # validates :unit_of_measurement, presence: true
   # validates :inventory, presence: true
   # validates :price, presence: true
+  include PgSearch
+  pg_search_scope :search_by_name_and_description,
+    against: [ :name, :category ],
+    associated_against: {
+      farmer: [ :name ]
+    },
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
 end

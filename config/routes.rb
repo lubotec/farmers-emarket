@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:show, :my_orders]
 
-  resources :farmers, only: [:new, :create, :show ]
+  resources :farmers, only: [:new, :create, :show, :index ]
   
   resources :products do
     resources :order_products, only: [:create]
