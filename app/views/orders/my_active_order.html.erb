@@ -1,23 +1,31 @@
 <div class="container-f">
   <h1>Your cart</h1>
-  <% if @order.order_products %>
-    <% @order.order_products.each do |order_product| %>
-      <div class="order-detail-f">
-        <div class="order-detail-photo">
-          <%= cl_image_tag order_product.product.product_photos.first.data, height: 180, style: 'object-fit: cover' %>
-        </div>
-        <div class="order-info-f">
-          <%= order_product.product.name %>
-          <p>Quantity: <%= order_product.quantity %></p>
-          <p>Total: <%= order_product.quantity * order_product.product.price %></p>
-        </div>
-        <%= link_to "Remove", order_product_path(order_product), method: :delete %>
+
+  <div class=checkout-cart>
+      <div class="order-products">
+      <% if @order.order_products %>
+       <% @order.order_products.each do |order_product| %>
+         <div class="card-product">
+              <%= cl_image_tag order_product.product.product_photos.first.data, height: 300, width: 300, crop: :fill %>
+             <div class="card-product-infos">
+                  <div class="name-quantity">
+                    <h2><%= order_product.product.name %></h2>
+                <p><strong>Total: €<%= order_product.quantity * order_product.product.price %></strong></p>
+                 </div>
+                  <p>Quantity: <%= order_product.quantity %></p>
+                  <div class="remove">
+                   <%= link_to "Remove", order_product_path(order_product), method: :delete %>
+                  </div>
+              </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+      <div class="summary">
+        <%= link_to "Checkout",checkout_path(@order), method: :patch %>
+
       </div>
-    <% end %>
-  <% end %>
 
-<%= link_to "Checkout", checkout_path(@order), method: :patch %>
-<br>
-<br>
-<%= link_to "Browse Market", products_path %>
-
+  </div>
+</div>
+ 
