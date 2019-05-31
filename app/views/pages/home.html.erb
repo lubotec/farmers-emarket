@@ -2,32 +2,17 @@
   <div class="container">
     <h1>The Farmers' <strong>eMarket</strong></h1>
     <p>Order local and fresh ingredients for your restaurant</p>
-    <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
-        <div class="search-form-control form-group">
-            <input class="form-control string required" type="text" name="search[query]" id="search_query" />
-            <button name="button" type="submit" class="btn btn-flat">
-            <i class="fas fa-search"></i> Search
-            </button>
-        </div>
-    </form>
+    <%= form_tag products_path, method: :get, class:'simple_form search' do %>
+      <div class="search-form-control form-group">
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control string required",
+          placeholder: "Find a produce"
+        %>
+        <button name="button" type="submit" class="btn btn-flat">
+          Search
+        </button>
+      </div>
+    <% end %>
   </div>
-    
-   
 </div>
-
-
-
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
-<% if user_signed_in? %>
-<%= link_to "Logout", destroy_user_session_path(current_user), method: :delete %>
-  <% if current_user.role == "Restaurant" %>
-  <%= link_to "Link to market", products_path %>
-  <%= link_to "Go to cart", restaurant_cart_path %>
-  <%= link_to "My orders", restaurant_orders_path %>
-  <% end %>
-<% else %>
-<%= link_to "Sign Up", new_user_registration_path %>
-<%= link_to "Sign In", new_user_session_path %>
-<% end %>
