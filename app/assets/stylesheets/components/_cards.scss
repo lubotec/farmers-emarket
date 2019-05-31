@@ -13,7 +13,14 @@
     background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://picsum.photos/400/335);
 }
 
+.add-b{
+     padding: 8px 8px;
+}
 
+.add-b:hover {
+    text-decoration: none;
+    
+}
 
 .card-details {
     background-color: #ffffff;

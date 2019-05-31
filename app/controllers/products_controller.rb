@@ -2,7 +2,14 @@ class ProductsController < ApplicationController
   before_action :find_id, only: [:show, :edit, :update, :destroy]
 
   def index
+    # if params[:query].present?
+    #   @products = Product.search_by_name_and_description(params[:query])
+    #   raise
+    # else
+    #   @products = @farmer.products
+    # end
     @products = Product.all
+    
   end
 
   def my_products

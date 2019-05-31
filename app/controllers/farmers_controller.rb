@@ -25,8 +25,12 @@ class FarmersController < ApplicationController
   end
 
   def show
-    @products = @farmer.products
-    # authorize(@farmer)
+    if params[:query].present?
+      params[:query].downcase
+      @products = Product.search_by_name_and_description(params[:query])
+    else
+      @products = @farmer.products
+    end
   end
 
   def edit
