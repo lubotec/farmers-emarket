@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
         params[:product_photos]['data'].each do |a|
           @product_photo = @product.product_photos.create!(:data => a)
         end
-        format.html { redirect_to farmer_path(current_user.farmer), notice: 'Post was successfully created.' }
+        format.html { redirect_to farmer_path(current_user.farmer), notice: 'Product was successfully created.' }
       else
         format.html { render action: 'new' }
       end
