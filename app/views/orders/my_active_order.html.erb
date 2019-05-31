@@ -1,8 +1,11 @@
 <div class="container-f">
-  <h1>Your cart</h1>
+  
 
   <div class=checkout-cart>
+    
       <div class="order-products">
+        <h1>Your cart</h1>
+        <br>
       <% if @order.order_products %>
        <% @order.order_products.each do |order_product| %>
          <div class="card-product">
