@@ -2,7 +2,11 @@ class ProductsController < ApplicationController
   before_action :find_id, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.all
+    if params[:query].present?
+      @products = Product.search_by_name_and_description(params[:query])
+    else
+      @products = Product.all
+    end
   end
 
   def my_products
@@ -24,13 +28,13 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.save
         params[:product_photos]['data'].each do |a|
-           @product_photo = @product.product_photos.create!(:data => a)
+          @product_photo = @product.product_photos.create!(:data => a)
         end
         format.html { redirect_to farmer_path(current_user.farmer), notice: 'Product was successfully created.' }
-    else
-      format.html { render action: 'new' }
+      else
+        format.html { render action: 'new' }
+      end
     end
-  end
   end
 
   def edit
