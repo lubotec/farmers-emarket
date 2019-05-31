@@ -1,7 +1,7 @@
 .profile-background {
   overflow: hidden;
   background: white;
-  height: 650px;
+  height: 700px;
   width: 100%;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .profile-background .profile-infos {
-  padding: 47px 130px 23px 48px;
+  padding: 47px 0px 23px 48px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -31,7 +31,7 @@
 }
 
 .profile-infos .profile-text {
-  margin-left: 160px;
+  margin-left: 150px;
 }
 
 .name-location {
@@ -41,8 +41,9 @@
 
 .profile-infos .profile-avatar {
   position: absolute;
-  left: 16px;
+  left: 1px;
   top: -90px;
+  width: 180px ;
 }
 
 

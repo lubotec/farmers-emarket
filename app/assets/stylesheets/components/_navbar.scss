@@ -1,23 +1,54 @@
+// nav for homepage
+.farmer-nav-home li {
+  display: inline-block;
+  text-align: center;
+  padding: 15px 25px;
+  
+}
+
+.list-container-home {
+  width: 1320px;
+  margin: 0 auto;
+}
+
+.farmer-nav-home {
+  color: white;
+  font-family: "Raleway", "Helvetica", "sans-serif";
+  font-weight: bold;
+  font-size: 18px;
+  position: absolute;
+  top: 0px;
+  right: -900px;
+}
+
+// nav for other pages
 .farmer-nav li {
   display: inline-block;
   text-align: center;
-  padding: 0px 15px;
+  padding: 15px 25px;
 }
 
 .list-container {
   width: 1320px;
-  padding: 18.75px 0px;
-  margin: 0 auto;
+  // margin: 0 auto;
+}
+.list-container-f {
+  width: 1400px;
+
 }
 
 .farmer-nav {
-  background-color: black;
-  height: 75px;
+  background: black;
   color: white;
-  font-size: 24px;
-  font-weight: 600;
+  font-family: "Raleway", "Helvetica", "sans-serif";
+  font-weight: bold;
+  font-size: 16px;
 }
 
+.float-list {
+  float: right;
+  margin-top: 9px;
+}
 
 
 
