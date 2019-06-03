@@ -38,15 +38,15 @@
                         class="icon-position">
                 </ion-icon>
             <% end %>
-            <h3>Fruits</h3>
-            <h3>Veggies</h3>
-            <h3>Meat</h3>
-            <h3>Dairy</h3>
+            <h3><%= link_to "Fruits", farmer_path(@farmer, category: "Fruits"), class: 'cat-item' %></h3>
+            <h3><%= link_to "Veggies", farmer_path(@farmer, category: "Vegetables"), class: 'cat-item' %></h3>
+            <h3><%= link_to "Meat", farmer_path(@farmer, category: "Meat"), class: 'cat-item' %></h3>
+            <h3><%= link_to "Dairy", farmer_path(@farmer, category: "Dairy"), class: 'cat-item' %></h3>
         <% else%>
-            <h3 style="margin-top: 100px;">Fruits</h3>
-            <h3>Veggies</h3>
-            <h3>Meat</h3>
-            <h3>Dairy</h3>
+            <h3 style="margin-top: 100px"><%= link_to "Fruits", farmer_path(@farmer, category: "Fruits"), class: 'cat-item' %></h3>
+            <h3><%= link_to "Veggies", farmer_path(@farmer, category: "Vegetables"), class: 'cat-item' %></h3>
+            <h3><%= link_to "Meat", farmer_path(@farmer, category: "Meat"), class: 'cat-item' %></h3>
+            <h3><%= link_to "Dairy", farmer_path(@farmer, category: "Dairy"), class: 'cat-item' %></h3>
         <% end %>
     </div>
     <div>
