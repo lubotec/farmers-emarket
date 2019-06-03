@@ -1,30 +1,9 @@
-<div class="container">
- <h2 style="text-align:center">New Produce</h2>
-
-  <%= simple_form_for(@product, :html => { :multipart => true }) do |f| %>
-    <div class="form-inputs mt-4">
-      <%= f.input :name, label: "Name" %>
-      <%= f.input :category, label: "Category", as: :select, collection: ['Fruits', 'Vegetables', 'Meat', 'Dairy' ] %>
-      <%= f.input :sku, label: "SKU", input_html: { value: Array.new(10){ [*'0'..'9',*'A'..'Z'].sample }.join }, disabled:true %>
-      <%= f.input :unit_of_measurement, label: "Unit of measurement", as: :select, collection: ['kg', 'grams', 'lbs', 'ounces', 'liter', 'gallons']  %>
-      <%= f.input :inventory, label: "Inventory" %>
-      <%= f.input :price, label: "Price per unit"%>
-      <%= f.fields_for :product_photos do |p| %>
-      <%= p.label :data %><br>
-      <%= p.file_field :data, :multiple => true, name: "product_photos[data][]" %>
-   <% end %>
-    </div>
-    <div class="form-actions mt-4 mb-4">
-      <%= f.button :submit, class: "btn btn-success" %>
-    </div>
-  <% end %>
-
-
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
   Add Product
 </button>
+<br>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
