@@ -7,17 +7,15 @@
   padding: 300px 0 145px 0;
   height: 600px;
   top: 0;
-  
+  // overflow-y: scroll;
+  // scroll-behavior: smooth;
 }
 
-
-
 .banner h1 {
-  margin: 0;
+  margin-top: 36px;
   color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
   font-size: 44px;
-  
 }
 
 .banner p {
@@ -27,3 +25,116 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
   margin-bottom: 30px;
 }
+
+
+
+// Arrow Down
+
+.container a {
+  position: relative;
+  top: 160px;
+  left: 50%;
+}
+
+.arrow-down {
+  width: 100%;
+  margin: 300 auto;
+  text-align: center;
+}
+
+.arrow-down::after{
+  content: "";
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-right: 4px solid #ffffff;
+  border-bottom: 4px solid #ffffff;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-animation: 3s arrow infinite ease;
+  animation: 2s arrow infinite ease;
+}
+
+@-webkit-keyframes arrow {
+  0%, 100%{
+    top: 50px;
+  }
+  50% {
+    top: 80px;
+  }
+}
+@keyframes arrow {
+  0%, 100%{
+    top: 50px;
+  }
+  50% {
+    top: 80px;
+  }
+}
+
+
+// How to Section
+
+.how-to {
+  // background-color: rgba(245, 245, 245, 0.1);
+  width: 100%;
+}
+
+.how-to h1 {
+  padding-top: 80px;
+  text-align: center;
+  color: #33903f;
+  font-family: 'Poppins', sans-serif;
+  font-size: 44px;
+}
+
+.steps {
+  display: flex;
+  padding: 80px 80px 120px 80px;
+  justify-content: space-around;
+}
+.step-1{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  padding: 56px;
+  box-shadow: 0px 4px 24px rgba($color: #000000, $alpha: 0.3);
+}
+
+.step-1 h3 {
+  color: black;  
+  text-align: center;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #33903f;
+}
+.step-1 i {
+  // color: #33903f;
+  font-size: 80px;
+  margin: 40px auto;
+}
+
+.step-1 p{
+  width: 200px;
+  text-align: center;
+}
+
+// Meet our customer
+
+.customer {
+  background-color: white;
+}
+
+.customer h1 {
+  padding-top: 80px;
+  text-align: center;
+  color: #33903f;
+  font-family: 'Poppins', sans-serif;
+  font-size: 44px;
+}
+

@@ -18,9 +18,12 @@
   font-size: 18px;
   position: absolute;
   top: 0px;
-  right: -900px;
+  margin: 0px 60px;
+  // right: -900px;
 }
-
+.list-container-home ul {
+  float: right;
+}
 // nav for other pages
 .farmer-nav li {
   display: inline-block;
