@@ -30,7 +30,7 @@
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      
+
 
     <div class="create-product-container">
             <%= simple_form_for(@product) do |f| %>
@@ -44,13 +44,13 @@
                         <% end %>
                     </label>
                 </div>
-            
+
                 <div class="product-info">
                     <div class="name-tag-inputs">
                         <%= f.input :name, label: "Name", id:"product-name" %>
                         <%= f.input :category, label: "Category", as: :select, collection: ['Fruits', 'Vegetables', 'Meat', 'Dairy' ], id:"product-category" %>
                     </div>
-            
+
                     <%= f.input :description, id:"product-description" %>
                     <div class="price-kg">
                         <%= f.input :price, label: "Price", id:"product-price" %>

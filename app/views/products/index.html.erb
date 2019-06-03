@@ -1,9 +1,9 @@
 <div class="container-f product-show">
     <div class='category', style="margin-top: 110px">
-        <h3>Fruits</h3>
-        <h3>Veggies</h3>
-        <h3>Meat</h3>
-        <h3>Dairy</h3>
+        <h3><%= link_to "Fruits", products_path(category: "Fruits"), class: 'cat-item' %></h3>
+        <h3><%= link_to "Veggies", products_path(category: "Vegetables"), class: 'cat-item' %></h3>
+        <h3><%= link_to "Meat", products_path(category: "Meat"), class: 'cat-item' %></h3>
+        <h3><%= link_to "Dairy", products_path(category: "Dairy"), class: 'cat-item' %></h3>
     </div>
     <div>
         <div class="form-group-f">
