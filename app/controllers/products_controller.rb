@@ -12,10 +12,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  def my_products
-    @products = current_user.farmer.products
-  end
-
   def show
     @product = Product.find(params[:id])
   end
@@ -41,6 +37,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    # raise
   end
 
   def update

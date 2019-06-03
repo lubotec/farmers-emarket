@@ -29,8 +29,6 @@
 .search-form-control .form-control {
   height: 3.5rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  border: 1px solid #ffffff80;
-  background-color: #ffffff80;
   border-radius: 4px;
 }
 
@@ -42,12 +40,13 @@
 .btn-flat {
   padding: 8px 24px;
   border-radius: 4px;
-  background: #384d48;
-  transition: background 0.3s ease;
-  color: #ffffff90;
+  background: #33903f;
+  transition: 0.3s;
+  color: white;
 }
 
 .btn-flat:hover {
-  background: #384d48;
-  color: white;
+  background: white;
+  color: #33903f;
+  border: 1px solid #33903f;
 }
