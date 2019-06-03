@@ -20,5 +20,10 @@ class SearchProducts
   end
 
   def filter_by_price(scope, price)
+    if price == "descending"
+      scope.order(price: :desc)
+    else
+      scope.order(price: :asc)
+    end
   end
 end
