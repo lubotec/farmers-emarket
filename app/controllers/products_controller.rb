@@ -3,10 +3,7 @@ class ProductsController < ApplicationController
 
   def index
     if params[:query].present?
-      params[:query].downcase!
-      @products = Product.search_by_name_and_description(params[:query])
-    elsif params[:category]
-      @products = Product.where(category: params[:category])
+      @products = SearchProducts.new(params[:query]).call
     else
       @products = Product.all
     end

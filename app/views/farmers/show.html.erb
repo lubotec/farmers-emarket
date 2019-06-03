@@ -38,22 +38,22 @@
                         class="icon-position hvr-icon">
                 </ion-icon>
             <% end %>
-            <h3 style="margin-top: 56px"><%= link_to "Fruits", farmer_path(@farmer, category: "Fruits"), class: 'cat-item' %></h3>
-            <h3><%= link_to "Veggies", farmer_path(@farmer, category: "Vegetables"), class: 'cat-item' %></h3>
-            <h3><%= link_to "Meat", farmer_path(@farmer, category: "Meat"), class: 'cat-item' %></h3>
-            <h3><%= link_to "Dairy", farmer_path(@farmer, category: "Dairy"), class: 'cat-item' %></h3>
+            <h3 style="margin-top: 56px"><%= link_to "Fruits", farmer_path(@farmer, query: {category: "Fruits"}), class: 'cat-item' %></h3>
+            <h3><%= link_to "Veggies", farmer_path(@farmer, query: {category: "Vegetables"}), class: 'cat-item' %></h3>
+            <h3><%= link_to "Meat", farmer_path(@farmer, query: {category: "Meat"}), class: 'cat-item' %></h3>
+            <h3><%= link_to "Dairy", farmer_path(@farmer, query: {category: "Dairy"}), class: 'cat-item' %></h3>
         <% else%>
-            <h3 style="margin-top: 160px"><%= link_to "Fruits", farmer_path(@farmer, category: "Fruits"), class: 'cat-item' %></h3>
-            <h3><%= link_to "Veggies", farmer_path(@farmer, category: "Vegetables"), class: 'cat-item' %></h3>
-            <h3><%= link_to "Meat", farmer_path(@farmer, category: "Meat"), class: 'cat-item' %></h3>
-            <h3><%= link_to "Dairy", farmer_path(@farmer, category: "Dairy"), class: 'cat-item' %></h3>
+            <h3 style="margin-top: 160px"><%= link_to "Fruits", farmer_path(@farmer, query: {category: "Fruits"}), class: 'cat-item' %></h3>
+            <h3><%= link_to "Veggies", farmer_path(@farmer, query: {category: "Vegetables"}), class: 'cat-item' %></h3>
+            <h3><%= link_to "Meat", farmer_path(@farmer, query: {category: "Meat"}), class: 'cat-item' %></h3>
+            <h3><%= link_to "Dairy", farmer_path(@farmer, query: {category: "Dairy"}), class: 'cat-item' %></h3>
         <% end %>
     </div>
     <div>
         <div class="form-group-f">
             <%= form_tag farmer_path(@farmer), method: :get, class:'form-group-f' do %>
-                <%= text_field_tag :query,
-                    params[:query],
+                <%= text_field_tag 'query[text]',
+                    params[:query].try(:[], :text),
                     class: "input-f input-search",
                     placeholder: "Search by product or category"
                 %>

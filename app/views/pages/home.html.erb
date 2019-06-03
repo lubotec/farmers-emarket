@@ -23,8 +23,8 @@
       <p>Order local and fresh ingredients for your restaurant</p>
       <%= form_tag products_path, method: :get, class:'simple_form search' do %>
         <div class="search-form-control form-group">
-          <%= text_field_tag :query,
-            params[:query],
+          <%= text_field_tag 'query[text]',
+            params[:query].try(:[], :text),
             class: "form-control string required",
             placeholder: "Find a produce",
             style: ""
