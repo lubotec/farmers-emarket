@@ -1,38 +1,66 @@
-<div class="banner clearfix" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://images.unsplash.com/photo-1534073133331-c4b62a557083?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.01)), url(https://images.unsplash.com/photo-1534073133331-c4b62a557083?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80); height: 95vh;">
   <% if user_signed_in? %>
-    <div class='farmer-nav-home' style='right: -1100px;'>
-        <div class='list-container-home'>
-            <ul>
-                <li> <%=link_to "Logout", destroy_user_session_path(current_user), method: :delete, style:'float:right; color:white'%></li>
-            </ul>
-        </div>
+  <div class='farmer-nav-home'>
+    <div class='list-container-home'>
+        <ul>
+            <li> <%=link_to "Logout", destroy_user_session_path, method: :delete, style:'float:right; color:white'%></li>
+        </ul>
+    </div>
   </div>
   <% else %>
   <div class='farmer-nav-home'>
-        <div class='list-container-home'>
-            <ul>
-                <li> <%= link_to "Sign Up", new_user_registration_path, style:'float:right; color:white'%></li>
-                <li> <%= link_to "Sign In", new_user_session_path, style:'float:right; color:white'%></li>
-                <li> <%= link_to "About", new_user_session_path, style:'float:right; color:white'%></li>
-            </ul>
-        </div>
+    <div class='list-container-home'>
+        <ul>
+            <li> <%= link_to "Sign Up", new_user_registration_path, style:'float:right; color:white'%></li>
+            <li> <%= link_to "Sign In", new_user_session_path, style:'float:right; color:white'%></li>
+            <li> <%= link_to "About", new_user_session_path, style:'float:right; color:white'%></li>
+        </ul>
+    </div>
   </div>
   <% end %>
   <div class="container">
-    <h1>The Farmers' <strong>eMarket</strong></h1>
-    <p>Order local and fresh ingredients for your restaurant</p>
-    <%= form_tag products_path, method: :get, class:'simple_form search' do %>
-      <div class="search-form-control form-group">
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control string required",
-          placeholder: "Find a produce",
-          style: ""
-        %>
-        <button name="button" type="submit" class="btn btn-flat">
-          Search
-        </button>
-      </div>
-    <% end %>
+      <h1>The Farmers' <strong>eMarket</strong></h1>
+      <p>Order local and fresh ingredients for your restaurant</p>
+      <%= form_tag products_path, method: :get, class:'simple_form search' do %>
+        <div class="search-form-control form-group">
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control string required",
+            placeholder: "Find a produce",
+            style: ""
+          %>
+          <button name="button" type="submit" class="btn btn-flat">
+            Search
+          </button>
+        </div>
+      <% end %>
+      <a href="#how-to" class="arrow-down"></a>
   </div>
 </div>
+
+
+<section id="how-to" class="how-to">
+  <h1><strong>How it works</strong></h1>
+  <div class="steps">
+    <div class="step-1">
+      <i class="fas fa-search"></i>
+      <h3>Seach</h3>
+      <p>Search local and fresh food by product category or farmer</p>
+    </div>
+    <div class="step-1">
+      <i class="far fa-hand-pointer"></i>
+      <h3>Choose</h3>
+      <p>Choose flexible quantities according to your changing needs</p>
+    </div>
+    <div class="step-1">
+      <i class="fas fa-truck"></i>
+      <h3>Delivery</h3>
+      <p>Get your products delivered directly to your restaurant</p>
+    </div>
+  </div>
+</section>
+
+<section id="customer" class="customer">
+  <h1><strong>Meet Our Farmer</strong></h1>
+  
+</section>

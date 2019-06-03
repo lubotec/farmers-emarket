@@ -25,7 +25,7 @@
         <% @products.each do |product| %>
                 <div class="col-lg-4">
                 <div class='product-card'>
-                    <div class='card-img' style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.1)), url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
+                    <div class='card-img' style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1)), url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
                         <% if current_user.role == "Restaurant" %>
                             <%= link_to product_order_products_path(product), method: :post, class: "add-b" , style: 'font-size: 30px; color: white;' do %>
                                 <ion-icon name="add-circle-outline"></ion-icon>
