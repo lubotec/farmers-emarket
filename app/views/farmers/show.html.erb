@@ -38,12 +38,12 @@
                         class="icon-position hvr-icon">
                 </ion-icon>
             <% end %>
-            <h3><%= link_to "Fruits", farmer_path(@farmer, category: "Fruits"), class: 'cat-item' %></h3>
+            <h3 style="margin-top: 56px"><%= link_to "Fruits", farmer_path(@farmer, category: "Fruits"), class: 'cat-item' %></h3>
             <h3><%= link_to "Veggies", farmer_path(@farmer, category: "Vegetables"), class: 'cat-item' %></h3>
             <h3><%= link_to "Meat", farmer_path(@farmer, category: "Meat"), class: 'cat-item' %></h3>
             <h3><%= link_to "Dairy", farmer_path(@farmer, category: "Dairy"), class: 'cat-item' %></h3>
         <% else%>
-            <h3 style="margin-top: 110px"><%= link_to "Fruits", farmer_path(@farmer, category: "Fruits"), class: 'cat-item' %></h3>
+            <h3 style="margin-top: 160px"><%= link_to "Fruits", farmer_path(@farmer, category: "Fruits"), class: 'cat-item' %></h3>
             <h3><%= link_to "Veggies", farmer_path(@farmer, category: "Vegetables"), class: 'cat-item' %></h3>
             <h3><%= link_to "Meat", farmer_path(@farmer, category: "Meat"), class: 'cat-item' %></h3>
             <h3><%= link_to "Dairy", farmer_path(@farmer, category: "Dairy"), class: 'cat-item' %></h3>
@@ -65,10 +65,14 @@
                 </i>
             <% end %>
         </div>
+        <div class="cards-container">
+          <h4><%= link_to "Price", "#", class: 'filter-item' %></h3>
+          <h4><%= link_to "Rating", "#",  class: 'filter-item' %></h3>
+        </div>
         <div class='cards-container row'>
         <% @products.each do |product| %>
                 <div class="col-lg-4">
-                <%# <% byebug %> 
+                <%# <% byebug %>
                 <div class='product-card'>
                     <div class='card-img' style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1)), url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
                     <% if current_user.role == "Restaurant" %>

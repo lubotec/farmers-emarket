@@ -12,11 +12,12 @@
 
 .cards-container {
     display: flex;
+    margin-top: 40px;
     // margin: 0 auto;
 }
 
 .nav-icon {
-    font-size: 25px; 
+    font-size: 25px;
     color: white;
     transform: scale(1.05);
     transition: 0.5s;
@@ -24,6 +25,26 @@
 }
 
 .nav-icon:hover{
-    font-size: 30px; 
+    font-size: 30px;
     color: white;
+}
+
+.cat-item {
+  text-decoration: none;
+  color: black;
+  margin-bottom: 160px;
+  &:hover {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+.filter-item {
+  text-decoration: none;
+  color: black;
+  margin-right: 160px;
+  &:hover {
+    text-decoration: none;
+    color: black;
+  }
 }

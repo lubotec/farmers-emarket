@@ -1,5 +1,5 @@
 <div class="container-f product-show">
-    <div class='category', style="margin-top: 110px">
+    <div class='category', style="margin-top: 160px">
         <h3><%= link_to "Fruits", products_path(category: "Fruits"), class: 'cat-item' %></h3>
         <h3><%= link_to "Veggies", products_path(category: "Vegetables"), class: 'cat-item' %></h3>
         <h3><%= link_to "Meat", products_path(category: "Meat"), class: 'cat-item' %></h3>
@@ -20,6 +20,11 @@
                         font-size: 40px;">
                 </i>
             <% end %>
+        </div>
+        <div class="cards-container">
+          <h4><%= link_to "Price", "#", class: 'filter-item' %></h3>
+          <h4><%= link_to "Rating", "#",  class: 'filter-item' %></h3>
+          <h4><%= link_to "Distance", "#", class: 'filter-item' %></h3>
         </div>
         <div class='cards-container row'>
         <% @products.each do |product| %>
