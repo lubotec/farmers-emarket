@@ -2,7 +2,7 @@ class Product < ApplicationRecord
   belongs_to :farmer
   has_many :order_products
   has_many :reviews, through: :order_products
-  has_many :product_photos
+  has_many :product_photos, dependent: :destroy
   accepts_nested_attributes_for :product_photos
   # mount_uploader :data, PhotoUploader
   # validates :name, presence: true
