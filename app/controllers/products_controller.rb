@@ -8,11 +8,7 @@ class ProductsController < ApplicationController
       @products = Product.all
     end
   end
-
-  def my_products
-    @products = current_user.farmer.products
-  end
-
+  
   def show
     @product = Product.find(params[:id])
   end

@@ -14,12 +14,40 @@
 }
 
 .add-b{
-     padding: 8px 8px;
+    padding: 4px 4px;
+    float: right;
+    font-size: 27px; 
+    color: white;
+    // transform: translateZ(0);
+    // box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    // backface-visibility: hidden;
+    // -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+        
+}
+
+.add-b-r{
+    padding: 4px 4px;
+    font-size: 27px; 
+    color: white;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.add-b-r:hover {
+    text-decoration: none;
+    color: white;
+    transform: scale(1.5)
+
+
 }
 
 .add-b:hover {
     text-decoration: none;
-    
+    color: white;
+    transform: scale(1.5)
+
 }
 
 .card-details {
