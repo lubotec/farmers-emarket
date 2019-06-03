@@ -13,9 +13,9 @@ class Product < ApplicationRecord
   # validates :price, presence: true
   include PgSearch
   pg_search_scope :search_by_name_and_description,
-    against: [ :name, :category ],
+    against: [:name, :description, :category],
     associated_against: {
-      farmer: [ :name ]
+      farmer: [:name]
     },
     using: {
       tsearch: { prefix: true } # <-- now `superman batm` will return something!

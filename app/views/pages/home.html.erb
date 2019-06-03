@@ -3,7 +3,7 @@
     <div class='farmer-nav-home' style='right: -1100px;'>
         <div class='list-container-home'>
             <ul>
-                <li> <%=link_to "Logout", destroy_user_session_path(current_user), method: :delete, style:'float:right; color:white'%></li>
+                <li> <%=link_to "Logout", destroy_user_session_path, method: :delete, style:'float:right; color:white; text-decoration: none'%></li>
             </ul>
         </div>
   </div>
@@ -11,9 +11,9 @@
   <div class='farmer-nav-home'>
         <div class='list-container-home'>
             <ul>
-                <li> <%= link_to "Sign Up", new_user_registration_path, style:'float:right; color:white'%></li>
-                <li> <%= link_to "Sign In", new_user_session_path, style:'float:right; color:white'%></li>
-                <li> <%= link_to "About", new_user_session_path, style:'float:right; color:white'%></li>
+                <li> <%= link_to "Sign Up", new_user_registration_path, style:'float:right; color:white; text-decoration: none'%></li>
+                <li> <%= link_to "Sign In", new_user_session_path, style:'float:right; color:white; text-decoration: none'%></li>
+                <li> <%= link_to "About", new_user_session_path, style:'float:right; color:white; text-decoration: none'%></li>
             </ul>
         </div>
   </div>
