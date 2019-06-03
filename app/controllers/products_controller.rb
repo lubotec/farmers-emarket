@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
       @products = Product.all
     end
   end
-  
+
   def show
     @product = Product.find(params[:id])
   end
@@ -34,6 +34,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    # raise
   end
 
   def update

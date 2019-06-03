@@ -26,10 +26,11 @@ class FarmersController < ApplicationController
 
   def show
     if params[:query].present?
-      params[:query].downcase
-      @products = Product.search_by_name_and_description(params[:query])
+      params[:query].downcase!
+      @products = @farmer.products.search_by_name_and_description(params[:query])
     else
       @products = @farmer.products
+
     end
   end
 
