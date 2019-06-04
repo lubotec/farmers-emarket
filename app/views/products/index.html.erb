@@ -1,9 +1,9 @@
 <div class="container-f product-show">
     <div class='category', style="margin-top: 160px">
-        <h3><%= link_to "Fruits", products_path(query: {category: "Fruits"}), class: "cat-item #{'black-underline' if selected_category?("Fruits") }" %></h3>
-        <h3><%= link_to "Veggies", products_path(query: {category: "Vegetables"}), class: "cat-item #{'black-underline' if selected_category?("Vegetables") }" %></h3>
-        <h3><%= link_to "Meat", products_path(query: {category: "Meat"}), class: "cat-item #{'black-underline' if selected_category?("Meat") }" %></h3>
-        <h3><%= link_to "Dairy", products_path(query: {category: "Dairy"}), class: "cat-item #{'black-underline' if selected_category?("Dairy") }" %></h3>
+        <h3><%= link_to "Fruits", products_path(query: {category: "Fruits"}), class: "cat-item #{'green-underline bold' if selected_category?("Fruits") }" %></h3>
+        <h3><%= link_to "Veggies", products_path(query: {category: "Vegetables"}), class: "cat-item #{'green-underline bold' if selected_category?("Vegetables") }" %></h3>
+        <h3><%= link_to "Meat", products_path(query: {category: "Meat"}), class: "cat-item #{'green-underline bold' if selected_category?("Meat") }" %></h3>
+        <h3><%= link_to "Dairy", products_path(query: {category: "Dairy"}), class: "cat-item #{'green-underline bold' if selected_category?("Dairy") }" %></h3>
     </div>
     <div>
         <div class="form-group-f">
