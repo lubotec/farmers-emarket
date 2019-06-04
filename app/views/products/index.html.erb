@@ -22,8 +22,8 @@
             <% end %>
         </div>
         <div class="cards-container">
-          <h4><%= link_to "Price desc", products_path(query: {price: "descending"}), class: 'filter-item' %></h4>
-          <h4><%= link_to "Price asc", products_path(query: {price: "ascending"}), class: 'filter-item' %></h4>
+          <h4><%= link_to "Price desc", products_path(query: query_hash(@query, :price, "descending")), class: 'filter-item' %></h4>
+          <h4><%= link_to "Price asc", products_path(query: query_hash(@query, :price, "ascending")), class: 'filter-item' %></h4>
           <h4><%= link_to "Rating", "#",  class: 'filter-item' %></h4>
           <h4><%= link_to "Distance", "#", class: 'filter-item' %></h4>
         </div>

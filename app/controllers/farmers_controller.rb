@@ -26,7 +26,7 @@ class FarmersController < ApplicationController
 
   def show
     if params[:query].present?
-      @products = SearchProducts.new(params[:query]).call
+      @products = SearchProducts.new(params[:query], @farmer.id).call
     else
       @products = @farmer.products
     end

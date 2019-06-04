@@ -1,7 +1,7 @@
 class SearchProducts
-  def initialize(params)
+  def initialize(params, farmer_id = nil)
     @params = params
-    @scope = Product.all
+    @scope = farmer_id ? Farmer.find(farmer_id).products : Product.all
   end
 
   def call
