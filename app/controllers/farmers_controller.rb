@@ -32,8 +32,9 @@ class FarmersController < ApplicationController
       @products = @farmer.products.where(category: params[:category])
     else
       @products = @farmer.products
-
     end
+
+    @marker = [{ lat: @farmer.latitude, lng: @farmer.longitude }]
   end
 
   def edit

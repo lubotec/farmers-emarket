@@ -1,95 +1,102 @@
 <div class="profile-background clearfix">
     <div id="carouselExampleControls" class="carousel slide clearfix" data-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <%= cl_image_tag @farmer.farmer_photos.first.data, height: 500, style: 'object-fit: cover', class: "d-block w-100" %>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <%= cl_image_tag @farmer.farmer_photos.first.data, height: 500, style: 'object-fit: cover', class: "d-block w-100" %>
+            </div>
+            <% @farmer.farmer_photos.each do |photo| %>
+            <div class="carousel-item">
+                <%= cl_image_tag photo.data, height: 500,  style: 'object-fit: cover', class: "d-block w-100" %>
+            </div>
+            <% end %>
         </div>
-        <% @farmer.farmer_photos.each do |photo| %>
-        <div class="carousel-item">
-            <%= cl_image_tag photo.data, height: 500,  style: 'object-fit: cover', class: "d-block w-100" %>
-        </div>
-        <% end %>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-    </div>
-    <div class="container-f profile-infos" >
+    <div class="container-f profile-infos">
         <%= cl_image_tag @farmer.user.avatar, class: 'profile-avatar avatar-l-bordered', crop: :fill, height: 180 %>
         <div class="profile-text">
             <div class="name-location">
                 <h1><%= @farmer.name %></h1>
                 <h2><%= @farmer.address %></h2>
             </div>
-            <p><%= @farmer.description %></p>
+            <div class="map-btn">
+                <a id="show-map-btn" class="btn-f" href="#map">Show Map</a>
+            </div>
+            <div>
+                <p><%= @farmer.description %></p>
+            </div>
         </div>
     </div>
 </div>
+
+
 <div class="container-f product-show">
     <div class='category'>
         <% if current_user.role == "Farmer" && Farmer.find(params[:id]) == current_user.farmer %>
-            <%= link_to new_product_path, class:'hvr-icon-buzz-out' do %>
-                <ion-icon name="add-circle-outline"
-                        class="icon-position hvr-icon">
-                </ion-icon>
-            <% end %>
-            <h3><%= link_to "Fruits", farmer_path(@farmer, category: "Fruits"), class: 'cat-item' %></h3>
-            <h3><%= link_to "Veggies", farmer_path(@farmer, category: "Vegetables"), class: 'cat-item' %></h3>
-            <h3><%= link_to "Meat", farmer_path(@farmer, category: "Meat"), class: 'cat-item' %></h3>
-            <h3><%= link_to "Dairy", farmer_path(@farmer, category: "Dairy"), class: 'cat-item' %></h3>
+        <%= link_to new_product_path, class:'hvr-icon-buzz-out' do %>
+        <ion-icon name="add-circle-outline" class="icon-position hvr-icon">
+        </ion-icon>
+        <% end %>
+        <h3><%= link_to "Fruits", farmer_path(@farmer, category: "Fruits"), class: 'cat-item' %></h3>
+        <h3><%= link_to "Veggies", farmer_path(@farmer, category: "Vegetables"), class: 'cat-item' %></h3>
+        <h3><%= link_to "Meat", farmer_path(@farmer, category: "Meat"), class: 'cat-item' %></h3>
+        <h3><%= link_to "Dairy", farmer_path(@farmer, category: "Dairy"), class: 'cat-item' %></h3>
         <% else%>
-            <h3 style="margin-top: 110px"><%= link_to "Fruits", farmer_path(@farmer, category: "Fruits"), class: 'cat-item' %></h3>
-            <h3><%= link_to "Veggies", farmer_path(@farmer, category: "Vegetables"), class: 'cat-item' %></h3>
-            <h3><%= link_to "Meat", farmer_path(@farmer, category: "Meat"), class: 'cat-item' %></h3>
-            <h3><%= link_to "Dairy", farmer_path(@farmer, category: "Dairy"), class: 'cat-item' %></h3>
+        <h3 style="margin-top: 110px">
+            <%= link_to "Fruits", farmer_path(@farmer, category: "Fruits"), class: 'cat-item' %></h3>
+        <h3><%= link_to "Veggies", farmer_path(@farmer, category: "Vegetables"), class: 'cat-item' %></h3>
+        <h3><%= link_to "Meat", farmer_path(@farmer, category: "Meat"), class: 'cat-item' %></h3>
+        <h3><%= link_to "Dairy", farmer_path(@farmer, category: "Dairy"), class: 'cat-item' %></h3>
         <% end %>
     </div>
     <div>
         <div class="form-group-f">
             <%= form_tag farmer_path(@farmer), method: :get, class:'form-group-f' do %>
-                <%= text_field_tag :query,
+            <%= text_field_tag :query,
                     params[:query],
                     class: "input-f input-search",
                     placeholder: "Search by product or category"
                 %>
-                <i class="fas fa-search searchf-f"
-                style="position: absolute;
+            <i class="fas fa-search searchf-f" style="position: absolute;
                         top: 63px;
                         left: 1040px;
                         font-size: 40px;">
-                </i>
+            </i>
             <% end %>
         </div>
         <div class='cards-container row'>
-        <% @products.each do |product| %>
-                <div class="col-lg-4">
-                <%# <% byebug %> 
+            <% @products.each do |product| %>
+            <div class="col-lg-4">
+                <%# <% byebug %>
                 <div class='product-card'>
-                    <div class='card-img' style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1)), url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
-                    <% if current_user.role == "Restaurant" %>
+                    <div class='card-img'
+                        style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1)), url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
+                        <% if current_user.role == "Restaurant" %>
                         <%= link_to product_order_products_path(product), method: :post, class: "add-b hvr-grow hvr-icon-spin" , style: 'font-size: 30px; color: white;' do %>
-                            <ion-icon name="add-circle-outline"></ion-icon>
+                        <ion-icon name="add-circle-outline"></ion-icon>
                         <% end %>
-                    <% end %>
-                    <% if current_user.role == "Farmer" && Farmer.find(params[:id]) == current_user.farmer %>
+                        <% end %>
+                        <% if current_user.role == "Farmer" && Farmer.find(params[:id]) == current_user.farmer %>
                         <%= link_to edit_product_path(product), method: :get, class: "add-b-r hvr-icon-spin" do %>
-                            <ion-icon name="settings" class="hvr-icon"></ion-icon>
+                        <ion-icon name="settings" class="hvr-icon"></ion-icon>
                         <% end %>
                         <%= link_to product_path(product), method: :delete, class: "add-b hvr-icon-spin", style: 'color: white;' do %>
-                            <ion-icon name="close" class="hvr-icon"></ion-icon>
+                        <ion-icon name="close" class="hvr-icon"></ion-icon>
                         <% end %>
-                    <% end %>
+                        <% end %>
                     </div>
                     <div class='card-details'>
                         <div class='rows'>
                             <h4><%= product.name %></h4>
                             <% if current_user.id != params[:id].to_i %>
-                                <%= link_to cl_image_tag(product.farmer.user.avatar, class: 'photo-card avatar-bordered ', crop: :fill, height: 50), farmer_path(product.farmer)%>
+                            <%= link_to cl_image_tag(product.farmer.user.avatar, class: 'photo-card avatar-bordered ', crop: :fill, height: 50), farmer_path(product.farmer)%>
                             <% end %>
                         </div>
                         <div class='rows'>
@@ -98,8 +105,14 @@
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
             <% end %>
         </div>
     </div>
+</div>
+
+<div
+    id="map"
+    data-markers="<%= @marker.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"> 
 </div>
