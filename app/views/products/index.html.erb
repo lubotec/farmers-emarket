@@ -43,6 +43,7 @@
 
         <div class='cards-container'>
         <% @products.each do |product| %>
+
             <i class="fas fa-search searchf-f" style="position: absolute;
                         top: 63px;
                         left: 1040px;
@@ -60,7 +61,7 @@
 
             <div class="col-lg-4 product-card-parent">
                 <% if current_user.role == "Restaurant" %>
-                <%= link_to product_order_products_path(product), method: :post, class: "add-b" , style: 'font-size: 30px; color: white;' do %>
+   _products_path(product), method: :post, class: "add-b" , style: 'font-size: 30px; color: white;' do %>
                 <ion-icon name="add-circle-outline"></ion-icon>
                 <% end %>
                 <% end %>
@@ -117,11 +118,9 @@
                         <div class="title-rating">
                             <h3><%=product.name %></h3>
                         </div>
-                        <div class="price">
-                            <h3>⭐️️️️️️️⭐️⭐️⭐️</h3>
-                            <h3><%=product.rating %></h3>
-
-                            <h3>€<%=product.price %>/kg</h3>
+                        <div class='rows'>
+                            <p>⭐️️️️️️️⭐️⭐️⭐️<%=product.rating%> </p>
+                            <p><%= humanized_money_with_symbol(product.price) %> / <small><%=product.unit_of_measurement%></small></p>
                         </div>
                     </div>
                     <div class="description">
@@ -131,12 +130,8 @@
                         <button href="#" class="btn-f btn-m">Add to cart</button>
                     </div>
                 </div>
-            </div>
-            <%end %>
+            <% end %>
         </div>
-
-
-
     </div>
 </div>
 </div>

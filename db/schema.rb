@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_03_155734) do
+ActiveRecord::Schema.define(version: 2019_06_04_143857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,20 +40,21 @@ ActiveRecord::Schema.define(version: 2019_06_03_155734) do
     t.bigint "product_id"
     t.integer "quantity"
     t.string "status"
-    t.integer "total_price"
     t.string "product_sku"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "total_price_cents", default: 0, null: false
     t.index ["order_id"], name: "index_order_products_on_order_id"
     t.index ["product_id"], name: "index_order_products_on_product_id"
   end
 
   create_table "orders", force: :cascade do |t|
     t.bigint "restaurant_id"
-    t.integer "total_price"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "payment"
+    t.integer "total_price_cents", default: 0, null: false
     t.index ["restaurant_id"], name: "index_orders_on_restaurant_id"
   end
 
@@ -72,11 +73,11 @@ ActiveRecord::Schema.define(version: 2019_06_03_155734) do
     t.string "sku"
     t.string "unit_of_measurement"
     t.integer "inventory"
-    t.integer "price"
     t.float "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
+    t.integer "price_cents", default: 0, null: false
     t.index ["farmer_id"], name: "index_products_on_farmer_id"
   end
 
