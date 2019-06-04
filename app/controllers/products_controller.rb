@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
     else
       @products = Product.all
     end
+
   end
 
   def show
@@ -57,7 +58,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require('product').permit(:farmer, :name, :category, :sku, :unit_of_measurement, :inventory, :price, product_photos_attributes: [:product_id, :data])
+    params.require('product').permit(:farmer, :name, :description, :category, :sku, :unit_of_measurement, :inventory, :price, product_photos_attributes: [:product_id, :data])
   end
 
   def find_id

@@ -30,6 +30,8 @@ class FarmersController < ApplicationController
     else
       @products = @farmer.products
     end
+
+    @marker = [{ lat: @farmer.latitude, lng: @farmer.longitude }]
   end
 
   def edit
