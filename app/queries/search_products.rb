@@ -8,6 +8,7 @@ class SearchProducts
     @scope = filter_by_text(@scope, @params[:text]) if @params[:text].present?
     @scope = filter_by_category(@scope, @params[:category]) if @params[:category].present?
     @scope = filter_by_price(@scope, @params[:price]) if @params[:price].present?
+    @scope = filter_by_distance(@scope, @params[:distance]) if @params[:distance].present?
     @scope
   end
 
@@ -20,7 +21,7 @@ class SearchProducts
   end
 
   def filter_by_price(scope, price)
-    if price == "descending"
+    if price == "Descending"
       scope.order(price: :desc)
     else
       scope.order(price: :asc)
