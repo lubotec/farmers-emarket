@@ -6,8 +6,8 @@
         <h3><%= link_to "Meat", products_path(query: {category: "Meat"}), class: "cat-item #{'green-underline bold' if selected_category?("Meat") }" %></h3>
         <h3><%= link_to "Dairy", products_path(query: {category: "Dairy"}), class: "cat-item #{'green-underline bold' if selected_category?("Dairy") }" %></h3>
     </div>
-    <div>
 
+    <div>
         <div class="form-group-f">
             <%= simple_form_for :query, url: products_path, method: :get do |f| %>
             <div class="d-flex">
@@ -42,43 +42,39 @@
         </div>
 
         <div class='cards-container'>
-        <% @products.each do |product| %>
-
-            <i class="fas fa-search searchf-f" style="position: absolute;
-                        top: 63px;
-                        left: 1040px;
-                        font-size: 40px;">
-            </i>
+            <% @products.each do |product| %>
+                <i class="fas fa-search searchf-f" style="position: absolute;
+                            top: 63px;
+                            left: 1040px;
+                            font-size: 40px;">
+                </i>
             <% end %>
-
         </div>
 
         <div class='cards-container row'>
-
             <% @products.each do |product| %>
-
-
-
-            <div class="col-lg-4 product-card-parent">
-                <% if current_user.role == "Restaurant" %>
-   _products_path(product), method: :post, class: "add-b" , style: 'font-size: 30px; color: white;' do %>
-                <ion-icon name="add-circle-outline"></ion-icon>
-                <% end %>
-                <% end %>
-
-                <div class='product-card'>
+                <div class="col-lg-4 product-card-parent">
                     <% if current_user.role == "Restaurant" %>
-                    <a href="#" data-featherlight="#mylightbox-<%=product.id %>">
+                        <%= link_to product_order_products_path(product), method: :post, class: "add-b" , style: 'font-size: 30px; color: white;' do %>
+                            <ion-icon name="add-circle-outline"></ion-icon>
+                        <% end %>
                     <% end %>
+
+                    <div class='product-card'>
+                        <% if current_user.role == "Restaurant" %>
+                            <a href="#" data-featherlight="#mylightbox-<%=product.id %>">
+                        <% end %>
+
                         <% if current_user.role == "Restaurant" %>
                             <div class='card-img-restaurant'
-                             style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1)), url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
+                                style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1)), url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
                             </div>
                         <% else %>
                             <div class='card-img-farmer'
                                 style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1)), url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
                             </div>
                         <% end %>
+
                         <div class='card-details'>
                             <div class='rows'>
                                 <h4><%= product.name %></h4>
@@ -89,14 +85,10 @@
                                 <p>$<%=product.price%> / <small><%=product.unit_of_measurement%></small></p>
                             </div>
                         </div>
-                        <% if current_user.role == "Restaurant" %>
-                    </a>
-                    <% end %>
+                    </div>
                 </div>
-            </div>
+            <% end %>
         </div>
-
-        <% end %>
 
         <!-- Popup -->
 
@@ -105,33 +97,37 @@
 
             <div id="mylightbox-<%=product.id %>">
 
-                <div class="product-box">
+            <div class="product-box">
 
-                    <div class="background-img"
-                        style="background-image: url('<%= cl_image_path product.product_photos.first.data%>')">
+                <div class="background-img"
+                    style="background-image: url('<%= cl_image_path product.product_photos.first.data%>')">
+                </div>
 
+                <%= link_to cl_image_tag(product.farmer.user.avatar, class: 'profile-avatar avatar-m-bordered', crop: :fill, height: 105), farmer_path(product.farmer)%>
+
+                <div class="basic-infos">
+                    <div class="title-rating">
+                        <h3><%=product.name %></h3>
                     </div>
-
-
-                    <%= link_to cl_image_tag(product.farmer.user.avatar, class: 'profile-avatar avatar-m-bordered', crop: :fill, height: 105), farmer_path(product.farmer)%>
-                    <div class="basic-infos">
-                        <div class="title-rating">
-                            <h3><%=product.name %></h3>
-                        </div>
-                        <div class='rows'>
-                            <p>⭐️️️️️️️⭐️⭐️⭐️<%=product.rating%> </p>
-                            <p><%= humanized_money_with_symbol(product.price) %> / <small><%=product.unit_of_measurement%></small></p>
-                        </div>
-                    </div>
-                    <div class="description">
-                        <p><%=product.description %></p>
-                    </div>
-                    <div class="add-to-cart">
-                        <button href="#" class="btn-f btn-m">Add to cart</button>
+                    <div class='rows'>
+                        <p>⭐️️️️️️️⭐️⭐️⭐️<%=product.rating%> </p>
+                        <p><%= humanized_money_with_symbol(product.price) %> / <small><%=product.unit_of_measurement%></small></p>
                     </div>
                 </div>
+
+                <div class="description">
+                    <p><%=product.description %></p>
+                </div>
+                
+                <div class="add-to-cart">
+                    <button href="#" class="btn-f btn-m">Add to cart</button>
+                </div>
+
+            </div>
+
             <% end %>
         </div>
+
     </div>
 </div>
-</div>
+

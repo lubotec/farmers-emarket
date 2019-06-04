@@ -42,7 +42,6 @@ class OrdersController < ApplicationController
     end
     @order.update(total_price: @order.total_price)
   end
-<<<<<<< HEAD
 
   def check_inventory(inventory, order_product)
     if (inventory - order_product.quantity) < 0
@@ -53,6 +52,4 @@ class OrdersController < ApplicationController
     end
   end
 
-=======
->>>>>>> 4abb7bcad695a4c2790a5161b2969ee0348666bb
 end
