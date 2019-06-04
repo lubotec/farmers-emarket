@@ -5,9 +5,9 @@ class SearchProducts
   end
 
   def call
-    @scope = filter_by_text(@scope, @params[:text]) if @params[:text]
-    @scope = filter_by_category(@scope, @params[:category]) if @params[:category]
-    @scope = filter_by_price(@scope, @params[:price]) if @params[:price]
+    @scope = filter_by_text(@scope, @params[:text]) if @params[:text].present?
+    @scope = filter_by_category(@scope, @params[:category]) if @params[:category].present?
+    @scope = filter_by_price(@scope, @params[:price]) if @params[:price].present?
     @scope
   end
 

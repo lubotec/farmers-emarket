@@ -3,7 +3,8 @@ class ProductsController < ApplicationController
 
   def index
     if params[:query].present?
-      @products = SearchProducts.new(params[:query]).call
+      @query = params[:query].permit!
+      @products = SearchProducts.new(@query).call
     else
       @products = Product.all
     end
