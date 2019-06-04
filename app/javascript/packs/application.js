@@ -23,3 +23,10 @@ $(document).ready(function(){
       } // End if
     });
   });
+
+  let follow_link = () => {
+    var url = $(this).val();
+    $.get(url);
+  }
+
+  console.log(follow_link());

@@ -13,6 +13,29 @@
                     class: "input-f input-search",
                     placeholder: "Search for product name or category"
                 %>
+                
+            <% end %>
+        </div>
+
+        <div class='responsive-dropdown' style='width: 100%'>
+            <select style='width: 49.5%'>
+                <option>Filter by product type</option>
+                <option>Fruits</option>
+                <option>Veggies</option>
+                <option>Meat</option>
+                <option>Dairy</option>
+            </select>
+            <select style='width: 49.5%; float:right'>
+                <option>Filter by product type</option>
+                <option>Fruits</option>
+                <option>Veggies</option>
+                <option>Meat</option>
+                <option>Dairy</option>
+            </select>
+        </div>
+
+        <div class='cards-container'>
+        <% @products.each do |product| %>
             <i class="fas fa-search searchf-f" style="position: absolute;
                         top: 63px;
                         left: 1040px;
