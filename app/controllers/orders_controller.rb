@@ -11,8 +11,8 @@ class OrdersController < ApplicationController
     @order.order_products.map do |order_product|
       @total += order_product.product.price * order_product.quantity
     end
-    @shipment = @total > 50 ? 50 : (@total * 0.14).round(2) + @total
-    @total_and_shipment = @shipment + @total
+    @total_and_shipment = @total
+
   end
 
   def checkout_order
