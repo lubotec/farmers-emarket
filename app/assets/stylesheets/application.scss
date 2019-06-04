@@ -2,6 +2,7 @@
 @import "config/fonts";
 @import "config/colors";
 @import "config/bootstrap_variables";
+@import "config/utilities";
 
 // External libraries
 @import "bootstrap/scss/bootstrap";
@@ -16,7 +17,14 @@
 @import "farmers/show";
 @import "products/show";
 
-.container-f {
-    width: 1320px;
-    margin: 0 auto;
+body {
+  margin: 0;
+  font-family: "Open Sans", "Helvetica", "sans-serif";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #0E0000;
+  text-align: left;
+  background-color: #FFFFFF;
 }
+

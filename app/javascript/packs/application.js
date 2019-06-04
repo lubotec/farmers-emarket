@@ -1,7 +1,10 @@
 import "bootstrap";
-// import { initCartForm } from '../components/cart_form';
+import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the stylesheet_pack_tag in the layout!
+import { initMapbox } from '../plugins/init_mapbox';
+
+initMapbox();
+
 $(document).ready(function(){
-  // initCartForm();
   let updatedElement;
   $("a").on('click', function(event) {
     // Make sure this.hash has a value before overriding default behavior
@@ -23,5 +26,11 @@ $(document).ready(function(){
       });
     } // End if
   });
-
 });
+
+let follow_link = () => {
+  var url = $(this).val();
+  $.get(url);
+}
+
+console.log(follow_link());

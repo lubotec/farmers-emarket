@@ -1,15 +1,15 @@
 class ProductsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
   before_action :find_id, only: [:show, :edit, :update, :destroy]
 
   def index
     if params[:query].present?
-      params[:query].downcase
-      @products = Product.search_by_name_and_description(params[:query])
-    elsif params[:category]
-      @products = Product.where(category: params[:category])
+      @query = params[:query].permit!
+      @products = SearchProducts.new(@query).call
     else
       @products = Product.all
     end
+
   end
 
   def show
@@ -56,7 +56,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require('product').permit(:farmer, :name, :category, :sku, :unit_of_measurement, :inventory, :price, product_photos_attributes: [:product_id, :data])
+    params.require('product').permit(:farmer, :name, :description, :category, :sku, :unit_of_measurement, :inventory, :price, product_photos_attributes: [:product_id, :data])
   end
 
   def find_id

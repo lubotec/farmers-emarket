@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :checkout_order]
 
   def show
+  
   end
 
   def my_active_order
@@ -21,6 +22,7 @@ class OrdersController < ApplicationController
     end
     order_total_price
     redirect_to restaurant_orders_path(@order)
+    # redirect_to new_order_payment_path(@order)
   end
 
   def my_orders
@@ -40,6 +42,7 @@ class OrdersController < ApplicationController
     end
     @order.update(total_price: @order.total_price)
   end
+<<<<<<< HEAD
 
   def check_inventory(inventory, order_product)
     if (inventory - order_product.quantity) < 0
@@ -50,4 +53,6 @@ class OrdersController < ApplicationController
     end
   end
 
+=======
+>>>>>>> 4abb7bcad695a4c2790a5161b2969ee0348666bb
 end

@@ -7,7 +7,7 @@
 }
 
 .list-container-home {
-  width: 1320px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -16,10 +16,6 @@
   font-family: "Raleway", "Helvetica", "sans-serif";
   font-weight: bold;
   font-size: 18px;
-  position: absolute;
-  top: 0px;
-  margin: 0px 60px;
-  // right: -900px;
 }
 .list-container-home ul {
   float: right;
@@ -57,4 +53,24 @@
 }
 
 
+// **Tablets**
+@media (max-width: 1024px)  {
+    .farmer-nav-home {
+      margin: 0 auto;
+      font-size: 18px;
+    }
+  }
 
+// **Mobile**
+@media (max-width: 767px) {
+    .farmer-nav-home {
+      float: left;
+      position: relative;
+      left: 50%;
+    }
+    .list-container-home {
+      float: left;
+      position: relative;
+      left: -50%;
+    }
+  }

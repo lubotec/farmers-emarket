@@ -1,53 +1,137 @@
 <div class="container-f product-show">
-    <div class='category', style="margin-top: 110px">
-        <h3><%= link_to "Fruits", products_path(category: "Fruits"), class: 'cat-item' %></h3>
-        <h3><%= link_to "Veggies", products_path(category: "Vegetables"), class: 'cat-item' %></h3>
-        <h3><%= link_to "Meat", products_path(category: "Meat"), class: 'cat-item' %></h3>
-        <h3><%= link_to "Dairy", products_path(category: "Dairy"), class: 'cat-item' %></h3>
+    <div class='category', style="margin-top: 160px">
+        <p><%= link_to "Clear filter", products_path, class: "cat-item", style:"font-weight: lighter" %></p>
+        <h3><%= link_to "Fruits", products_path(query: {category: "Fruits"}), class: "cat-item #{'green-underline bold' if selected_category?("Fruits") }" %></h3>
+        <h3><%= link_to "Veggies", products_path(query: {category: "Vegetables"}), class: "cat-item #{'green-underline bold' if selected_category?("Vegetables") }" %></h3>
+        <h3><%= link_to "Meat", products_path(query: {category: "Meat"}), class: "cat-item #{'green-underline bold' if selected_category?("Meat") }" %></h3>
+        <h3><%= link_to "Dairy", products_path(query: {category: "Dairy"}), class: "cat-item #{'green-underline bold' if selected_category?("Dairy") }" %></h3>
     </div>
     <div>
+
         <div class="form-group-f">
-            <%= form_tag products_path, method: :get, class:'form-group-f' do %>
-                <%= text_field_tag :query,
-                    params[:query],
-                    class: "input-f input-search",
-                    placeholder: "Search for product name or category"
-                %>
-                <i class="fas fa-search searchf-f"
-                style="position: absolute;
+            <%= simple_form_for :query, url: products_path, method: :get do |f| %>
+            <div class="d-flex">
+              <div class="d-flex mr-4">
+                <%= f.input :text, label: "Search", placeholder: "Product or category", input_html: { value: params[:query].try(:[], :text) } %>
+                <%= f.input :price, label: "Price", collection: ['Ascending', 'Descending'], selected: params[:query].try(:[], :price)  %>
+                <%#= f.input :distance, label: "Distance", collection: ['< 5km', '5-10km', '10-20km', '20-50km'], selected: params[:query].try(:[], :distance)  %>
+                <%= f.input :category, as: :hidden, input_html: { value: params[:query].try(:[], :category) } %>
+              </div>
+              <div>
+                <%= f.submit "Search", class: "btn-f-d" %>
+              </div>
+            </div>
+            <% end %>
+        </div>
+
+        <div class='responsive-dropdown' style='width: 100%'>
+            <select style='width: 49.5%'>
+                <option>Filter by product type</option>
+                <option>Fruits</option>
+                <option>Veggies</option>
+                <option>Meat</option>
+                <option>Dairy</option>
+            </select>
+            <select style='width: 49.5%; float:right'>
+                <option>Filter by product type</option>
+                <option>Fruits</option>
+                <option>Veggies</option>
+                <option>Meat</option>
+                <option>Dairy</option>
+            </select>
+        </div>
+
+        <div class='cards-container'>
+        <% @products.each do |product| %>
+
+            <i class="fas fa-search searchf-f" style="position: absolute;
                         top: 63px;
                         left: 1040px;
                         font-size: 40px;">
-                </i>
+            </i>
             <% end %>
+
         </div>
+
         <div class='cards-container row'>
-        <% @products.each do |product| %>
-                <div class="col-lg-4">
+
+            <% @products.each do |product| %>
+
+
+
+            <div class="col-lg-4 product-card-parent">
+                <% if current_user.role == "Restaurant" %>
+   _products_path(product), method: :post, class: "add-b" , style: 'font-size: 30px; color: white;' do %>
+                <ion-icon name="add-circle-outline"></ion-icon>
+                <% end %>
+                <% end %>
+
                 <div class='product-card'>
-                    <div class='card-img' style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1)), url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
+                    <% if current_user.role == "Restaurant" %>
+                    <a href="#" data-featherlight="#mylightbox-<%=product.id %>">
+                    <% end %>
                         <% if current_user.role == "Restaurant" %>
-                            <%= link_to product_order_products_path(product), method: :post, class: "add-b" , style: 'font-size: 30px; color: white;' do %>
-                                <ion-icon name="add-circle-outline"></ion-icon>
-                            <% end %>
+                            <div class='card-img-restaurant'
+                             style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1)), url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
+                            </div>
+                        <% else %>
+                            <div class='card-img-farmer'
+                                style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1)), url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
+                            </div>
                         <% end %>
+                        <div class='card-details'>
+                            <div class='rows'>
+                                <h4><%= product.name %></h4>
+                                <%= link_to cl_image_tag(product.farmer.user.avatar, class: 'photo-card avatar', crop: :fill, height: 50), farmer_path(product.farmer)%>
+                            </div>
+                            <div class='rows'>
+                                <p>⭐️️️️️️️⭐️⭐️⭐️<%=product.rating%> </p>
+                                <p>$<%=product.price%> / <small><%=product.unit_of_measurement%></small></p>
+                            </div>
+                        </div>
+                        <% if current_user.role == "Restaurant" %>
+                    </a>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+
+        <% end %>
+
+        <!-- Popup -->
+
+        <div hidden>
+            <% @products.each do |product| %>
+
+            <div id="mylightbox-<%=product.id %>">
+
+                <div class="product-box">
+
+                    <div class="background-img"
+                        style="background-image: url('<%= cl_image_path product.product_photos.first.data%>')">
+
                     </div>
-                    <div class='card-details'>
-                        <div class='rows'>
-                            <h4><%= product.name %></h4>
-                            <%= link_to cl_image_tag(product.farmer.user.avatar, class: 'photo-card avatar', crop: :fill, height: 50), farmer_path(product.farmer)%>
+
+
+                    <%= link_to cl_image_tag(product.farmer.user.avatar, class: 'profile-avatar avatar-m-bordered', crop: :fill, height: 105), farmer_path(product.farmer)%>
+                    <div class="basic-infos">
+                        <div class="title-rating">
+                            <h3><%=product.name %></h3>
                         </div>
                         <div class='rows'>
                             <p>⭐️️️️️️️⭐️⭐️⭐️<%=product.rating%> </p>
-                            <p>$<%=product.price%> / <small><%=product.unit_of_measurement%></small></p>
+                            <p><%= humanized_money_with_symbol(product.price) %> / <small><%=product.unit_of_measurement%></small></p>
                         </div>
                     </div>
+                    <div class="description">
+                        <p><%=product.description %></p>
+                    </div>
+                    <div class="add-to-cart">
+                        <button href="#" class="btn-f btn-m">Add to cart</button>
+                    </div>
                 </div>
-                </div>
-
             <% end %>
         </div>
     </div>
 </div>
-
-
+</div>

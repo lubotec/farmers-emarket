@@ -139,6 +139,8 @@
   font-size: 44px;
 }
 
+// Farmer profile
+
 .farmer {
   background-color: white;
   width: 1200px;
@@ -172,18 +174,43 @@
   text-align: center;
   margin: 0px;
 }
-// footer section
-.footer-f {
-  height: 200px;
-  background-color: #000000;
-}
 
-.social-media{
-  color:white;
-}
-
-.social-media ul{
-  list-style-type: none;
-  display: flex;
+// **Tablets**
+@media (max-width: 1024px)  {
+  .steps {
+    flex-wrap: wrap;
+  }
+  .step-1 {
+    width: 90%;
+    margin-top: 40px;
+  }
+  .step-1 p {
+    width: 100%;
+    text-align: center;
+  }
   
-}
+} 
+
+// **Mobile**
+
+@media (max-width: 767px) {
+    .steps {
+      flex-wrap: wrap;
+      padding: 0 40px 60px 40px;
+      
+    }
+    .step-1 {
+      width: 100%;
+      margin-top: 40px;
+      padding: 40px;
+    }
+    .step-1 p {
+      width: 100%;
+      text-align: center;
+    }
+
+    .search-form-control {
+      width: 100%;
+    }
+  }
+>>>>>>> 4abb7bcad695a4c2790a5161b2969ee0348666bb

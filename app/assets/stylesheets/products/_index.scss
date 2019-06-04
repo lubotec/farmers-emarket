@@ -11,12 +11,16 @@
 }
 
 .cards-container {
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 40px;
     // margin: 0 auto;
 }
 
 .nav-icon {
-    font-size: 25px; 
+    font-size: 25px;
     color: white;
     transform: scale(1.05);
     transition: 0.5s;
@@ -24,6 +28,56 @@
 }
 
 .nav-icon:hover{
-    font-size: 30px; 
+    font-size: 30px;
     color: white;
+}
+
+.cat-item {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  &:hover {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+.filter-item {
+  text-decoration: none;
+  color: black;
+  margin-right: 160px;
+  &:hover {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+.container-f {
+    width: 1320px;
+    margin: 0 auto;
+}
+
+@media (max-width: 4000px) {
+    .responsive-dropdown {
+        display: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    .responsive-dropdown {
+        display: contents;
+    }
+
+    .category {
+        display: none;
+    }
+
+    .input-search {
+        width: 100vw;
+    }
+
+    .container-f {
+        width: 100%;
+    }
+
 }

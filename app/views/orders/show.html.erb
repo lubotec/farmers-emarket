@@ -1,12 +1,12 @@
-<%= @order %>
 
-<% @order.order_products.each do |order_product| %>
-  <%= order_product.product.name %>
-<% end %>
+<h1>Order</h1>
+<ul>
+  <li>Status: <%= @order.status %></li>
 
-<%= link_to "checkout"  %>
-
-<% @order.order_products.each do |order_product| %>
-  <%= order_product %>
-<% end %>
-
+  <% @order.order_products.each do |product| %>
+  <li>Product Name: <%= product.product.name %></li>
+  <li>Qty: <%= product.quantity %></li>
+  <li>Price per: $<%= product.total_price %></li>
+  <% end %>
+  <li>Total bill: <%= @order.total_price %></li>
+<ul>

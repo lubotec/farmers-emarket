@@ -26,14 +26,12 @@ class FarmersController < ApplicationController
 
   def show
     if params[:query].present?
-      params[:query].downcase!
-      @products = @farmer.products.search_by_name_and_description(params[:query])
-    elsif params[:category]
-      @products = @farmer.products.where(category: params[:category])
+      @products = SearchProducts.new(params[:query], @farmer.id).call
     else
       @products = @farmer.products
-
     end
+
+    @marker = [{ lat: @farmer.latitude, lng: @farmer.longitude }]
   end
 
   def edit

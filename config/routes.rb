@@ -6,7 +6,10 @@ Rails.application.routes.draw do
 
   resources :restaurants, only: [ :new, :create ]
 
-  resources :orders, only: [:show]
+  resources :orders, only: [:show] do
+    resources :payments, only: [:new, :create]
+  end
+  
   get 'my_active_order', to: 'orders#my_active_order', as: :restaurant_cart
   patch '/checkout_order/:id', to: "orders#checkout_order", as: :checkout
   get 'my_orders', to: 'orders#my_orders', as: :restaurant_orders
