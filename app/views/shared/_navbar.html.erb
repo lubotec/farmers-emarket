@@ -1,23 +1,46 @@
+<style>
+    .navbar-lewagon {
+    justify-content: space-between;
+    background: white;
+    }
+
+    .navbar-lewagon .navbar-collapse {
+    flex-grow: 0;
+    }
+    
+</style>
+
 <% if user_signed_in? %>
 
-<div class='farmer-nav'>
-        <div class='list-container-f'>
-            <ul style="margin-bottom: 0px;">
-                <li> <%= link_to "Farmers' eMarket", root_path, style: 'font-size: 24px; color: white; text-decoration: none'%></li>
-                <div class='float-list'>
-                    <li> <%= link_to "Market", products_path, style:'color:white; text-decoration: none'%></li>
-                    <% if current_user.role == "Restaurant" %>
-                        <li> <%= link_to "My Orders", restaurant_orders_path, style:'color:white; text-decoration: none'%></li>           
-                        <li> <%= link_to "Cart", restaurant_cart_path, style:'color:white; text-decoration: none'%></li>
-                    <% end %>
-                    <% if current_user.role == "Farmer" %>
-                        <li> <%= link_to "My profile", farmers_path(current_user.farmer), style:'color:white; text-decoration: none'%></li>           
-                        <li> <%= link_to "Add a product", new_product_path, style:'color:white; text-decoration: none'%></li>
-                    <% end %>
-                    <li> <%= link_to "Logout", destroy_user_session_path, method: :delete, style:'color:white; text-decoration: none'%></li>
-                </div>
-            </ul>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to "Farmers' eMarket", root_path, style: 'text-decoration: none; color: black; font-size: 24px; font-weight: bold; margin-left: 40px' %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to "Market", products_path, class: "nav-link", style: 'padding: 15px 20px'%>
+      </li>
+      <% if current_user.role == "Restaurant" %>
+        <li class="nav-item"> <%= link_to "My Orders", restaurant_orders_path, class: "nav-link", style: 'padding: 15px 20px'%></li>           
+        <li class="nav-item"> <%= link_to "", restaurant_cart_path, class: "nav-link fas fa-shopping-cart", style: 'padding: 15px 20px; font-size: 25px; margin-right: 10px'%></li>
+    <% end %>
+    <% if current_user.role == "Farmer" %>
+        <li class="nav-item"> <%= link_to "My profile", farmer_path(curren_user.farmer), class: "nav-link", style: 'padding: 15px 20px'%></li>           
+        <li class="nav-item"> <%= link_to "Add a product", new_product_path, class: "nav-link", style: 'padding: 15px 20px'%></li>
+    <% end %>
+      <li class="nav-item dropdown">
+        <%= cl_image_tag current_user.avatar, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, height: 50 %>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item"%>
         </div>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <% end %>

@@ -141,6 +141,8 @@
   font-size: 44px;
 }
 
+// Farmer profile
+
 .farmer {
   width: 1200px;
   margin: 0 auto;
@@ -172,3 +174,42 @@
   text-align: center;
   margin: 0px;
 }
+
+// **Tablets**
+@media (max-width: 1024px)  {
+  .steps {
+    flex-wrap: wrap;
+  }
+  .step-1 {
+    width: 90%;
+    margin-top: 40px;
+  }
+  .step-1 p {
+    width: 100%;
+    text-align: center;
+  }
+  
+} 
+
+// **Mobile**
+
+@media (max-width: 767px) {
+    .steps {
+      flex-wrap: wrap;
+      padding: 0 40px 60px 40px;
+      
+    }
+    .step-1 {
+      width: 100%;
+      margin-top: 40px;
+      padding: 40px;
+    }
+    .step-1 p {
+      width: 100%;
+      text-align: center;
+    }
+
+    .search-form-control {
+      width: 100%;
+    }
+  }
