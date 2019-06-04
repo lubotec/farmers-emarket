@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
     if @order.update(status: "paid")
       @order.order_products.each { |order_product| order_product.update(status: "paid") }
       @order.order_products.each { |order_product| order_product.update(total_price: order_product.product.price * order_product.quantity) }
+      order_total_price
       current_user.restaurant.check_open_order
       redirect_to restaurant_orders_path(current_user.restaurant)
     else
@@ -28,5 +29,13 @@ class OrdersController < ApplicationController
 
   def set_order
     @order = Order.find(params[:id])
+  end
+
+  def order_total_price
+    @order.total_price = 0
+    @order.order_products.each do |order_product|
+      @order.total_price += order_product.total_price
+    end
+    @order.update(total_price: @order.total_price)
   end
 end
