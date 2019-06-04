@@ -3,15 +3,14 @@ class ProductsController < ApplicationController
 
   def index
     if params[:query].present?
+      params[:query].downcase!
       @products = Product.search_by_name_and_description(params[:query])
+    elsif params[:category]
+      @products = Product.where(category: params[:category])
     else
       @products = Product.all
     end
 
-  end
-
-  def my_products
-    @products = current_user.farmer.products
   end
 
   def show
@@ -39,6 +38,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    # raise
   end
 
   def update

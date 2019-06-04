@@ -11,10 +11,10 @@
                         <li> <%= link_to "Cart", restaurant_cart_path, style:'color:white; text-decoration: none'%></li>
                     <% end %>
                     <% if current_user.role == "Farmer" %>
-                        <li> <%= link_to "My profile", farmers_path(@farmer), style:'color:white; text-decoration: none'%></li>           
+                        <li> <%= link_to "My profile", farmers_path(current_user.farmer), style:'color:white; text-decoration: none'%></li>           
                         <li> <%= link_to "Add a product", new_product_path, style:'color:white; text-decoration: none'%></li>
                     <% end %>
-                    <li> <%= link_to "Logout", destroy_user_session_path, style:'color:white; text-decoration: none'%></li>
+                    <li> <%= link_to "Logout", destroy_user_session_path, method: :delete, style:'color:white; text-decoration: none'%></li>
                 </div>
             </ul>
         </div>

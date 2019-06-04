@@ -2,7 +2,7 @@ class Product < ApplicationRecord
   belongs_to :farmer
   has_many :order_products
   has_many :reviews, through: :order_products
-  has_many :product_photos
+  has_many :product_photos, dependent: :destroy
   accepts_nested_attributes_for :product_photos
   # mount_uploader :data, PhotoUploader
   # validates :name, presence: true
@@ -13,9 +13,9 @@ class Product < ApplicationRecord
   # validates :price, presence: true
   include PgSearch
   pg_search_scope :search_by_name_and_description,
-    against: [ :name, :category ],
+    against: [:name, :description, :category],
     associated_against: {
-      farmer: [ :name ]
+      farmer: [:name]
     },
     using: {
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
