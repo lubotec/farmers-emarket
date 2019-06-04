@@ -27,11 +27,11 @@ ActiveRecord::Schema.define(version: 2019_06_04_143857) do
     t.bigint "user_id"
     t.string "name"
     t.string "address"
-    t.float "lat"
-    t.float "long"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_farmers_on_user_id"
   end
 

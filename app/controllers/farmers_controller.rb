@@ -15,22 +15,26 @@ class FarmersController < ApplicationController
     respond_to do |format|
       if @farmer.save
         params[:farmer_photos]['data'].each do |a|
-           @farmer_photo = @farmer.farmer_photos.create!(:data => a)
+          @farmer_photo = @farmer.farmer_photos.create!(data: a)
         end
         format.html { redirect_to farmer_path(@farmer), notice: 'Farmer was successfully created.' }
-    else
-      format.html { render action: 'new' }
+      else
+        format.html { render action: 'new' }
+      end
     end
-  end
   end
 
   def show
     if params[:query].present?
-      params[:query].downcase
-      @products = Product.search_by_name_and_description(params[:query])
+      params[:query].downcase!
+      @products = @farmer.products.search_by_name_and_description(params[:query])
+    elsif params[:category]
+      @products = @farmer.products.where(category: params[:category])
     else
       @products = @farmer.products
     end
+
+    @marker = [{ lat: @farmer.latitude, lng: @farmer.longitude }]
   end
 
   def edit
