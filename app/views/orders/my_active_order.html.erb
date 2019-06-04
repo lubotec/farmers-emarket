@@ -1,32 +1,63 @@
 <div class="container-f">
-  <div class=checkout-cart>
+  <h1 class="cart-title-f">Your cart</h1>
+  <div class="checkout-cart">
     <div class="order-products">
-      <h1>Your cart</h1>
-      <br>
       <% if @order.order_products %>
         <% @order.order_products.each do |order_product| %>
-        <div class="card-product">
-          <%= cl_image_tag order_product.product.product_photos.first.data, height: 300, width: 300, crop: :fill %>
+        <div class="card-product" data-id="<%= order_product.id %>">
+          <%= cl_image_tag order_product.product.product_photos.first.data, style: 'object-fit: cover', crop: :fill %>
           <div class="card-product-infos">
             <div class="name-quantity">
               <h2><%= order_product.product.name %></h2>
-              <p><strong>Total: €<%= order_product.quantity * order_product.product.price %></strong></p>
+              <div class = "price-f">
+                <span>Total: €</span><p class = "total-price"><%= order_product.product.price * order_product.quantity %></p>
+              </div>
             </div>
-            <p>Quantity: <%= order_product.quantity %></p>
-            <div class="remove">
-              <%= link_to "Remove", order_product_path(order_product), method: :delete %>
+            <div class="quantities">
+              <%= link_to decrement_order_product_path(order_product), remote: true do %>
+                <i class="fas fa-minus-circle minus"></i>
+              <% end %>
+                <p class="quantity"><%= order_product.quantity %></p>
+              <%= link_to increment_order_product_path(order_product), remote: true do %>
+                 <i class="fas fa-plus-circle plus"></i>
+              <% end %>
             </div>
+            <div class= "price-each">
+              <span>Each: €</span><p class="price" style="display:inline"> <%= order_product.product.price %></p>
+              <% raise %>
+            </div>
+            <p>Seller: <%= link_to farmer_path(order_product.product.farmer), class:'profile-link hvr-icon-wobble-horizontal', style:'margin-bottom: 3px;' do %>
+                <%= order_product.product.farmer.name %><i class="fa fa-arrow-right hvr-icon" style="margin-left: 8px;"></i>
+              <% end %>              
+            </p>
           </div>
         </div>
         <% end %>
       <% end %>
     </div>
-      <div class="summary">
-        
-        <%= link_to "Checkout", checkout_path(@order), method: :patch %>
-
+    <div class="summary">
+      <h2>Summary</h2>
+      <div class="checkout-detail">
+        <p><strong>Subtotal:</strong></p>
+        <div class="subtotal-cart">
+          <span class="subtotal"><%= @total %></span>/€
+        </div>
       </div>
-
-  </div>
+      <div class="checkout-detail">
+        <p><strong>Shipping cost:</strong></p>
+        <div class="subtotal-cart">
+          <span class="shipping"><%= 50 %></span>/€
+        </div>
+      </div>
+      <div class="checkout-detail">
+        <p><strong>Total:</strong></p>
+        <div class="subtotal-cart">
+          <span class="total_and_shipment"><%= @total_and_shipment %></span>/€
+        </div>
+      </div>
+      <%= link_to checkout_path(@order), method: :patch, style:'margin:0px auto;' do %>
+        <button class="btn-f">Checkout</button>
+      <% end %>
+    </div>
+  </div>  
 </div>
- 

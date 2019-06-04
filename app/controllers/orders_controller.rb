@@ -6,15 +6,23 @@ class OrdersController < ApplicationController
   end
 
   def my_active_order
+    @total = 0
     @order = current_user.restaurant.active_order
+    @order.order_products.map do |order_product|
+      @total += order_product.product.price * order_product.quantity
+    end
+    @total_and_shipment = @total
+
   end
 
   def checkout_order
-    # if @order.update(status: "paid")
-      # @order.order_products.each { |order_product| order_product.update(status: "paid") }
-      @order.order_products.each { |order_product| order_product.update(total_price: order_product.product.price * order_product.quantity) }
-      order_total_price
-      redirect_to new_order_payment_path(@order)
+    @order.order_products.each do |order_product|
+      order_product.update(total_price: order_product.product.price * order_product.quantity)
+      check_inventory(order_product.product.inventory, order_product)
+    end
+    order_total_price
+    redirect_to restaurant_orders_path(@order)
+    # redirect_to new_order_payment_path(@order)
   end
 
   def my_orders
@@ -34,4 +42,14 @@ class OrdersController < ApplicationController
     end
     @order.update(total_price: @order.total_price)
   end
+
+  def check_inventory(inventory, order_product)
+    if (inventory - order_product.quantity) < 0
+      flash[:danger] = "There is only #{inventory} left of #{order_product.product.name}"
+      return
+    else
+      order_product.product.update(inventory: order_product.product.inventory - order_product.quantity)
+    end
+  end
+
 end

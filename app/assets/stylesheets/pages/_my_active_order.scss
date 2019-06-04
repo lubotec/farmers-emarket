@@ -1,18 +1,33 @@
+.cart-title-f {
+  padding-left: 48px;
+  padding-top: 50px;
+}
 .card-product {
   overflow: hidden;
-  height: 120px;
+  height: 175px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
-  width: 900px;
-  margin-bottom: 20px;
+  width: 800px;
+  margin-bottom: 50px;
+}
+
+.plus {
+  color: black;
+  font-size: 18px
+}
+
+.minus {
+  color: black;
+  font-size: 18px
 }
 
 .card-product img {
   height: 100%;
-  width: 120px;
+  width: 175px;
   object-fit: cover;
+
 }
 
 .card-product h2 {
@@ -22,11 +37,23 @@
 }
 
 .card-product p {
-  font-size: 12px;
+  font-size: 18px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
   margin-top: 8px;
+  align-items: center;
+}
+.remove-card {
+  font-size: 27px; 
+  color: rgb(236, 56, 56);
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+
+.remove-card:hover {
+  font-size: 27px; 
+  color: rgb(236, 56, 56);
 }
 
 .card-product .card-product-infos {
@@ -42,6 +69,59 @@
   justify-content: space-between;
 }
 
+.name-quantity h2 {
+  font-size: 30px;
+}
+
+.quantities {
+  display: flex;
+  margin-top: 8px
+}
+
+.price-each {
+  margin-top: 8px;
+}
+
+.price-each span {
+  opacity: 0.7;
+  font-size: 18px;
+}
+
+.price-f {
+  display: flex;
+  font-weight: bold;
+
+}
+
+.price-f span {
+  opacity: 0.7;
+  font-size: 18px;
+}
+
+.price-f p {
+  opacity: 0.7;
+  font-size: 18px;
+  margin-top: 1px;
+}
+.quantities i {
+  margin-top: 4px;
+}
+
+.quantities p {
+  margin: 0px 8px;
+}
+.subtotal-cart {
+  display: flex;
+}
+
+.profile-link{
+  text-decoration: none;
+  color: #33903f;
+}
+.profile-link:hover{
+  text-decoration: none;
+  color: #33903f;
+}
 .remove {
   position: absolute;
   bottom: 7px;
@@ -52,6 +132,24 @@
   padding: 50px;
   display: flex;
   justify-content: space-between;
+}
 
+// Summary
+.summary {
+  display: grid;
+  grid-template-rows: 25% 1fr 1fr 1fr 1fr;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 48px;
+  width: 350px;
+  background-color: white;
+  height: 400px;
+  position: sticky;
+  top: 66px;
+}
+
+
+.checkout-detail{
+  display: flex;
+  justify-content: space-between;
 }
 

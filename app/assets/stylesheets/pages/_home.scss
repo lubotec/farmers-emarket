@@ -12,7 +12,7 @@
 }
 
 .banner h1 {
-  margin-top: 36px;
+  // margin-top: 36px;
   color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
   font-size: 44px;
@@ -81,7 +81,7 @@
 // How to Section
 
 .how-to {
-  // background-color: rgba(245, 245, 245, 0.1);
+  background-color: rgb(255, 255, 255);
   width: 100%;
 }
 
@@ -127,14 +127,12 @@
 // Meet our customer
 
 .customer {
-  background-color: white;
   padding-bottom: 80px;
 
 }
 
 .customer h1 {
   padding-top: 80px;
-  padding-bottom: 80px;
   text-align: center;
   color: #33903f;
   font-family: 'Poppins', sans-serif;
@@ -144,11 +142,13 @@
 // Farmer profile
 
 .farmer {
+  background-color: white;
   width: 1200px;
-  margin: 0 auto;
+  margin: 80px auto;
   display: flex;
   padding: 80px;
   box-shadow: 0px 4px 24px rgba($color: #000000, $alpha: 0.3);
+
 }
 
 .farmer img {
@@ -175,6 +175,7 @@
   margin: 0px;
 }
 
+
 // **Tablets**
 @media (max-width: 1024px)  {
   .steps {
@@ -194,22 +195,23 @@
 // **Mobile**
 
 @media (max-width: 767px) {
-    .steps {
-      flex-wrap: wrap;
-      padding: 0 40px 60px 40px;
-      
-    }
-    .step-1 {
-      width: 100%;
-      margin-top: 40px;
-      padding: 40px;
-    }
-    .step-1 p {
-      width: 100%;
-      text-align: center;
-    }
-
-    .search-form-control {
-      width: 100%;
-    }
+  .steps {
+    flex-wrap: wrap;
+    padding: 0 40px 60px 40px;
+    
   }
+  .step-1 {
+    width: 100%;
+    margin-top: 40px;
+    padding: 40px;
+  }
+  .step-1 p {
+    width: 100%;
+    text-align: center;
+  }
+
+  .search-form-control {
+    width: 100%;
+  }
+}
+

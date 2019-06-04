@@ -17,10 +17,19 @@
     <% unless current_page?(root_path) %>
       <%= render 'shared/navbar' %>
     <% end %>
-
+    
+    <% flash.each do |name, msg| %>
+      <div class="alert alert-<%=name%>" role="alert">
+        <%= msg %>
+      </div>
+    <% end %>
     <%= yield %>
+<<<<<<< HEAD
+    <%= debug(params) if Rails.env.development? %>
+=======
 
-    <p class="notice"><%= notice %></p>
+>>>>>>> 78a048e2fef11c8f435fcea6314966aac582abd3
+    <p class="notice" style="margin:0px;"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
