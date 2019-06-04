@@ -17,7 +17,12 @@ Rails.application.routes.draw do
     resources :order_products, only: [:create]
   end
 
-  resources :order_products, only: [:destroy]
+  resources :order_products, only: [:destroy] do
+    member do
+      get 'increment'
+      get 'decrement'
+    end
+  end
 
 
 

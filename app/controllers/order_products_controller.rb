@@ -15,4 +15,16 @@ class OrderProductsController < ApplicationController
     @order_product.destroy
     redirect_to restaurant_cart_path(current_user.restaurant)
   end
+
+  def increment
+   @order_product = OrderProduct.find(params[:id])
+   @order_product.quantity += 1
+   @order_product.save
+  end
+
+  def decrement
+    @order_product = OrderProduct.find(params[:id])
+    @order_product.quantity -= 1 if @order_product.quantity > 0
+    @order_product.save
+  end
 end

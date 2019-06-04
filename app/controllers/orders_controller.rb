@@ -5,19 +5,22 @@ class OrdersController < ApplicationController
   end
 
   def my_active_order
+    @total = 0
     @order = current_user.restaurant.active_order
+    @order.order_products.map do |order_product|
+      @total += order_product.product.price * order_product.quantity
+    end
+    @shipment = @total > 50 ? 50 : (@total * 0.14).round(2) + @total
+    @total_and_shipment = @shipment + @total
   end
 
   def checkout_order
-    if @order.update(status: "paid")
-      @order.order_products.each { |order_product| order_product.update(status: "paid") }
-      @order.order_products.each { |order_product| order_product.update(total_price: order_product.product.price * order_product.quantity) }
-      current_user.restaurant.check_open_order
-      redirect_to restaurant_orders_path(current_user.restaurant)
-    else
-      render 'my_active_order'
-      flash[:error] = "Unfortunately, something went wrong. Try again!"
+    @order.order_products.each do |order_product|
+      order_product.update(total_price: order_product.product.price * order_product.quantity)
+      check_inventory(order_product.product.inventory, order_product)
     end
+    order_total_price
+    redirect_to restaurant_orders_path(@order)
   end
 
   def my_orders
@@ -29,4 +32,22 @@ class OrdersController < ApplicationController
   def set_order
     @order = Order.find(params[:id])
   end
+
+  def order_total_price
+    @order.total_price = 0
+    @order.order_products.each do |order_product|
+      @order.total_price += order_product.total_price
+    end
+    @order.update(total_price: @order.total_price)
+  end
+
+  def check_inventory(inventory, order_product)
+    if (inventory - order_product.quantity) < 0
+      flash[:danger] = "There is only #{inventory} left of #{order_product.product.name}"
+      return
+    else
+      order_product.product.update(inventory: order_product.product.inventory - order_product.quantity)
+    end
+  end
+
 end
