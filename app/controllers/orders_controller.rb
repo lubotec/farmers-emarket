@@ -14,7 +14,6 @@ class OrdersController < ApplicationController
       # @order.order_products.each { |order_product| order_product.update(status: "paid") }
       @order.order_products.each { |order_product| order_product.update(total_price: order_product.product.price * order_product.quantity) }
       order_total_price
-      
       redirect_to new_order_payment_path(@order)
   end
 
@@ -35,5 +34,4 @@ class OrdersController < ApplicationController
     end
     @order.update(total_price: @order.total_price)
   end
-
 end
