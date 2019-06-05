@@ -12,7 +12,7 @@ function updateElement() {
     total = total + parseInt(totalPrice.innerHTML, 10)
   })
   subtotal.innerHTML = total
-  total_price.innerHTML = <%= @order_product.quantity * @order_product.quantity%>
+  total_price.innerHTML = <%= @order_product.product.price * @order_product.quantity %>
   quantity.innerHTML = <%= @order_product.quantity %>
   shipment.innerHTML = <%= 50 %>
   subtotal_shipment.innerHTML = total + 50

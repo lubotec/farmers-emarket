@@ -21,8 +21,7 @@ class OrdersController < ApplicationController
       check_inventory(order_product.product.inventory, order_product)
     end
     order_total_price
-    redirect_to restaurant_orders_path(@order)
-    # redirect_to new_order_payment_path(@order)
+    redirect_to new_order_payment_path(@order)
   end
 
   def my_orders
