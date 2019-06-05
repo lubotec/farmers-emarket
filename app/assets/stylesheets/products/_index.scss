@@ -14,7 +14,7 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    // justify-content: space-between;
     margin-top: 40px;
     // margin: 0 auto;
 }
@@ -56,6 +56,16 @@
     width: 1320px;
     margin: 0 auto;
 }
+
+.product-name {
+    color:black;  
+}
+
+.link-name:hover {
+    text-decoration: none;  
+    color:green;
+}
+//media queries
 
 @media (max-width: 4000px) {
     .responsive-dropdown {
