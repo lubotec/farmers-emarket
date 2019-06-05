@@ -28,7 +28,7 @@
         <%= link_to "Market", products_path, class: "nav-link", style: 'padding: 15px 20px'%>
       </li>
       <% if current_user.role == "Restaurant" && current_user.restaurant.present? %>
-        <li class="nav-item"> <%= link_to "My Orders", restaurant_orders_path, class: "nav-link", style: 'padding: 15px 20px'%></li>
+        <li class="nav-item"> <%= link_to "My Orders", restaurant_orders_path, class: "nav-link", style: 'padding: 15px 20px'%> <span class="badge badge-light">6</span></li>
         <li class="nav-item"> <%= link_to "", restaurant_cart_path, class: "nav-link fas fa-shopping-cart", style: 'padding: 15px 20px; font-size: 25px; margin-right: 10px'%></li>
     <% end %>
     <% if current_user.role == "Farmer" && current_user.farmer.present? %>
