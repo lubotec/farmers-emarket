@@ -46,7 +46,7 @@
             <% @products.each do |product| %>
                 <div class="col-lg-4 product-card-parent">
                     <% if current_user.role == "Restaurant" %>
-                        <%= link_to product_order_products_path(product), method: :post, class: "add-b-f" , style: 'font-size: 30px; color: white;' do %>
+                        <%= link_to product_order_products_path(product), method: :post, class: "add-b-f" , remote: true, style: 'font-size: 30px; color: white;' do %>
                             <ion-icon name="add-circle-outline"></ion-icon>
                         <% end %>
                     <% end %>
