@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :checkout_order]
 
   def show
-  
+
   end
 
   def my_active_order
