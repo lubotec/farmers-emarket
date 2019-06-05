@@ -60,7 +60,7 @@
             <div class="d-flex">
               <div class="d-flex mr-4">
                 <%= f.input :text, label: "Search", placeholder: "Product or category", input_html: { value: params[:query].try(:[], :text) } %>
-                <%= f.input :price, label: "Price", collection: ['Ascending', 'Descending'], selected: params[:query].try(:[], :price)  %>
+                <%= f.input :price, label: "Price", collection: ['No filter', 'Ascending', 'Descending'], selected: params[:query].try(:[], :price)  %>
                 <%#= f.input :distance, label: "Distance", collection: ['< 5km', '5-10km', '10-20km', '20-50km'], selected: params[:query].try(:[], :distance)  %>
                 <%= f.input :category, as: :hidden, input_html: { value: params[:query].try(:[], :category) } %>
               </div>
@@ -112,5 +112,5 @@
 <div
     id="map"
     data-markers="<%= @marker.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"> 
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>

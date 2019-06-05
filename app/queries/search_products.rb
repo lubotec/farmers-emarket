@@ -22,9 +22,11 @@ class SearchProducts
 
   def filter_by_price(scope, price)
     if price == "Descending"
-      scope.order(price: :desc)
+      scope.order(price_cents: :desc)
+    elsif price == "Ascending"
+      scope.order(price_cents: :asc)
     else
-      scope.order(price: :asc)
+      scope
     end
   end
 end
