@@ -60,8 +60,8 @@
             <div class="d-flex filter">
               <div class="filter-input d-flex mr-4">
                 <%= f.input :text, label: "Search", required: false, placeholder: "Product or category", input_html: { value: params[:query].try(:[], :text)}, wrapper_html: { class: 'input-price' }%>
-                <%= f.input :price, label: "Price", required: false, collection: ['No filter', 'Ascending', 'Descending'], selected: params[:query].try(:[], :price), wrapper_html: { class: 'input-price' }  %>
-                <%#= f.input :distance, label: "Distance", collection: ['< 5km', '5-10km', '10-20km', '20-50km'], selected: params[:query].try(:[], :distance)  %>
+                <%= f.input :price, label: "Price", required: false, collection: ['-', 'Ascending', 'Descending'], selected: params[:query].try(:[], :price), wrapper_html: { class: 'input-price' }  %>
+                <%= f.input :distance, label: "Distance", required: false, collection: ['-', '< 5km', '< 10km', '< 20km', '< 50km'], selected: params[:query].try(:[], :distance)  %>
                 <%= f.input :category, as: :hidden, input_html: { value: params[:query].try(:[], :category) } %>
               </div>
               <div>
@@ -99,7 +99,7 @@
                             <% end %>
                         </div>
                         <div class='rows'>
-                            <p>⭐️️️️️️️⭐️⭐️⭐️<%=product.rating%> </p>
+                            <p>⭐️️️️️️️⭐️⭐️⭐️</p>
                             <p>$<%=product.price%> / <small><%=product.unit_of_measurement%></small></p>
                         </div>
                     </div>

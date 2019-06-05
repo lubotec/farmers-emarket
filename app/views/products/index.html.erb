@@ -8,14 +8,14 @@
     </div>
 
     <div>
-      
+
         <div class="cards-container">
            <%= simple_form_for :query, url: products_path, method: :get do |f| %>
             <div class="d-flex filter">
               <div class="filter-input d-flex mr-4">
                 <%= f.input :text, label: "Search", required: false, placeholder: "Product or category", input_html: { value: params[:query].try(:[], :text)}, wrapper_html: { class: 'input-price' }%>
-                <%= f.input :price, label: "Price", required: false, collection: ['No filter', 'Ascending', 'Descending'], selected: params[:query].try(:[], :price), wrapper_html: { class: 'input-price' }  %>
-                <%= f.input :distance, label: "Distance", collection: ['-', < 5km', '< 10km', '< 20km', '< 50km'], selected: params[:query].try(:[], :distance)  %>
+                <%= f.input :price, label: "Price", required: false, collection: ['-', 'Ascending', 'Descending'], selected: params[:query].try(:[], :price), wrapper_html: { class: 'input-price' }  %>
+                <%= f.input :distance, label: "Distance", required: false, collection: ['-', '< 5km', '< 10km', '< 20km', '< 50km'], selected: params[:query].try(:[], :distance)  %>
                 <%= f.input :category, as: :hidden, input_html: { value: params[:query].try(:[], :category) } %>
               </div>
               <div>
@@ -45,13 +45,16 @@
         <div class='cards-container row'>
             <% @products.each do |product| %>
                 <div class="col-lg-4 product-card-parent">
+                  <% if current_user %>
                     <% if current_user.role == "Restaurant" %>
                         <%= link_to product_order_products_path(product), method: :post, class: "add-b-f" , remote: true, style: 'font-size: 30px; color: white;' do %>
                             <ion-icon name="add-circle-outline"></ion-icon>
                         <% end %>
                     <% end %>
+                    <% end %>
 
                     <div class='product-card'>
+                      <% if current_user %>
                         <% if current_user.role == "Restaurant" %>
                             <a href="#" data-featherlight="#mylightbox-<%=product.id %>">
                         <% end %>
@@ -66,13 +69,15 @@
                             </div>
                         <% end %>
 
+                        <% end %>
+
                         <div class='card-details'>
                             <div class='rows'>
                                 <h4 class="product-name"><%= product.name %></h4>
                                 <%= link_to cl_image_tag(product.farmer.user.avatar, class: 'photo-card avatar', crop: :fill, height: 50), farmer_path(product.farmer)%>
                             </div>
                             <div class='rows'>
-                                <p>⭐️️️️️️️⭐️⭐️⭐️<%=product.rating%> </p>
+                                <p>⭐️️️️️️️⭐️⭐️⭐️</p>
                                 <p>$<%=product.price%> / <small><%=product.unit_of_measurement%></small></p>
                             </div>
                         </div>
@@ -83,7 +88,7 @@
 
         <!-- Popup -->
 
-        
+
             <% @products.each do |product| %>
 
             <div hidden>
@@ -120,7 +125,7 @@
             </div>
 
             <% end %>
-        
+
 
     </div>
 </div>

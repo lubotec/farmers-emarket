@@ -48,12 +48,12 @@
       <td style='text-align: center'> <%= product.product.farmer.name %> </td>
       <td style='text-align: center'>$<%= product.total_price %></td>
       <td style='text-align: center'> <%= product.quantity %></td>
-      <td style='text-align: right'><%= product.total_price * product.quantity %></td>
+      <td style='text-align: right'>$<%= product.total_price * product.quantity %></td>
     </tr>
     <% end %>
   </tbody>
     <tr>
       <td style='text-align: left; font-weight: bold; border-right: 1px solid white;' colspan="4">Grand total</td>
-      <td style='text-align: right; font-weight: bold; border-left: 1px solid white;' colspan="1"> <%= @order.total_price %> </td>
+      <td style='text-align: right; font-weight: bold; border-left: 1px solid white;' colspan="1">$<%= @order.total_price %> </td>
     </tr>
 </table>
