@@ -92,8 +92,10 @@
 
         <!-- Popup -->
 
-        <div hidden>
+        
             <% @products.each do |product| %>
+
+            <div hidden>
 
             <div id="mylightbox-<%=product.id %>">
 
@@ -124,9 +126,10 @@
                 </div>
 
             </div>
+            </div>
 
             <% end %>
-        </div>
+        
 
     </div>
 </div>

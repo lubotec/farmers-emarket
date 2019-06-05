@@ -27,4 +27,8 @@ class SearchProducts
       scope.order(price: :asc)
     end
   end
+
+  # def filter_by_price(scope, distance)
+  #   if distance == '< 5km'
+  #     scope.where(farmer.address: )
 end
