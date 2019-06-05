@@ -8,12 +8,12 @@
     </div>
 
     <div>
-        <div class="form-group-f">
+        <div class="cards-container row">
             <%= simple_form_for :query, url: products_path, method: :get do |f| %>
-            <div class="d-flex">
+            <div class="d-flex justify-content-between">
               <div class="d-flex mr-4">
                 <%= f.input :text, label: "Search", placeholder: "Product or category", input_html: { value: params[:query].try(:[], :text) } %>
-                <%= f.input :price, label: "Price", collection: ['Ascending', 'Descending'], selected: params[:query].try(:[], :price)  %>
+                <%= f.input :price, label: "Price", collection: ['No filter', 'Ascending', 'Descending'], selected: params[:query].try(:[], :price)  %>
                 <%#= f.input :distance, label: "Distance", collection: ['< 5km', '5-10km', '10-20km', '20-50km'], selected: params[:query].try(:[], :distance)  %>
                 <%= f.input :category, as: :hidden, input_html: { value: params[:query].try(:[], :category) } %>
               </div>
@@ -39,16 +39,6 @@
                 <option>Meat</option>
                 <option>Dairy</option>
             </select>
-        </div>
-
-        <div class='cards-container'>
-            <% @products.each do |product| %>
-                <i class="fas fa-search searchf-f" style="position: absolute;
-                            top: 63px;
-                            left: 1040px;
-                            font-size: 40px;">
-                </i>
-            <% end %>
         </div>
 
         <div class='cards-container row'>
@@ -78,7 +68,7 @@
                         <div class='card-details'>
                             <div class='rows'>
                                 <h4 class="product-name"><%= product.name %></h4>
-                                <%= link_to cl_image_tag(product.farmer.user.avatar, class: 'photo-card avatar link-name', crop: :fill, height: 50), farmer_path(product.farmer)%>
+                                <%= link_to cl_image_tag(product.farmer.user.avatar, class: 'photo-card avatar', crop: :fill, height: 50), farmer_path(product.farmer)%>
                             </div>
                             <div class='rows'>
                                 <p>⭐️️️️️️️⭐️⭐️⭐️<%=product.rating%> </p>
@@ -118,7 +108,7 @@
                 <div class="description">
                     <p><%=product.description %></p>
                 </div>
-                
+
                 <div class="add-to-cart">
                     <button href="#" class="btn-f btn-m">Add to cart</button>
                 </div>

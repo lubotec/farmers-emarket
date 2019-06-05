@@ -17,7 +17,7 @@
     <% unless current_page?(root_path) %>
       <%= render 'shared/navbar' %>
     <% end %>
-    
+
     <% flash.each do |name, msg| %>
       <div class="alert alert-<%=name%>" role="alert">
         <%= msg %>

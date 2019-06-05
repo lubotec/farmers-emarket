@@ -24,11 +24,10 @@
             </div>
             <div class= "price-each">
               <span>Each: €</span><p class="price" style="display:inline"> <%= order_product.product.price %></p>
-              <% raise %>
             </div>
             <p>Seller: <%= link_to farmer_path(order_product.product.farmer), class:'profile-link hvr-icon-wobble-horizontal', style:'margin-bottom: 3px;' do %>
                 <%= order_product.product.farmer.name %><i class="fa fa-arrow-right hvr-icon" style="margin-left: 8px;"></i>
-              <% end %>              
+              <% end %>
             </p>
           </div>
         </div>
@@ -59,5 +58,5 @@
         <button class="btn-f">Checkout</button>
       <% end %>
     </div>
-  </div>  
+  </div>
 </div>
