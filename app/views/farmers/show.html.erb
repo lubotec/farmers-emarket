@@ -4,7 +4,7 @@
             <div class="carousel-item active">
                 <%= cl_image_tag @farmer.farmer_photos.first.data, height: 500, style: 'object-fit: cover', class: "d-block w-100" %>
             </div>
-            <% @farmer.farmer_photos.each do |photo| %>
+            <% @farmer.farmer_photos.drop(1).each do |photo| %>
             <div class="carousel-item">
                 <%= cl_image_tag photo.data, height: 500,  style: 'object-fit: cover', class: "d-block w-100" %>
             </div>
