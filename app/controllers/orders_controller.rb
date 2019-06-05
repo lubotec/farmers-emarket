@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :checkout_order]
 
   def show
-  
+
   end
 
   def my_active_order
@@ -21,8 +21,7 @@ class OrdersController < ApplicationController
       check_inventory(order_product.product.inventory, order_product)
     end
     order_total_price
-    redirect_to restaurant_orders_path(@order)
-    # redirect_to new_order_payment_path(@order)
+    redirect_to new_order_payment_path(@order)
   end
 
   def my_orders
