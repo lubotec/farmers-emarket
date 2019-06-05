@@ -9,12 +9,17 @@
     flex-grow: 0;
     }
 
+    .sticky-nav {
+      position: sticky;
+      top: 0px;
+      z-index: 1;
+    }
 </style>
 
 <% if user_signed_in? %>
 
 
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar sticky-nav navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to "Farmers' eMarket", root_path, style: 'text-decoration: none; color: black; font-size: 24px; font-weight: bold; margin-left: 40px' %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +34,7 @@
       </li>
       <% if current_user.role == "Restaurant" && current_user.restaurant.present? %>
         <li class="nav-item"> <%= link_to "My Orders", restaurant_orders_path, class: "nav-link", style: 'padding: 15px 20px'%></li>
-        <li class="nav-item"> <%= link_to "", restaurant_cart_path, class: "nav-link fas fa-shopping-cart", style: 'padding: 15px 20px; font-size: 25px; margin-right: 10px'%></li>
+        <li class="nav-item"> <%= link_to "", restaurant_cart_path, class: "nav-link fas fa-shopping-cart", style: 'padding: 15px 20px; font-size: 25px; margin-right: 10px'%> <span class="badge badge-dark notification-pos"><%= current_user.restaurant.active_order.order_products.count %></span></li>
     <% end %>
     <% if current_user.role == "Farmer" && current_user.farmer.present? %>
         <li class="nav-item"> <%= link_to "My profile", farmer_path(current_user.farmer), class: "nav-link", style: 'padding: 15px 20px'%></li>
