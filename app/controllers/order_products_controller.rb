@@ -8,6 +8,11 @@ class OrderProductsController < ApplicationController
       status: "open",
       product_sku: @product.sku
     )
+    @count = current_user.restaurant.active_order.order_products.count
+    respond_to do |format|
+      format.js
+      format.html { redirect_back(fallback_location: products_path) }
+    end
   end
 
   def destroy
