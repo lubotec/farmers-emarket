@@ -1,12 +1,43 @@
+<style>
+  td {
+    width: 100px
+    text-align: right;
+  }
 
-<h1>Order</h1>
-<ul>
-  <li>Status: <%= @order.status %></li>
+  table {
+    width: 1000px;
+    margin: 0 auto;
+  }
+</style>
 
-  <% @order.order_products.each do |product| %>
-  <li>Product Name: <%= product.product.name %></li>
-  <li>Qty: <%= product.quantity %></li>
-  <li>Price per: $<%= product.total_price %></li>
-  <% end %>
-  <li>Total bill: <%= @order.total_price %></li>
-<ul>
+
+<h1>Order Details</h1>
+<p>Ordered on: <%= @order.created_at.strftime('%m/%d/%Y') %> <p>
+<p>Status: <%= @order.status %></p>
+
+<table>
+  <thead>
+    <tr>
+      <td style='text-align: left; width: 600px'>Item(s) Purchased</td>
+      <td style='text-align: left'>Farmer</td>
+      <td style='text-align: left'>Price</td>
+      <td style='text-align: left'>Quantity</td>
+      <td style='text-align: right'>Total</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_products.each do |product| %>
+    <tr>
+      <td style='text-align: left'><%= product.product.name %></td>
+      <td style='text-align: left'> <%= product.product.farmer.name %> </td>
+      <td style='text-align: left'>$<%= product.total_price %></td>
+      <td style='text-align: left'> <%= product.quantity %></td>
+      <td style='text-align: right'><%= product.total_price * product.quantity %></td>
+    </tr>
+    <% end %>
+  </tbody>
+    <tr>
+      <td style='text-align: left' colspan="4">Grand total</td>
+      <td colspan="1"> <%= @order.total_price %> </td>
+    </tr>
+</table>
