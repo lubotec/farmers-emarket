@@ -10,7 +10,11 @@
   width: 100%;
   margin: 0 auto;
 }
-
+.notification-pos{
+  border-radius: 50%;
+  position: absolute;
+  top: 26px;
+}
 .farmer-nav-home {
   color: white;
   font-family: "Raleway", "Helvetica", "sans-serif";
