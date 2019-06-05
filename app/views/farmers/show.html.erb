@@ -45,27 +45,27 @@
                         class="icon-position hvr-icon">
                 </ion-icon>
             <% end %>
-            <p style="margin-top: 56px"><%= link_to "Clear filter", products_path, class: "cat-item", style:"font-weight: lighter" %></p>
+            <p style="margin-top: 56px"><%= link_to "Clear filter", farmer_path(@farmer), class: "cat-item", style:"font-weight: lighter" %></p>
         <% else %>
-            <p style="margin-top: 160px"><%= link_to "Clear filter", products_path, class: "cat-item", style:"font-weight: lighter" %></p>
+            <p style="margin-top: 160px"><%= link_to "Clear filter", farmer_path(@farmer), class: "cat-item", style:"font-weight: lighter" %></p>
         <% end %>
-        <h3><%= link_to "Fruits", products_path(query: {category: "Fruits"}), class: "cat-item #{'green-underline bold' if selected_category?("Fruits") }" %></h3>
-        <h3><%= link_to "Veggies", products_path(query: {category: "Vegetables"}), class: "cat-item #{'green-underline bold' if selected_category?("Vegetables") }" %></h3>
-        <h3><%= link_to "Meat", products_path(query: {category: "Meat"}), class: "cat-item #{'green-underline bold' if selected_category?("Meat") }" %></h3>
-        <h3><%= link_to "Dairy", products_path(query: {category: "Dairy"}), class: "cat-item #{'green-underline bold' if selected_category?("Dairy") }" %></h3>
+        <h3><%= link_to "Fruits", farmer_path(@farmer, query: {category: "Fruits"}), class: "cat-item #{'green-underline bold' if selected_category?("Fruits") }" %></h3>
+        <h3><%= link_to "Veggies", farmer_path(@farmer, query: {category: "Vegetables"}), class: "cat-item #{'green-underline bold' if selected_category?("Vegetables") }" %></h3>
+        <h3><%= link_to "Meat", farmer_path(@farmer, query: {category: "Meat"}), class: "cat-item #{'green-underline bold' if selected_category?("Meat") }" %></h3>
+        <h3><%= link_to "Dairy", farmer_path(@farmer, query: {category: "Dairy"}), class: "cat-item #{'green-underline bold' if selected_category?("Dairy") }" %></h3>
     </div>
     <div>
-        <div class="cards-container row">
+        <div class="cards-container">
             <%= simple_form_for :query, url: products_path, method: :get do |f| %>
-            <div class="d-flex">
-              <div class="d-flex mr-4">
-                <%= f.input :text, label: "Search", placeholder: "Product or category", input_html: { value: params[:query].try(:[], :text) } %>
-                <%= f.input :price, label: "Price", collection: ['No filter', 'Ascending', 'Descending'], selected: params[:query].try(:[], :price)  %>
+            <div class="d-flex filter">
+              <div class="filter-input d-flex mr-4">
+                <%= f.input :text, label: "Search", required: false, placeholder: "Product or category", input_html: { value: params[:query].try(:[], :text)}, wrapper_html: { class: 'input-price' }%>
+                <%= f.input :price, label: "Price", required: false, collection: ['No filter', 'Ascending', 'Descending'], selected: params[:query].try(:[], :price), wrapper_html: { class: 'input-price' }  %>
                 <%#= f.input :distance, label: "Distance", collection: ['< 5km', '5-10km', '10-20km', '20-50km'], selected: params[:query].try(:[], :distance)  %>
                 <%= f.input :category, as: :hidden, input_html: { value: params[:query].try(:[], :category) } %>
               </div>
               <div>
-                <%= f.submit "Search", class: "btn-f-d" %>
+                <%= f.button :submit, "Search", class: "btn-f-d" %>
               </div>
             </div>
             <% end %>
