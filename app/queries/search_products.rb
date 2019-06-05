@@ -1,6 +1,8 @@
 class SearchProducts
+  attr_reader :current_user
   def initialize(params, farmer_id = nil)
     @params = params
+    @current_user = params[:current_user]
     @scope = farmer_id ? Farmer.find(farmer_id).products : Product.all
   end
 
@@ -22,13 +24,22 @@ class SearchProducts
 
   def filter_by_price(scope, price)
     if price == "Descending"
-      scope.order(price: :desc)
+      scope.order(price_cents: :desc)
     else
-      scope.order(price: :asc)
+      scope.order(price_cents: :asc)
     end
   end
 
-  # def filter_by_price(scope, distance)
-  #   if distance == '< 5km'
-  #     scope.where(farmer.address: )
+  def filter_by_distance(scope, distance)
+    searchable = current_user.role_object
+    if distance == '< 5km'
+      scope.near(searchable.address, 5)
+    elsif distance == '< 10km'
+      scope.near(searchable.address, 10)
+    elsif distance == '< 20km'
+      scope.near(searchable.address, 20)
+    elsif distance == '< 50km'
+      scope.near(searchable.address, 50)
+    end
+  end
 end
