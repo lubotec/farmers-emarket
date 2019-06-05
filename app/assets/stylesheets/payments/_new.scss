@@ -1,0 +1,31 @@
+
+  h1{
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .order-form {
+    width: 400px;
+    margin: 50px auto;
+    
+  }
+
+  label {
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .amount {
+    margin: 0 auto;
+  }
+
+  .strip-btn, h3 {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  form {
+    padding: 50px;
+    border: 1px solid grey;
+  }
