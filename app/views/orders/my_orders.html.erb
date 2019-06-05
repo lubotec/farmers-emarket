@@ -1,6 +1,21 @@
-<% @paid_orders.each do |order| %>
-<%= order  %>
-<%= order.status %>
-<%= link_to "View order details", order_path(order) %>
-<% end %>
+<h2>Order History</h2>
 
+<div class='order-container'>
+<% @paid_orders.each do |order| %>
+    <div class='order-card'>
+        <div class='line1'>
+            <h4>Order ID: <%= order.id %></h4>
+            <p>Status: <%= order.status %></p>
+        </div>
+        <div class='line1'>
+            <h4>$<%= order.total_price %></h4>
+        </div>
+        <div class='line1'>
+           <h4><%= link_to order.created_at.strftime('%m/%d/%Y'), order_path(order) %></h4>
+        </div>
+    </div> 
+    <% end %>
+</div>
+
+
+<br><br><br><br><br><br><br><br>

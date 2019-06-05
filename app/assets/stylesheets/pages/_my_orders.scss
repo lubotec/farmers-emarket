@@ -1,0 +1,23 @@
+.order-container {
+    width: 1320px;
+    margin: 60px auto;
+    /* margin-top: 20px; */
+}
+
+.order-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); */
+    border-bottom: 1px solid grey;
+    /* margin-top: 20px; */
+    padding: 40px 30px;
+}
+
+.line1 p{
+    margin: 0px;
+}
+
+.order-card:first-child {
+    border-top: 1px solid grey;
+}
