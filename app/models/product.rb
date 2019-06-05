@@ -5,6 +5,18 @@ class Product < ApplicationRecord
   has_many :product_photos, dependent: :destroy
   accepts_nested_attributes_for :product_photos
   monetize :price_cents
+
+  # def self.near(restaurant)
+  #   nearby_farmers = Farmer.near(restaurant)
+  #   farmer_ids = nearby_farmers.map {|farmer| farmer.id }
+  #   Product.where(farmer_id: farmer_ids)
+  # end
+
+
+  scope :near, ->(*args) {
+    nearby_addresses = Farmer.near(*args)
+    where(farmer_id: nearby_addresses.map(&:id))
+  }
   # mount_uploader :data, PhotoUploader
   # validates :name, presence: true
   # validates :category, presence: true

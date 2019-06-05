@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   def index
     if params[:query].present?
       @query = params[:query].permit!
-      @products = SearchProducts.new(@query).call
+      @products = SearchProducts.new(@query.merge!({current_user: current_user})).call
     else
       @products = Product.all
     end

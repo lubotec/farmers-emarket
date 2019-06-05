@@ -26,7 +26,7 @@ class FarmersController < ApplicationController
 
   def show
     if params[:query].present?
-      @products = SearchProducts.new(params[:query], @farmer.id).call
+      @products = SearchProducts.new(params[:query].merge!({current_user: current_user}), @farmer.id).call
     else
       @products = @farmer.products
     end
