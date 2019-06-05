@@ -11,7 +11,7 @@ function updateElement() {
   const detailPrice = updatedSummary.querySelector('.detail-price')
   const total_card_price = (<%= @order_product.product.price * @order_product.quantity %>).toFixed(2)
 
-  detailPrice.innerHTML = `€${total_card_price}`
+  detailPrice.innerHTML = `$${total_card_price}`
   total_price.innerHTML = total_card_price
   quantity.innerHTML = <%= @order_product.quantity %>
   let total = 0
