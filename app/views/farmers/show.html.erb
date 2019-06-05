@@ -80,14 +80,15 @@
                           <%= link_to product_order_products_path(product), method: :post, class: "add-b" , style: 'font-size: 30px; color: white' do %>
                               <ion-icon name="add-circle-outline"></ion-icon>
                           <% end %>
+
                         <% end %>
                         <% if current_user.role == "Farmer" && Farmer.find(params[:id]) == current_user.farmer %>
-                        <%= link_to edit_product_path(product), method: :get, class: "add-b-r hvr-icon-spin" do %>
-                        <ion-icon name="settings" class="hvr-icon"></ion-icon>
-                        <% end %>
-                        <%= link_to product_path(product), method: :delete, class: "add-b hvr-icon-spin", style: 'color: white;' do %>
-                        <ion-icon name="close" class="hvr-icon"></ion-icon>
-                        <% end %>
+                            <%= link_to edit_product_path(product), method: :get, class: "add-b-r hvr-icon-spin" do %>
+                                <ion-icon name="settings" class="hvr-icon"></ion-icon>
+                            <% end %>
+                            <%= link_to product_path(product), method: :delete, class: "add-b hvr-icon-spin", style: 'color: white;' do %>
+                                <ion-icon name="close" class="hvr-icon"></ion-icon>
+                            <% end %>
                         <% end %>
                     </div>
                     <div class='card-details'>
