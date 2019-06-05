@@ -1,20 +1,25 @@
 function updateElement() {
   const updated = document.querySelector("[data-id='<%= @order_product.id %>']")
+  const updatedSummary = document.querySelector("[data-order-product-id='<%= @order_product.id %>']")
+
   const cards = document.querySelectorAll('.card-product')
   const quantity = updated.querySelector('.quantity')
   const total_price = updated.querySelector('.total-price')
   const subtotal = document.querySelector('.subtotal')
-  const shipment = document.querySelector('.shipping')
+
   const subtotal_shipment = document.querySelector('.total_and_shipment')
+  const detailPrice = updatedSummary.querySelector('.detail-price')
+  const total_card_price = (<%= @order_product.product.price * @order_product.quantity %>).toFixed(2)
+
+  detailPrice.innerHTML = `€${total_card_price}`
+  total_price.innerHTML = total_card_price
+  quantity.innerHTML = <%= @order_product.quantity %>
   let total = 0
   cards.forEach((card) => {
     const totalPrice = card.querySelector('.total-price')
+    console.log(totalPrice)
     total = total + parseInt(totalPrice.innerHTML, 10)
   })
-  subtotal.innerHTML = total
-  total_price.innerHTML = <%= @order_product.quantity * @order_product.quantity%>
-  quantity.innerHTML = <%= @order_product.quantity %>
-  shipment.innerHTML = <%= 50 %>
-  subtotal_shipment.innerHTML = total + 50
+  subtotal_shipment.innerHTML = total
 }
 updateElement()

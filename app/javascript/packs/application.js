@@ -32,5 +32,3 @@ let follow_link = () => {
   var url = $(this).val();
   $.get(url);
 }
-
-console.log(follow_link());

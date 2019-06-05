@@ -25,8 +25,10 @@ class SearchProducts
   def filter_by_price(scope, price)
     if price == "Descending"
       scope.order(price_cents: :desc)
-    else
+    elsif price == "Ascending"
       scope.order(price_cents: :asc)
+    else
+      scope
     end
   end
 
@@ -40,6 +42,8 @@ class SearchProducts
       scope.near(searchable.address, 20)
     elsif distance == '< 50km'
       scope.near(searchable.address, 50)
+    else
+      scope
     end
   end
 end

@@ -81,14 +81,13 @@
 // How to Section
 
 .how-to {
-  background-color: rgb(255, 255, 255);
   width: 100%;
 }
 
 .how-to h1 {
   padding-top: 80px;
   text-align: center;
-  color: #33903f;
+  color: #384D48;
   font-family: 'Poppins', sans-serif;
   font-size: 44px;
 }
@@ -108,10 +107,10 @@
 }
 
 .step-1 h3 {
-  color: black;  
+  color: black;
   text-align: center;
   padding-bottom: 30px;
-  border-bottom: 2px solid #33903f;
+  border-bottom: 1px solid #384D48;
 }
 .step-1 i {
   // color: #33903f;
@@ -127,6 +126,7 @@
 // Meet our customer
 
 .customer {
+  background-color: rgb(248, 248, 248);
   padding-bottom: 80px;
 
 }
@@ -134,7 +134,7 @@
 .customer h1 {
   padding-top: 80px;
   text-align: center;
-  color: #33903f;
+  color: #384D48;
   font-family: 'Poppins', sans-serif;
   font-size: 44px;
 }
@@ -142,7 +142,6 @@
 // Farmer profile
 
 .farmer {
-  background-color: white;
   width: 1200px;
   margin: 80px auto;
   display: flex;
@@ -189,8 +188,8 @@
     width: 100%;
     text-align: center;
   }
-  
-} 
+
+}
 
 // **Mobile**
 
@@ -198,7 +197,7 @@
   .steps {
     flex-wrap: wrap;
     padding: 0 40px 60px 40px;
-    
+
   }
   .step-1 {
     width: 100%;

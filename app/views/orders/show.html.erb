@@ -1,12 +1,59 @@
+<style>
+  td {
+    width: 100px;
+    padding: 30px 15px;
+    text-align: right;
+  }
 
-<h1>Order</h1>
-<ul>
-  <li>Status: <%= @order.status %></li>
+  table {
+    width: 1000px;
+    margin: 40px auto;
+  }
 
-  <% @order.order_products.each do |product| %>
-  <li>Product Name: <%= product.product.name %></li>
-  <li>Qty: <%= product.quantity %></li>
-  <li>Price per: $<%= product.total_price %></li>
-  <% end %>
-  <li>Total bill: <%= @order.total_price %></li>
-<ul>
+  thead td {
+    background-color: #384D48;
+    color: #ffffff;
+    padding: 15px;
+  }
+
+  tbody td {
+    border: 1px solid grey;
+  }
+
+  tbody td:last-child {
+    border-left: 1px solid white;
+  }
+
+</style>
+
+
+<h1 style='text-align: center; margin-top: 40px'>Order Details</h1>
+<p style='text-align: center'>Ordered on: <%= @order.created_at.strftime('%m/%d/%Y') %> <p>
+<p style='text-align: center'>Status: <%= @order.status %></p>
+
+<table>
+  <thead>
+    <tr>
+      <td style='text-align: left; width: 500px; font-weight: bold; border-left: 1px solid #384D48;'>Item(s) Purchased</td>
+      <td style='text-align: center; width: 200px; font-weight: bold'>Farmer</td>
+      <td style='text-align: center; font-weight: bold'>Price</td>
+      <td style='text-align: center; font-weight: bold'>Quantity</td>
+      <td style='text-align: right; font-weight: bold; border-right: 1px solid #384D48;'>Total</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_products.each do |product| %>
+    <tr>
+      <td style='text-align: left'><%= product.product.name %></td>
+      <td style='text-align: center'> <%= product.product.farmer.name %> </td>
+      <td style='text-align: center'>$<%= product.total_price %></td>
+      <td style='text-align: center'> <%= product.quantity %></td>
+      <td style='text-align: right'><%= product.total_price * product.quantity %></td>
+    </tr>
+    <% end %>
+  </tbody>
+    <tr>
+      <td style='text-align: left; font-weight: bold; border-right: 1px solid white;' colspan="4">Grand total</td>
+      <td style='text-align: right; font-weight: bold; border-left: 1px solid white;' colspan="1"> <%= @order.total_price %> </td>
+    </tr>
+</table>
