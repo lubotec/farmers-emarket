@@ -12,7 +12,6 @@ class Product < ApplicationRecord
   #   Product.where(farmer_id: farmer_ids)
   # end
 
-
   scope :near, ->(*args) {
     nearby_addresses = Farmer.near(*args)
     where(farmer_id: nearby_addresses.map(&:id))
