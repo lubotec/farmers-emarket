@@ -12,8 +12,7 @@ class User < ApplicationRecord
   # validates :avatar, presence: true
   validates :role, presence: true
 
-  def role_object 
+  def role_object
     role == "Farmer" ? farmer : restaurant
   end
-
 end

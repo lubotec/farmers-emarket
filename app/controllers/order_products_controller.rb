@@ -25,11 +25,13 @@ class OrderProductsController < ApplicationController
    @order_product = OrderProduct.find(params[:id])
    @order_product.quantity += 1
    @order_product.save
+   render :update
   end
 
   def decrement
     @order_product = OrderProduct.find(params[:id])
     @order_product.quantity -= 1 if @order_product.quantity > 0
     @order_product.save
+    render :update
   end
 end

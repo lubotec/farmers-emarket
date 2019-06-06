@@ -8,10 +8,7 @@ class OrdersController < ApplicationController
   def my_active_order
     @total = 0
     @order = current_user.restaurant.active_order
-    @order.order_products.map do |order_product|
-      @total += order_product.product.price * order_product.quantity
-    end
-    @total_and_shipment = @total
+    @total_and_shipment = @order.total
 
   end
 

@@ -11,6 +11,7 @@ class SearchProducts
     @scope = filter_by_category(@scope, @params[:category]) if @params[:category].present?
     @scope = filter_by_price(@scope, @params[:price]) if @params[:price].present?
     @scope = filter_by_distance(@scope, @params[:distance]) if @params[:distance].present?
+    @scope = filter_by_rating(@scope, @params[:rating]) if @params[:rating].present?
     @scope
   end
 
@@ -42,6 +43,20 @@ class SearchProducts
       scope.near(searchable.address, 20)
     elsif distance == '< 50km'
       scope.near(searchable.address, 50)
+    else
+      scope
+    end
+  end
+
+  def filter_by_rating(scope, rating)
+    if rating == '> 1'
+      scope.where("rating > ?", 1)
+    elsif rating == '> 2'
+      scope.where("rating > ?", 2)
+    elsif rating == '> 3'
+      scope.where("rating > ?", 3)
+    elsif rating == '> 4'
+      scope.where("rating > ?", 4)
     else
       scope
     end

@@ -1,6 +1,6 @@
 function updateElement() {
   const updated = document.querySelector("[data-id='<%= @order_product.id %>']")
-  const updatedSummary = document.querySelector("[data-order-product-id='<%= @order_product.id %>']")
+   const updatedSummary = document.querySelector("[data-order-product-id='<%= @order_product.id %>']")
 
   const cards = document.querySelectorAll('.card-product')
   const quantity = updated.querySelector('.quantity')
@@ -17,9 +17,9 @@ function updateElement() {
   let total = 0
   cards.forEach((card) => {
     const totalPrice = card.querySelector('.total-price')
-    console.log(totalPrice)
     total = total + parseInt(totalPrice.innerHTML, 10)
+
   })
-  subtotal_shipment.innerHTML = total
+  subtotal_shipment.innerHTML = `$${total.toFixed(2)}`
 }
 updateElement()
