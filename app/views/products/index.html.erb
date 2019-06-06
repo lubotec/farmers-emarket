@@ -77,7 +77,17 @@
                                 <%= link_to cl_image_tag(product.farmer.user.avatar, class: 'photo-card avatar', crop: :fill, height: 50), farmer_path(product.farmer)%>
                             </div>
                             <div class='rows'>
-                                <p>⭐️️️️️️️⭐️⭐️⭐️</p>
+                                <% if product.rating == 1 %>
+                                    <span><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                                <% elsif product.rating == 2 %>
+                                    <span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                                <% elsif product.rating == 3 %>
+                                    <span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                                <% elsif product.rating == 4 %>
+                                    <span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span>
+                                <% elsif product.rating == 5 %>
+                                    <span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                                <% end %>
                                 <p>$<%=product.price%> / <small><%=product.unit_of_measurement%></small></p>
                             </div>
                         </div>
@@ -85,6 +95,7 @@
                 </div>
             <% end %>
         </div>
+
 
         <!-- Popup -->
 
@@ -107,20 +118,37 @@
                     <div class="title-rating">
                         <h3><%=product.name %></h3>
                     </div>
-                    <div class='rows'>
-                        <p>⭐️️️️️️️⭐️⭐️⭐️<%=product.rating%> </p>
-                        <p><%= humanized_money_with_symbol(product.price) %> / <small><%=product.unit_of_measurement%></small></p>
+                    <div class="farmer-name">
+                        <p>by <%= link_to farmer_path(product.farmer), class:'profile-link hvr-icon-wobble-horizontal', style:'margin-bottom: 3px;' do %>
+                        <%= product.farmer.name %><i class="fa fa-arrow-right hvr-icon" style="margin-left: 8px;"></i>
+                        <% end %>
+                        </p>
                     </div>
+                    <div class='rating-price'>
+                        <% if product.rating == 1 %>
+                            <span><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                        <% elsif product.rating == 2 %>
+                            <span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                        <% elsif product.rating == 3 %>
+                             <span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                        <% elsif product.rating == 4 %>
+                            <span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span>
+                        <% elsif product.rating == 5 %>
+                            <span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        <% end %>
+                        <h4><strong><%= humanized_money_with_symbol(product.price) %></strong>/<%=product.unit_of_measurement%></h4>
+                    </div>
+                        <div>
+                            <p><%=product.description %></p>
+                        </div>
+                        <div>
+                            <p><strong>About the Farmer:</strong></p>
+                            <p><%=product.farmer.description %></p>
+                        </div>
+                        <div class="add-to-cart">
+                            <button href="#" class="btn-f btn-m">Add to cart</button>
+                        </div>
                 </div>
-
-                <div class="description">
-                    <p><%=product.description %></p>
-                </div>
-
-                <div class="add-to-cart">
-                    <button href="#" class="btn-f btn-m">Add to cart</button>
-                </div>
-
             </div>
             </div>
 

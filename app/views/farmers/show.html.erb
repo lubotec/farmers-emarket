@@ -74,23 +74,42 @@
             <% @products.each do |product| %>
             <div class="col-lg-4">
                 <div class='product-card'>
-                    <div class='card-img-farmer'
-                        style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1)), url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
-                        <% if current_user.role == "Restaurant" %>
-                          <%= link_to product_order_products_path(product), method: :post, class: "add-b" , style: 'font-size: 30px; color: white' do %>
-                              <ion-icon name="add-circle-outline"></ion-icon>
-                          <% end %>
-
-                        <% end %>
-                        <% if current_user.role == "Farmer" && Farmer.find(params[:id]) == current_user.farmer %>
+                <% if current_user %>
+                    <% if current_user.role == "Restaurant" %>
+                         <a href="#" data-featherlight="#mylightbox-<%=product.id %>"> 
+                    <% end %>
+                    <% if current_user.role == "Restaurant" %>
+                        <div class='card-img-restaurant'
+                            style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1)), url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
+                            <%= link_to product_order_products_path(product), method: :post, class: "add-b" , style: 'font-size: 30px; color: white' do %>
+                                <ion-icon name="add-circle-outline"></ion-icon>
+                                <% end %>
+                        </div>
+                    
+                    <% elsif current_user.role == "Farmer" && Farmer.find(params[:id]) == current_user.farmer %>
+                        <div class='card-img-farmer'
+                            style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1)), url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
                             <%= link_to edit_product_path(product), method: :get, class: "add-b-r hvr-icon-spin" do %>
                                 <ion-icon name="settings" class="hvr-icon"></ion-icon>
                             <% end %>
                             <%= link_to product_path(product), method: :delete, class: "add-b hvr-icon-spin", style: 'color: white;' do %>
                                 <ion-icon name="close" class="hvr-icon"></ion-icon>
                             <% end %>
-                        <% end %>
-                    </div>
+                        </div>
+                    <% else %>
+                        <div class='card-img-farmer'
+                            style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1)), url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
+                        </div>
+                    <% end %>
+                    <% end %>
+
+
+
+
+
+                    
+
+                    
                     <div class='card-details'>
                         <div class='rows'>
                             <h4><%= product.name %></h4>
@@ -99,7 +118,17 @@
                             <% end %>
                         </div>
                         <div class='rows'>
-                            <p>⭐️️️️️️️⭐️⭐️⭐️</p>
+                            <% if product.rating == 1 %>
+                                <span><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                            <% elsif product.rating == 2 %>
+                                <span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                            <% elsif product.rating == 3 %>
+                                 <span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                            <% elsif product.rating == 4 %>
+                                <span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span>
+                            <% elsif product.rating == 5 %>
+                                <span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                            <% end %>
                             <p>$<%=product.price%> / <small><%=product.unit_of_measurement%></small></p>
                         </div>
                     </div>
@@ -107,6 +136,64 @@
             </div>
             <% end %>
         </div>
+
+        <!-- Popup -->
+
+
+        <% @products.each do |product| %>
+
+        <div hidden>
+
+        <div id="mylightbox-<%=product.id %>">
+
+        <div class="product-box">
+
+            <div class="background-img"
+                style="background-image: url('<%= cl_image_path product.product_photos.first.data%>')">
+            </div>
+
+            <%= link_to cl_image_tag(product.farmer.user.avatar, class: 'profile-avatar avatar-m-bordered', crop: :fill, height: 105), farmer_path(product.farmer)%>
+
+            <div class="basic-infos">
+                <div class="title-rating">
+                    <h3><%=product.name %></h3>
+                </div>
+                <div class="farmer-name">
+                    <p>by <%= link_to farmer_path(product.farmer), class:'profile-link hvr-icon-wobble-horizontal', style:'margin-bottom: 3px;' do %>
+                    <%= product.farmer.name %><i class="fa fa-arrow-right hvr-icon" style="margin-left: 8px;"></i>
+                    <% end %>
+                    </p>
+                </div>
+                <div class='rating-price'>
+                    <% if product.rating == 1 %>
+                        <span><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                    <% elsif product.rating == 2 %>
+                        <span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                    <% elsif product.rating == 3 %>
+                        <span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                    <% elsif product.rating == 4 %>
+                        <span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span>
+                    <% elsif product.rating == 5 %>
+                        <span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                    <% end %>
+                    <h4><strong><%= humanized_money_with_symbol(product.price) %></strong>/<%=product.unit_of_measurement%></h4>
+                </div>
+                    <div>
+                        <p><%=product.description %></p>
+                    </div>
+                    <div>
+                        <p><strong>About the Farmer:</strong></p>
+                        <p><%=product.farmer.description %></p>
+                    </div>
+                    <div class="add-to-cart">
+                        <button href="#" class="btn-f btn-m">Add to cart</button>
+                    </div>
+            </div>
+        </div>
+        </div>
+
+        <% end %>
+
     </div>
 </div>
 
@@ -115,3 +202,24 @@
     data-markers="<%= @marker.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
+
+
+
+
+<%# <div class='card-img-farmer'
+                        style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1)), url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
+                        <%# if current_user.role == "Restaurant" %>
+                          <%#= link_to product_order_products_path(product), method: :post, class: "add-b" , style: 'font-size: 30px; color: white' do %>
+                              <%# <ion-icon name="add-circle-outline"></ion-icon> %>
+                          <%# end %>
+
+                        <%# end %>
+                        <%# if current_user.role == "Farmer" && Farmer.find(params[:id]) == current_user.farmer %>
+                            <%#= link_to edit_product_path(product), method: :get, class: "add-b-r hvr-icon-spin" do %>
+                                <%# <ion-icon name="settings" class="hvr-icon"></ion-icon> %>
+                            <%# end %>
+                            <%#= link_to product_path(product), method: :delete, class: "add-b hvr-icon-spin", style: 'color: white;' do %>
+                                <%# <ion-icon name="close" class="hvr-icon"></ion-icon> %>
+                            <%# end %>
+                        <%# end %>
+                    <%# </div> %> %>
