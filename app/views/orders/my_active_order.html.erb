@@ -5,7 +5,7 @@
       <% if @order.order_products %>
         <% @order.order_products.each do |order_product| %>
         <div class="card-product" data-id="<%= order_product.id %>">
-          <%= cl_image_tag order_product.product.product_photos.first.data, style: 'object-fit: cover', crop: :fill %>
+          <%= cl_image_tag order_product.product.product_photos.first.data, crop: :fill %>
           <div class="card-product-infos">
             <div class="name-quantity">
               <h2><%= order_product.product.name %></h2>
@@ -23,9 +23,9 @@
               <% end %>
             </div>
             <div class= "price-each">
-              <span>Each: $</span><p class="price" style="display:inline"> <%= order_product.product.price %></p>
+              <span>Per <%= order_product.product.unit_of_measurement %>: $</span><p class="price" style="display:inline"><%= order_product.product.price %></p>
             </div>
-            <p>Seller: <%= link_to farmer_path(order_product.product.farmer), class:'profile-link hvr-icon-wobble-horizontal', style:'margin-bottom: 3px;' do %>
+            <p>Farmer: <%= link_to farmer_path(order_product.product.farmer), class:'profile-link hvr-icon-wobble-horizontal', style:'margin-bottom: 3px;' do %>
                 <%= order_product.product.farmer.name %><i class="fa fa-arrow-right hvr-icon" style="margin-left: 8px;"></i>
               <% end %>
             </p>
@@ -33,7 +33,6 @@
         </div>
         <% end %>
       <% end %>
-      <%  %>
     </div>
     <div>
       <div class="summary">
@@ -44,6 +43,7 @@
             <p class='detail-price'>$<%= order_product.product.price * order_product.quantity %></p>
           </label>
         <% end %>
+        
         <div class="checkout-detail">
           <p><strong>Total:</strong></p>
           <div class="subtotal-cart">

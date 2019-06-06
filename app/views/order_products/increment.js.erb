@@ -20,6 +20,7 @@ function updateElement() {
     console.log(totalPrice)
     total = total + parseInt(totalPrice.innerHTML, 10)
   })
-  subtotal_shipment.innerHTML = total
+  subtotal_shipment.innerHTML = `$${total.toFixed(2)}`
+
 }
 updateElement()
