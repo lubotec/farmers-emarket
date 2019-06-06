@@ -67,6 +67,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
 }
 
 .name-quantity h2 {
@@ -136,13 +137,12 @@
 
 // Summary
 .summary {
-  display: grid;
-  grid-template-rows: 25% 1fr 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 48px;
   width: 350px;
   background-color: white;
-  height: 400px;
   position: sticky;
   top: 66px;
 }
