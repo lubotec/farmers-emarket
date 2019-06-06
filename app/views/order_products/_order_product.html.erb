@@ -19,9 +19,12 @@
     <div class= "price-each">
       <span>Per <%= order_product.product.unit_of_measurement %>: $</span><p class="price" style="display:inline"><%= order_product.product.price %></p>
     </div>
+    <div class="d-flex justify-content-between">
     <p>Farmer: <%= link_to farmer_path(order_product.product.farmer), class:'profile-link hvr-icon-wobble-horizontal', style:'margin-bottom: 3px;' do %>
         <%= order_product.product.farmer.name %><i class="fa fa-arrow-right hvr-icon" style="margin-left: 8px;"></i>
       <% end %>
     </p>
+    <p><%= link_to "Remove", order_product_path(order_product), method: :delete, class:'profile-link' %></p>
+    </div>
   </div>
 </div>
