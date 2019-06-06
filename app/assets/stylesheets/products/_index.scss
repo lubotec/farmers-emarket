@@ -85,6 +85,58 @@
     text-align: left;
 }
 
+.farmer-name {
+    display: flex;
+    justify-content: center;
+    margin-bottom:  5%;
+}
+
+.rating-price {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:  5%;
+}
+
+.product-box {
+    width: 560px;
+    height: 960px;
+    background: #ffffff;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    position: relative;
+  }
+  
+  .profile-avatar {
+    position: absolute;
+    left: 400px;
+    top: 331px;
+  }
+  
+  .basic-infos {
+    padding: 50px;
+    height: 577px;
+  }
+  
+  .title-rating {
+    margin-bottom: 10px;
+  }
+
+  .title-rating h3 {
+    margin-top: 10px;
+  }
+  
+  .price {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  
+  .add-to-cart {
+    padding-bottom: 0px;
+    bottom: 25px;
+    left: 32.5%;
+    position: absolute;
+  }
+
 //media queries
 
 @media (max-width: 4000px) {
