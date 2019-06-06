@@ -1,0 +1,8 @@
+function updateElement() {
+  const updated = document.querySelector("[data-id='<%= @order_product.id %>']");
+  const updatedSummary = document.querySelector(".summary");
+
+  updated.outerHTML = "<%= j render 'order_product', order_product: @order_product %>";
+  updatedSummary.outerHTML = "<%= j render 'orders/summary', order: @order_product.order, total: @order_product.order.total  %>";
+}
+updateElement();

@@ -1,6 +1,6 @@
 function updateElement() {
   const updated = document.querySelector("[data-id='<%= @order_product.id %>']")
-  const updatedSummary = document.querySelector("[data-order-product-id='<%= @order_product.id %>']")
+   const updatedSummary = document.querySelector("[data-order-product-id='<%= @order_product.id %>']")
 
   const cards = document.querySelectorAll('.card-product')
   const quantity = updated.querySelector('.quantity')
