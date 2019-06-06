@@ -16,6 +16,7 @@
                 <%= f.input :text, label: "Search", required: false, placeholder: "Product or category", input_html: { value: params[:query].try(:[], :text)}, wrapper_html: { class: 'input-search-f' }%>
                 <%= f.input :price, label: "Price", required: false, collection: ['-', 'Ascending', 'Descending'], selected: params[:query].try(:[], :price), wrapper_html: { class: 'input-price-f' }  %>
                 <%= f.input :distance, label: "Distance", required: false, collection: ['-', '< 5km', '< 10km', '< 20km', '< 50km'], selected: params[:query].try(:[], :distance), wrapper_html: { class: 'input-distance-f' }  %>
+                <%= f.input :rating, label: "Rating", required: false, collection: ['-', '> 1', '> 2', '> 3', '> 4'], selected: params[:query].try(:[], :rating), wrapper_html: { class: 'input-distance-f' }  %>
                 <%= f.input :category, as: :hidden, input_html: { value: params[:query].try(:[], :category) } %>
               </div>
               <div>

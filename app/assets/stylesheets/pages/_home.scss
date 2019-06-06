@@ -95,6 +95,7 @@
   justify-content: space-around;
 }
 .step-1{
+  width: 30%;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -116,7 +117,7 @@
 }
 
 .step-1 p{
-  width: 200px;
+  width: 100%;
   text-align: center;
 }
 

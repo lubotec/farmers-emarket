@@ -23,7 +23,7 @@
               <% end %>
             </div>
             <div class= "price-each">
-              <span>Each: $</span><p class="price" style="display:inline"> <%= order_product.product.price %></p>
+              <span>Per <%= order_product.product.unit_of_measurement %>: $</span><p class="price" style="display:inline"><%= order_product.product.price %></p>
             </div>
             <p>Farmer: <%= link_to farmer_path(order_product.product.farmer), class:'profile-link hvr-icon-wobble-horizontal', style:'margin-bottom: 3px;' do %>
                 <%= order_product.product.farmer.name %><i class="fa fa-arrow-right hvr-icon" style="margin-left: 8px;"></i>
@@ -33,7 +33,6 @@
         </div>
         <% end %>
       <% end %>
-      <%  %>
     </div>
     <div>
       <div class="summary">
