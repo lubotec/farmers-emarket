@@ -29,7 +29,7 @@
             <div class="map-btn">
 
             </div>
-            <div>
+            <div class="farmer-description">
                 <p><%= @farmer.description %></p>
             </div>
         </div>
@@ -71,6 +71,8 @@
             </div>
             <% end %>
         </div>
+
+    
         <div class='cards-container row'>
             <% @products.each do |product| %>
             <div class="col-lg-4 product-card-parent">
@@ -138,6 +140,12 @@
             <% end %>
         </div>
 
+        <div
+            id="map"
+            data-markers="<%= @marker.to_json %>"
+             data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+
         <!-- Popup -->
 
 
@@ -198,11 +206,7 @@
     </div>
 </div>
 
-<div
-    id="map"
-    data-markers="<%= @marker.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
+
 
 
 
