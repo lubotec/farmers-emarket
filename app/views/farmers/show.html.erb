@@ -83,7 +83,6 @@
 
                 <div class='product-card'>
 
-            
                     <% if current_user %>
                     <% if current_user.role == "Restaurant" %>
                          <a href="#" data-featherlight="#mylightbox-<%=product.id %>"> 
@@ -103,19 +102,13 @@
                                 <ion-icon name="close" class="hvr-icon"></ion-icon>
                             <% end %>
                         </div>
+
                     <% else %>
                         <div class='card-img-farmer'
                             style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1)), url('<%= cl_image_path product.product_photos.first.data, height: 160, width: 335, crop: :fill %>')">
                         </div>
                     <% end %>
                     <% end %>
-
-
-
-
-
-                    
-
                     
                     <div class='card-details'>
                         <div class='rows'>
@@ -229,4 +222,4 @@
                                 <%# <ion-icon name="close" class="hvr-icon"></ion-icon> %>
                             <%# end %>
                         <%# end %>
-                    <%# </div> %> %>
+                    <%# </div> %> 
