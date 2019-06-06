@@ -23,9 +23,9 @@
               <% end %>
             </div>
             <div class= "price-each">
-              <span>Each: $</span><p class="price" style="display:inline"> <%= order_product.product.price %></p>
+              <span>Per <%= order_product.product.unit_of_measurement %>: $</span><p class="price" style="display:inline"><%= order_product.product.price %></p>
             </div>
-            <p>Seller: <%= link_to farmer_path(order_product.product.farmer), class:'profile-link hvr-icon-wobble-horizontal', style:'margin-bottom: 3px;' do %>
+            <p>Farmer: <%= link_to farmer_path(order_product.product.farmer), class:'profile-link hvr-icon-wobble-horizontal', style:'margin-bottom: 3px;' do %>
                 <%= order_product.product.farmer.name %><i class="fa fa-arrow-right hvr-icon" style="margin-left: 8px;"></i>
               <% end %>
             </p>
@@ -33,22 +33,25 @@
         </div>
         <% end %>
       <% end %>
-      <%  %>
     </div>
-    <div>
-      <div class="summary">
-        <h2 style="margin-bottom: 48px">Summary</h2>
-        <% @order.order_products.each do |order_product| %>
-          <label class="checkout-detail" data-order-product-id="<%= order_product.id %>">
-            <p class='detail-name'><%= order_product.product.name %>:</p>
-            <p class='detail-price'>$<%= order_product.product.price * order_product.quantity %></p>
-          </label>
-        <% end %>
-        <div class="checkout-detail">
-          <p><strong>Total:</strong></p>
-          <div class="subtotal-cart">
-            <span class="total_and_shipment">$<%= @total_and_shipment %></span>
-          </div>
+    <div class="summary">
+      <h2>Summary</h2>
+      <div class="checkout-detail">
+        <p><strong>Subtotal:</strong></p>
+        <div class="subtotal-cart">
+          <span class="subtotal">$<%= @total %></span>
+        </div>
+      </div>
+      <div class="checkout-detail">
+        <p><strong>Shipping cost:</strong></p>
+        <div class="subtotal-cart">
+          <span class="shipping">$<%= 50 %></span>
+        </div>
+      </div>
+      <div class="checkout-detail">
+        <p><strong>Total:</strong></p>
+        <div class="subtotal-cart">
+          <span class="total_and_shipment">$<%= @total_and_shipment %></span>
         </div>
         <%= link_to checkout_path(@order), method: :patch, style:'margin:0px auto;' do %>
           <button class="btn-f">Checkout</button>
