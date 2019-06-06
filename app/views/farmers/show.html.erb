@@ -72,7 +72,7 @@
             <% end %>
         </div>
 
-    
+
         <div class='cards-container row'>
             <% @products.each do |product| %>
             <div class="col-lg-4 product-card-parent">
@@ -195,7 +195,9 @@
                         <p><%=product.farmer.description %></p>
                     </div>
                     <div class="add-to-cart">
-                        <button href="#" class="btn-f btn-m">Add to cart</button>
+                        <% if current_user.role == "Restaurant" %>
+                            <%= link_to product_order_products_path(product), method: :post, class: "btn-f btn-m" , remote: true, style: 'font-size: 30px; color: white;'%>
+                          <% end %>
                     </div>
             </div>
         </div>
