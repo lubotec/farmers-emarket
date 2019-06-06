@@ -1,0 +1,15 @@
+function setStars () {
+  const productRatingScore = document.querySelector("[data-id='<%= @order_product.id %>']")
+  const starsPlacement = document.querySelector('.star-placement')
+  const ratingScore = document.querySelector('.rating-score')
+  const fullNumber = parseInt(ratingScore.innerHTML.split('.')[0], 10)
+  const decimal = parseInt(ratingScore.innerHTML.split('.')[1], 10)
+
+  let fullStarMarkUp = `<i class="fas fa-star"></i>`
+  let halveStarMarkUp = `<i class="fas fa-star-half-alt"></i>`
+
+  
+  console.log(productRatingScore)
+}
+
+export { setStars }

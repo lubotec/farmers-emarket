@@ -1,7 +1,11 @@
 function updateCart () {
   const cartNumber = document.querySelector('.notification-pos');
   cartNumber.innerText = "<%= @count %>";
-  console.log(cartNumber.innerHTML)
 }
 
 updateCart();
+
+Toast.fire({
+  type: 'success',
+  title: 'You have added 1 <%= @product.unit_of_measurement %> of <%= @product.name.downcase %>'
+})

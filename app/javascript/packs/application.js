@@ -1,9 +1,17 @@
 import "bootstrap";
 import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the stylesheet_pack_tag in the layout!
 import { initMapbox } from '../plugins/init_mapbox';
+import Swal from "sweetalert2";
+global.Swal = Swal;
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 8000
+});
+global.Toast = Toast;
 
 initMapbox();
-
 $(document).ready(function(){
   let updatedElement;
   $("a").on('click', function(event) {
@@ -27,8 +35,3 @@ $(document).ready(function(){
     } // End if
   });
 });
-
-let follow_link = () => {
-  var url = $(this).val();
-  $.get(url);
-}
