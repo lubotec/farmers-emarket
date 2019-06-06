@@ -1,0 +1,19 @@
+<div class="summary">
+  <h2 style="margin-bottom: 48px">Summary</h2>
+  <% order.order_products.each do |order_product| %>
+    <label class="checkout-detail" data-order-product-id="<%= order_product.id %>">
+      <p class='detail-name'><%= order_product.product.name %>:</p>
+      <p class='detail-price'>$<%= order_product.product.price * order_product.quantity %></p>
+    </label>
+  <% end %>
+
+  <div class="checkout-detail mb-4">
+    <p><strong>Total:</strong></p>
+    <div class="subtotal-cart">
+      <span class="total_and_shipment">$<%= total %></span>
+    </div>
+  </div>
+  <%= link_to checkout_path(order), method: :patch, style:'margin:0px auto;' do %>
+    <button class="btn-f-d">Checkout</button>
+  <% end %>
+</div>

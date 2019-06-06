@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
   before_action :find_id, only: [:show, :edit, :update, :destroy]
 
   def index
