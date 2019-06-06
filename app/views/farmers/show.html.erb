@@ -195,9 +195,11 @@
                         <p><%=product.farmer.description %></p>
                     </div>
                     <div class="add-to-cart">
-                        <% if current_user.role == "Restaurant" %>
-                            <%= link_to product_order_products_path(product), method: :post, class: "btn-f btn-m" , remote: true, style: 'font-size: 30px; color: white;'%>
-                          <% end %>
+                      <% if current_user.role == "Restaurant" %>
+                        <%= link_to product_order_products_path(product), method: :post, remote: true do %>
+                            <button href="#" class="btn-f-d btn-m">Add to cart</button>
+                        <% end %>
+                      <% end %>
                     </div>
             </div>
         </div>
