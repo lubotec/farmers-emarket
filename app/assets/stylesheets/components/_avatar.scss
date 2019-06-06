@@ -1,15 +1,18 @@
 .avatar {
   width: 50px;
   border-radius: 50%;
+  object-fit: cover;
 }
 .avatar-m {
   width: 105px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .avatar-l {
   width: 180px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .avatar-bordered {
@@ -32,15 +35,6 @@
   box-shadow: 0 3px 3px rgba(0,0,0,0.2);
   border: white 3px solid;
 }
-
-
-
-
-
-
-
-
-
 
 
 .avatar-square {
