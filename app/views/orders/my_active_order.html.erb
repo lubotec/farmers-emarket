@@ -5,7 +5,7 @@
       <% if @order.order_products %>
         <% @order.order_products.each do |order_product| %>
         <div class="card-product" data-id="<%= order_product.id %>">
-          <%= cl_image_tag order_product.product.product_photos.first.data, style: 'object-fit: cover', crop: :fill %>
+          <%= cl_image_tag order_product.product.product_photos.first.data, crop: :fill %>
           <div class="card-product-infos">
             <div class="name-quantity">
               <h2><%= order_product.product.name %></h2>
