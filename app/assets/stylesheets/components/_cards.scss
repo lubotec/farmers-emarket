@@ -10,6 +10,13 @@
     position: relative;
 }
 
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 
 .card-img-restaurant {
     width: 100%;
