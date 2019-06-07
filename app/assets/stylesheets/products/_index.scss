@@ -47,10 +47,6 @@
 .product-name {
   text-decoration: none;
   color: black;
-  // &:hover {
-  //   text-decoration: none;
-  //   color: black;
-  // }
 }
 
 .cat-item {
@@ -73,7 +69,13 @@
 }
 
 .product-name {
-    color:black;
+    color:black;  
+    text-decoration: none; 
+}
+
+.product-name:hover { 
+  text-decoration: none; 
+   color:black;
 }
 
 .link-name:hover {
