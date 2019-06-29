@@ -155,12 +155,17 @@
         display: none;
     }
 
-    .input-search {
-        width: 100vw;
-    }
+    // .input-search {
+    //     width: 100vw;
+    // }
 
-    .container-f {
-        width: 100%;
+    // .container-f {
+    //     width: 100%;
+    // }
+
+    .d-flex {
+      display: block !important;
     }
+  
 
 }
