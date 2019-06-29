@@ -23,20 +23,12 @@
               <div>
                 <%= f.button :submit, "Search", class: "btn-f-d" %>
               </div>
+              <p><%= link_to "Clear filter", products_path, class: "cat-item responsive-clear", style:"font-weight: lighter" %></p>
             </div>
             <% end %>
         </div>
 
-        <div class='responsive-dropdown' style='width: 100%'>
-            <p><%= link_to "Clear filter", products_path, class: "cat-item", style:"font-weight: lighter" %></p>
-            <select style='width: 85vw'>
-                <option>Filter by product type</option>
-                <option><%= link_to "Fruits", products_path(query: {category: "Fruits"}), class: "cat-item #{'green-underline bold' if selected_category?("Fruits") }" %></option>
-                <option><%= link_to "Veggies", products_path(query: {category: "Vegetables"}), class: "cat-item #{'green-underline bold' if selected_category?("Vegetables") }" %></option>
-                <option><%= link_to "Meat", products_path(query: {category: "Meat"}), class: "cat-item #{'green-underline bold' if selected_category?("Meat") }" %></option>
-                <option><%= link_to "Dairy", products_path(query: {category: "Dairy"}), class: "cat-item #{'green-underline bold' if selected_category?("Dairy") }" %></option>
-            </select>
-        </div>
+        
 
 
         <div class='cards-container row'>
