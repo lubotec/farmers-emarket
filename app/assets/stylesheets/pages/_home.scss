@@ -186,12 +186,24 @@
     text-align: center;
   }
 
+  .list-container-home {
+    left: 0%;
+  }
+
   .list-container-home ul {
     padding-inline-start: 0px;
+    float: none;
+    text-align: center;
   }
 
   .list-container-home ul li {
     padding: 15px 10px;
+  }
+
+  .farmer-nav-home {
+    float: left;
+    width: 100%;
+    left: 0%
   }
 
 }
@@ -227,6 +239,21 @@
 
   .farmer-details {
     margin-top: 10px;
+  }
+
+  .list-container-home {
+    left: 0%;
+  }
+
+  .list-container-home ul {
+    padding-inline-start: 0px;
+    float: none;
+    text-align: center;
+  }
+
+  .farmer-nav-home {
+    width: 100%;
+    left: 0%
   }
 
   
