@@ -138,6 +138,12 @@
     margin-top: 60px;
   }
 
+  .responsive-clear {
+    display: none;
+  }
+
+
+
 //media queries
 
 @media (max-width: 4000px) {
@@ -151,16 +157,25 @@
         display: contents;
     }
 
+    .responsive-clear {
+      display: contents;
+    }
+
     .category {
         display: none;
     }
 
-    .input-search {
-        width: 100vw;
-    }
+    // .input-search {
+    //     width: 100vw;
+    // }
 
-    .container-f {
-        width: 100%;
+    // .container-f {
+    //     width: 100%;
+    // }
+
+    .d-flex {
+      display: block !important;
     }
+  
 
 }

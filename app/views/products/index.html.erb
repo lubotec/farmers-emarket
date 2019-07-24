@@ -1,3 +1,4 @@
+<div style='width: 85vw; margin: 0 auto'>
 <div class="container-f product-show">
     <div class='category', style="margin-top: 160px">
         <p><%= link_to "Clear filter", products_path, class: "cat-item", style:"font-weight: lighter" %></p>
@@ -22,26 +23,12 @@
               <div>
                 <%= f.button :submit, "Search", class: "btn-f-d" %>
               </div>
+              <p><%= link_to "Clear filter", products_path, class: "cat-item responsive-clear", style:"font-weight: lighter" %></p>
             </div>
             <% end %>
         </div>
 
-        <div class='responsive-dropdown' style='width: 100%'>
-            <select style='width: 49.5%'>
-                <option>Filter by product type</option>
-                <option>Fruits</option>
-                <option>Veggies</option>
-                <option>Meat</option>
-                <option>Dairy</option>
-            </select>
-            <select style='width: 49.5%; float:right'>
-                <option>Filter by product type</option>
-                <option>Fruits</option>
-                <option>Veggies</option>
-                <option>Meat</option>
-                <option>Dairy</option>
-            </select>
-        </div>
+        
 
 
         <div class='cards-container row'>
@@ -164,4 +151,4 @@
 
     </div>
 </div>
-
+</div>

@@ -140,17 +140,12 @@
 // Farmer profile
 
 .farmer {
-  width: 1200px;
+  width: 85vw;
   margin: 80px auto;
   display: flex;
   padding: 80px;
   box-shadow: 0px 4px 24px rgba($color: #000000, $alpha: 0.3);
 
-}
-
-.farmer img {
-  margin-right: 40px;
-  width: 206px;
 }
 
 .farmer-details {
@@ -187,8 +182,19 @@
     text-align: center;
   }
 
-}
+  .social-media ul {
+    text-align: center;
+  }
 
+  .list-container-home ul {
+    padding-inline-start: 0px;
+  }
+
+  .list-container-home ul li {
+    padding: 15px 10px;
+  }
+
+}
 // **Mobile**
 
 @media (max-width: 767px) {
@@ -210,5 +216,19 @@
   .search-form-control {
     width: 100%;
   }
+
+  .farmer {
+    display: grid;
+  }
+
+  .farmer img {
+    margin: 0 auto;
+  }
+
+  .farmer-details {
+    margin-top: 10px;
+  }
+
+  
 }
 
