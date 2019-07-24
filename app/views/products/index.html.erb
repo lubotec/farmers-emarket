@@ -21,7 +21,7 @@
                 <%= f.input :category, as: :hidden, input_html: { value: params[:query].try(:[], :category) } %>
               </div>
               <div>
-                <%= f.button :submit, "Search", class: "btn-f-d" %>
+                <%= f.button :submit, "Search", class: "btn-f-d product-index-search" %>
               </div>
               <p><%= link_to "Clear filter", products_path, class: "cat-item responsive-clear", style:"font-weight: lighter" %></p>
             </div>
