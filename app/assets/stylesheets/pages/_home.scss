@@ -182,8 +182,19 @@
     text-align: center;
   }
 
-}
+  .social-media ul {
+    text-align: center;
+  }
 
+  .list-container-home ul {
+    padding-inline-start: 0px;
+  }
+
+  .list-container-home ul li {
+    padding: 15px 10px;
+  }
+
+}
 // **Mobile**
 
 @media (max-width: 767px) {
