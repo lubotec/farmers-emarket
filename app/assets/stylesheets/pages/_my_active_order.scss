@@ -25,7 +25,7 @@
 
 .card-product img {
   height: 100%;
-  width: 25% !important;
+  width: 25%;
   object-fit: cover;
 
 }
@@ -153,3 +153,28 @@
   justify-content: space-between;
 }
 
+@media (max-width: 1200px) {
+  .card-product {
+    overflow: visible;
+    display: contents;
+    width: 90vw;
+  }
+
+  .order-products {
+    margin-top: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  }
+
+  .card-product img {
+    width: 90vw;
+  }
+
+  .checkout-cart {
+    display: contents;
+  }
+
+  .summary {
+    width: 100%;
+    margin: 25px 0px;
+  }
+}

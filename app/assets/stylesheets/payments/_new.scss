@@ -14,4 +14,9 @@
     margin-top: 40px;
   }
 
+  @media (max-width: 1200px) {
+    .order-form {
+      width: 90vw;
+    }
+  }
   
